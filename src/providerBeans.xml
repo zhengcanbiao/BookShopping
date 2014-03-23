@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="tbCustomerProvider" class="com.bookshopping.dao.provider.TbCustomerProvider" scope="prototype" />
+	<bean id="tbDiscountProvider" class="com.bookshopping.dao.provider.TbDiscountProvider" scope="prototype" />
+	<bean id="tbCategoryProvider" class="com.bookshopping.dao.provider.TbCategoryProvider" scope="prototype" />
+	<bean id="tbBooksProvider" class="com.bookshopping.dao.provider.TbBooksProvider" scope="prototype" />
+	<bean id="tbAdminProvider" class="com.bookshopping.dao.provider.TbAdminProvider" scope="prototype" /> 
+	
+	<!-- <bean id="tbAddressProvider" class="com.bookshopping.dao.provider.TbAddressProvider" scope="prototype" />
+	<bean id="tbCityProvider" class="com.bookshopping.dao.provider.TbCityProvider" scope="prototype" />
+	<bean id="tbTownProvider" class="com.bookshopping.dao.provider.TbTownProvider" scope="prototype" />
+	<bean id="tbProvinceProvider" class="com.bookshopping.dao.provider.TbProvinceProvider" scope="prototype" />
+	
+	<bean id="tbFavoriteProvider" class="com.bookshopping.dao.provider.TbFavoriteProvider" scope="prototype" />
+	<bean id="tbClothesdetailProvider" class="com.bookshopping.dao.provider.TbClothesdetailProvider" scope="prototype" />
+	<bean id="tbCartProvider" class="com.bookshopping.dao.provider.TbCartProvider" scope="prototype" />
+	<bean id="tbOrderProvider" class="com.bookshopping.dao.provider.TbOrderProvider" scope="prototype" />
+	<bean id="tbOrderdetailProvider" class="com.bookshopping.dao.provider.TbOrderdetailProvider" scope="prototype" />-->
+</beans>

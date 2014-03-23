@@ -1,0 +1,134 @@
+/* CSS Document */
+
+table td img {
+	height:60px;
+	float:left;
+	margin:10px;
+}
+
+.table td {
+	vertical-align:middle;
+}
+
+.table input[type="text"] {
+	position:relative;
+	top:5px;
+	width:30px;
+}
+
+.table .cart_item_column {
+	width:400px;
+}
+
+.table .cart_price_column {
+	width:150px;
+}
+
+.table .cart_count_column {
+	width:175px;
+}
+
+.table .cart_subtotal_column {
+	width:175px;
+}
+
+.table .cart_operation_column {
+	width:60px;
+}
+
+.cart_item_name {
+	margin:10px 0 0 70px;
+}
+
+.cart_total_price {
+	margin-left:683px;
+}
+
+.discount_block {
+	float:right;
+	width:400px;
+}
+
+.cart_discount {
+	float:right;
+	margin-right:20px;
+}
+
+.cart_discount_price {
+	float:right;
+	margin-right:60px;
+}
+
+.cart_discount_price span {
+	font-size:18px;
+	font-weight:bold;
+	color:#1ABC9C;
+}
+
+.pay_btn {
+	float:right;
+	width:120px;
+	margin-top:-28px;
+}
+
+
+
+/*结算*/
+.pay_address,
+.pay_method {
+	margin-bottom:50px;
+}
+
+.pay_address label,
+.pay_method label {
+	margin-left:40px;
+}
+
+.pay_address button {
+	margin-left:30px;
+	font-size:14px;
+}
+
+.pay_address input[type="radio"],
+.pay_method input[type="radio"] {
+	position:relative;
+	top:-4px;
+	left:-10px;
+}
+
+
+.pay_item_list .cart_total_price {
+	float:right;
+}
+
+.pay_item_list .cart_discount_price {
+	margin:0;
+}
+
+#order_btn {
+	float:right;
+	clear:both;
+}
+
+/* new address */
+#address_modal {
+	width:750px;
+	left:50%;
+	margin-left:-375px;
+}
+
+#address_modal .control-group .control-label {
+	width:100px;
+}
+
+#address_modal .control-group .controls {
+	margin-left:110px;
+}
+
+#address_modal select {
+	width: 150px;
+}
+
+#address_modal #input_address_detail {
+	width:445px;
+}
