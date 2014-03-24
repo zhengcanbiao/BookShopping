@@ -7,7 +7,7 @@ $(document).ready(function() {
 	$('#cart').hover(
 		function() {
 			$.ajax({
-				url: "/EShopping/customer/GetCartItemList.action",
+				url: "/BookShopping/customer/GetCartItemList.action",
 				type:"GET",
 				async:false,
 				contentType:"application/json;charset=utf-8",
@@ -15,7 +15,7 @@ $(document).ready(function() {
 				success: function(result) {
 					$('#cart ul').empty();
 					if (result === "[]") {
-						$('#cart ul').append("<li><a href='/EShopping/customer/RedirectToHome.action'>购物车是空的, 快去购物吧!</a></li>");
+						$('#cart ul').append("<li><a href='/BookShopping/customer/RedirectToHome.action'>购物车是空的, 快去购物吧!</a></li>");
 					} else {
 						var resultJson = eval(result);
 						$(resultJson).each(function(index, item) {
@@ -28,7 +28,7 @@ $(document).ready(function() {
 								case 2: sizeStr="L"; break;
 								}
 								$('#cart ul').append("<li class='header-item'>" +
-										"<a href='/EShopping/customer/PrepareClothesDetail.action?clothesId=" + item.clothesId + "&categoryId=" + item.categoryId + "'><img src='"+ item.picUrl +"' />" +
+										"<a href='/BookShopping/customer/PrepareClothesDetail.action?clothesId=" + item.clothesId + "&categoryId=" + item.categoryId + "'><img src='"+ item.picUrl +"' />" +
 												"<div class='header-item-text'>" +
 													"<p>尺码:" + sizeStr + "</p>" +
 													"<span class='header-item-price'>&yen;" + item.price + "</span><span class='header-item-count'>数量:" + item.clothesNumber + "</span>" +
@@ -40,7 +40,7 @@ $(document).ready(function() {
 						if (left > 0) {
 							notice = "购物车还有" + left + "件商品";
 						}
-						$('#cart ul').append("<li><a href='/EShopping/customer/PrepareCartItemList.action'><i class='icon-angle-right'> </i>查看购物车 " + notice + "</a></li>");
+						$('#cart ul').append("<li><a href='/BookShopping/customer/PrepareCartItemList.action'><i class='icon-angle-right'> </i>查看购物车 " + notice + "</a></li>");
 					}
 				}
 			});
@@ -71,7 +71,7 @@ function get_num_in_str(str) {
 function get_subcategory_list(i) {
 	var category_id = "#category" + i;
 	$.ajax({
-		url:"/EShopping/customer/GetSubcategoryList.action",
+		url:"/BookShopping/customer/GetSubcategoryList.action",
 		type:"GET",
 		async:false,
 		contentType:"application/json;charset=utf-8",
@@ -81,7 +81,7 @@ function get_subcategory_list(i) {
 			$(category_id).empty();
 			var resultJson = eval(result);
 			$.each(resultJson, function(index, item) {
-				$(category_id).append("<li><a href='/EShopping/customer/PrepareClothesInfoList.action?categoryId=" + item.categoryId + "&pageNow=1'><i class=icon-angle-right> </i>"+item.categoryName+"</a></li>");
+				$(category_id).append("<li><a href='/BookShopping/customer/PrepareBooksInfoList.action?categoryId=" + item.categoryId + "&pageNow=1'><i class=icon-angle-right> </i>"+item.categoryName+"</a></li>");
 			});
 		}
 	});

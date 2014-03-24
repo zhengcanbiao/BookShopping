@@ -8,14 +8,13 @@
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
-<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bookshopping.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/item.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/home.css" rel="stylesheet" media="screen" />
 <title>首页</title>
 </head>
 
 <body>
-11111
 	<%@ include file="header.jsp" %>
     
     <div class="body">
@@ -27,13 +26,14 @@
             <c:if test="${not empty requestScope['booksCategoryList'][booksListIndex-1] }">
             <div class="home-item-block">
             	<legend>${applicationScope['topCategoryList'][booksListIndex-1].categoryName }</legend>
-	    	    <c:forEach begin="1" end="${(fn:length(requestScope['booksCategoryList'][booksListIndex-1])-1)/4+1 }" var="index">
+	    	    <c:forEach begin="0" end="${(fn:length(requestScope['booksCategoryList'][booksListIndex-1])-1)/4 }" var="index">
+	    	    <!-- 除以4就是4列 -->
 	            	<div class="row-fluid item-list">
-	            		<c:forEach begin="${(index-1)*4 }" end="${(index-1)*4+3 }" var="i" >
+	            		<c:forEach begin="${(index)*4 }" end="${(index)*4+3 }" var="i" >
 	            			<c:if test="${i < fn:length(requestScope['booksCategoryList'][booksListIndex-1]) }">
 			            	<div class="item span3">
-			            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][booksListIndex-1][i].booksId }"><img src="${requestScope['booksCategoryList'][booksListIndex-1][i].picUrl }" /></a>	
-			            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][booksListIndex-1][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][booksListIndex-1][i].bookName }</p></a>
+			            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][booksListIndex-1][i].booksId }"><img src="${requestScope['booksCategoryList'][booksListIndex-1][i].picUrl }" /></a>	
+			            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][booksListIndex-1][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][booksListIndex-1][i].bookName }</p></a>
 			            		<h5 class="item-price">&yen;<span>${requestScope['booksCategoryList'][booksListIndex-1][i].price/100.0 }</span></h5>
 			            	</div>
 			            	</c:if>

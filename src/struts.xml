@@ -8,18 +8,18 @@
 		<interceptors>
 			<interceptor name="loginInterceptor" class="LoginInterceptor" />
 			<interceptor name="autoLoginInterceptor" class="AutoLoginInterceptor" />
-			<interceptor-stack name="eshoppingLogin">
+			<interceptor-stack name="bookshoppingLogin">
 				<interceptor-ref name="autoLoginInterceptor" />
 				<interceptor-ref name="loginInterceptor" />
 				<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
-			<interceptor-stack name="eshoppingDefault">
+			<interceptor-stack name="bookshoppingDefault">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="autoLoginInterceptor" />
 			</interceptor-stack>
 		</interceptors>
 		
-		<default-interceptor-ref name="eshoppingDefault" />
+		<default-interceptor-ref name="bookshoppingDefault" />
 				
 		<global-results>
 			<result name="login">/login.jsp</result>
@@ -44,12 +44,12 @@
 		</action>
 		<action name="PreparePersonalInfo" class="PreparePersonalInfoAction">
 			<result name="success">/WEB-INF/jsp/customer/personalInfo.jsp</result>
-			<interceptor-ref name="eshoppingLogin" />
+			<interceptor-ref name="bookshoppingLogin" />
 		</action>
 		<action name="ModifyPersonalInfo" class="ModifyPersonalInfoAction">
 			<result name="input" type="chain">PreparePersonalInfo</result>
 			<result name="success" type="redirectAction">PreparePersonalInfo</result>
-			<interceptor-ref name="eshoppingLogin" />
+			<interceptor-ref name="bookshoppingLogin" />
 		</action>
 		<action name="ForgetPassword" class="ForgetPasswordAction">
 			<result name="success" type="json">
@@ -61,7 +61,7 @@
 		</action>
 		<action name="PrepareCredits" class="PrepareCreditsAction">
 			<result name="success">/WEB-INF/jsp/customer/credits.jsp</result>
-			<interceptor-ref name="eshoppingLogin" />
+			<interceptor-ref name="bookshoppingLogin" />
 		</action>
 		<action name="PreparePersonalHome" class="PreparePersonalHomeAction">
 			<result name="success">/WEB-INF/jsp/customer/accountHome.jsp</result>
@@ -78,6 +78,23 @@
 			<result type="json">
 				<param name="root">result</param>
 			</result>
+		</action>
+	</package>
+	
+	<package name="CategoryAjaxAction" namespace="/customer" extends="Authority">
+		<action name="GetSubcategoryList" class="GetSubcategoryListAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="BooksAction" namespace="/customer" extends="Authority">
+		<action name="PrepareBooksInfoList" class="PrepareBooksInfoListAction">
+			<result name="success">/WEB-INF/jsp/customer/booksList.jsp</result>
+		</action>
+		<action name="PrepareBooksDetail" class="PrepareBooksDetailAction">
+			<result name="success">/WEB-INF/jsp/customer/booksDetail.jsp</result>
 		</action>
 	</package>
 </struts>    

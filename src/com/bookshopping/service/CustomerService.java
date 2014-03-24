@@ -84,13 +84,13 @@ public class CustomerService {
 		map.put("password", password);
 		List<Map<String, String>> attributes = new ArrayList<Map<String, String>>(0);
 		attributes.add(map);
-		CookieUtil.addCookie("eshoppingUser", attributes);
+		CookieUtil.addCookie("bookshoppingUser", attributes);
 	}
 	
 	public static void loadCustomerFromCookieToSession() throws CookieNotExistException, CustomerNotFoundException {
 		initSession();
 		try {
-		    List<Map<String, String>> values = CookieUtil.getCookieValues("eshoppingUser");
+		    List<Map<String, String>> values = CookieUtil.getCookieValues("bookshoppingUser");
 		    String customerName = values.get(0).get("customerName");
 		    String password = values.get(0).get("password");
 		    if (CustomerService.validateCustomer(customerName, password)) {

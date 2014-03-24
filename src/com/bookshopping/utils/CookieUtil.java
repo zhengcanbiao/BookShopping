@@ -48,7 +48,9 @@ public class CookieUtil {
 			}
 		}
 		if (value == null) {
-			throw new CookieNotExistException();
+			System.out.println("cookies里面有没有值");
+			//throw new CookieNotExistException();
+			return null;
 		} else {
 			JSONArray jsonArray = JSONArray.fromObject(value);
 			List<Map<String, String>> list = new ArrayList<Map<String, String>>(0);

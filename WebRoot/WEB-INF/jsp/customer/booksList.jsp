@@ -5,12 +5,12 @@
 <html>
     <head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link href="/EShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
-		<link href="/EShopping/css/flat-button.css" rel="stylesheet" media="screen" />
-		<link href="/EShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-		<link href="/EShopping/css/flexslider.css" rel="stylesheet" media="screen" />
-		<link href="/EShopping/css/eshopping.css" rel="stylesheet" media="screen" />
-		<link href="/EShopping/css/item.css" rel="stylesheet" media="screen" />
+		<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+		<link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
+		<link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+		<link href="/BookShopping/css/flexslider.css" rel="stylesheet" media="screen" />
+		<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+		<link href="/BookShopping/css/item.css" rel="stylesheet" media="screen" />
 		
 		<title>商品</title>
     </head>
@@ -22,14 +22,14 @@
     	<div class="container">
 
     		
-           	<c:forEach begin="1" end="${(fn:length(requestScope['clothesList'])-1)/4+1 }" var="index">
+           	<c:forEach begin="1" end="${(fn:length(requestScope['booksList'])-1)/4+1 }" var="index">
             	<div class="row-fluid item-list">
             		<c:forEach begin="${(index-1)*4 }" end="${(index-1)*4+3 }" var="i" >
-            			<c:if test="${i < fn:length(requestScope['clothesList']) }">
+            			<c:if test="${i < fn:length(requestScope['booksList']) }">
 		            	<div class="item span3">
-		            		<a href="${applicationScope['basePath'] }/customer/PrepareClothesDetail.action?clothesId=${requestScope['clothesList'][i].clothesId }"><img src="${requestScope['clothesList'][i].tbClothesdetails[0].picUrl }" /></a>	
-		            		<a href="${applicationScope['basePath'] }/customer/PrepareClothesDetail.action?clothesId=${requestScope['clothesList'][i].clothesId }"><p class="item-name">${requestScope['clothesList'][i].clothesName }</p></a>
-		            		<h5 class="item-price">&yen;<span>${requestScope['clothesList'][i].price/100.0 }</span></h5>
+		            		<a href="${applicationScope['basePath'] }/customer/PrepareClothesDetail.action?booksId=${requestScope['booksList'][i].booksId }"><img src="${requestScope['booksList'][i].tbClothesdetails[0].picUrl }" /></a>	
+		            		<a href="${applicationScope['basePath'] }/customer/PrepareClothesDetail.action?booksId=${requestScope['booksList'][i].booksId }"><p class="item-name">${requestScope['booksList'][i].booksName }</p></a>
+		            		<h5 class="item-price">&yen;<span>${requestScope['booksList'][i].price/100.0 }</span></h5>
 		            	</div>
 		            	</c:if>
             		</c:forEach>
@@ -51,10 +51,10 @@
         </div>
         
     </div>
-    <script type="application/javascript" src="/EShopping/js/jquery-1.9.1.min.js"></script>
-    <script type="application/javascript" src="/EShopping/js/bootstrap.js"></script>
-    <script type="application/javascript" src="/EShopping/js/jquery.flexslider.js"></script>
-    <script type="application/javascript" src="/EShopping/js/global.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/jquery.flexslider.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/global.js"></script>
     
     <%@ include file="footer.jsp" %>
     </body>

@@ -6,11 +6,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 	
 	
-	
+	<import resource="classpath:mailBeans.xml" />
 	<bean id="LoginAction" class="com.bookshopping.action.customer.LoginAction" scope="prototype" />
 	<bean id="RegisterAction" class="com.bookshopping.action.customer.RegisterAction" scope="prototype" />
 	<bean id="CheckCustomerNameAction" class="com.bookshopping.action.customer.CheckCustomerNameAction" scope="prototype" />
 	<bean id="CheckNickNameAction" class="com.bookshopping.action.customer.CheckNickNameAction" scope="prototype" />
 	<bean id="CheckPasswordAction" class="com.bookshopping.action.customer.CheckPasswordAction" scope="prototype" />
-	
+	<bean id="ForgetPasswordAction" class="com.bookshopping.action.customer.ForgetPasswordAction" scope="prototype">
+		<property name="mailSender" ref="mailSender" />
+	</bean>
 </beans>

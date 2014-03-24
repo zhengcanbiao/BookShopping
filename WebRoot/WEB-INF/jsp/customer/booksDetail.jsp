@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/EShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/flat-button.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/eshopping.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/item.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bookshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/item.css" rel="stylesheet" media="screen" />
 <title>商品详情</title>
 </head>
 
@@ -25,34 +25,36 @@
         	<ul class="inline bread">
               <li><a href="${applicationScope['basePath'] }/customer/RedirectToHome.action">首页</a></li>
               <li><i class="icon-angle-right"> </i></li>
-              <li><a href="${applicationScope['basePath'] }/customer/PrepareClothesInfoList.action?categoryId=${requestScope['currentClothes'].tbCategory.categoryId }&pageNow=1">${requestScope['currentClothes'].tbCategory.categoryName }</a></li>
+              <li><a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?categoryId=${requestScope['currentBooks'].tbCategory.categoryId }&pageNow=1">${requestScope['currentBooks'].tbCategory.categoryName }</a></li>
               <li><i class="icon-angle-right"> </i></li>
               <li class="active">商品详情</li>
             </ul>
 
         	<div class="row-fluid">
             	<div class="span5" >
-                	<img src="${requestScope['clothesDetailList'][0].picUrl }"/>
+                	<img src="${requestScope['currentBooks'].picUrl }"/>
                 </div>
              
                 
                 <div class="span7">
                 	<div class="item_intro">
-                        <h3 class="item_name_indetail">${requestScope['currentClothes'].clothesName }</h3>
-                        <p class="item_price_indetail">&yen;${requestScope['currentClothes'].price/100.0 }</p>
+                        <h3 class="item_name_indetail">${requestScope['currentBooks'].bookName }</h3>
+                        <p class="item_price_indetail">&yen;${requestScope['currentBooks'].price/100.0 }</p>
                         <p class="item_discount_indetail">积分优惠: <span class="label label-warning">
                         	<c:if test="${requestScope['customerLevel']==0 }">无</c:if>
                         	<c:if test="${requestScope['customerLevel']!=0 }">${applicationScope['discountList'][requestScope['customerLevel']].discountRate/10.0}折</c:if></span></p>
-                        <p class="item_intro_indetail">${requestScope['currentClothes'].clothesDescription }</p>
-                        <p class="item_materil_indetail">材质: <span>${requestScope['currentClothes'].material }</span></p>
-                        <p class="item_producer_indetail">厂商: <span>${requestScope['currentClothes'].producer }</span></p>
+                        <p class="item_intro_indetail">${requestScope['currentBooks'].booksDescription }</p>
+                        <p class="item_author_indetail">作者: <span>${requestScope['currentBooks'].author }</span></p>
+                        <p class="item_publisher_indetail">出版社: <span>${requestScope['currentBooks'].publisher }</span></p>
+                        <p class="item_publicationDate_indetail">出版时间: <span>${requestScope['currentBooks'].publicationDate }</span></p>
+                        
                     </div>
                     
                     <hr style="width:400px;">
                     
                     <div class="item_operation">
-                    	<c:if test="${requestScope['currentClothes'].valid==true }">
-                    	<p>选择尺码</p>
+                    	<c:if test="${requestScope['currentBooks'].valid==true }">
+                    	<%-- <p>选择尺码</p>
                         <ul class="inline" id="size_list">
                         	<c:forEach items="${requestScope['clothesDetailList'] }" var="clothesDetail">
                         	<li><label <c:if test="${clothesDetail.remainder<=0}">class="disabled"</c:if>>
@@ -64,27 +66,28 @@
                         		</c:choose>
                         	</label></li>
                             </c:forEach>
-                        </ul>
+                        </ul> --%>
                         
-                        <label for="input_count">数量</label>
-                        <input id="input_count" disabled="disabled" type="text" value="1" style="width:30px; margin-left:5px; float:left;" />
-                        <p id="remainder" hidden="hidden">剩余<span></span>件</p>
+                        <label for="input_count"<c:if test="${currentBooks.remainder<=0}">class="disabled"</c:if>>数量</label>
+                        <input <c:if test="${currentBooks.remainder<=0}">disabled="disabled"</c:if>id="input_count" type="text" value="1" style="width:30px; margin-left:5px; float:left;" />
+                        
+                        <p id="remainder" >剩余<span>${requestScope['currentBooks'].remainder}</span>件</p>
                         
                         <div class="btn_block"><button onClick="add_to_cart()" class="btn btn-large btn-primary">加入购物车</button>
-                        <button onClick="add_to_favorite('${requestScope.currentClothes.clothesId}')" class="btn btn-large"  <c:if test="${empty sessionScope['currentCustomerName'] }">disabled="disabled"</c:if> >点击收藏</button></div>
+                        <button onClick="add_to_favorite('${requestScope.currentBooks.booksId}')" class="btn btn-large"  <c:if test="${empty sessionScope['currentCustomerName'] }">disabled="disabled"</c:if> >点击收藏</button></div>
                         </c:if>
-                        <c:if test="${requestScope['currentClothes'].valid==false }">
+                        <c:if test="${requestScope['currentBooks'].valid==false }">
                         	<p style="font-size:24px;">该商品已下架</p>
                         </c:if>
                     </div>
                 </div>
             </div><!-- row-fluid -->
             
-            <c:if test="${not empty requestScope['currentClothes'].tbComments }">
+            <c:if test="${not empty requestScope['currentBooks'].tbComments }">
             <div class="row-fluid">
             	<div class="span7 offset5 comment_block">
                     <legend>商品评价</legend>
-                    <c:forEach items="${requestScope['currentClothes'].tbComments  }" var="comment">
+                    <c:forEach items="${requestScope['currentBooks'].tbComments  }" var="comment">
 	                    <div class="comment">
 	                    	<p class="comment_content">${comment.commentContent }</p>
 	                        <p class="comment_time"><i class="icon-time"> </i> ${comment.commentTime }</p>
@@ -106,9 +109,9 @@
     
     <%@ include file="footer.jsp" %>
     
-    <script type="application/javascript" src="/EShopping/js/jquery-1.9.1.min.js"></script>
-    <script type="application/javascript" src="/EShopping/js/bootstrap.js"></script>
-	<script type="application/javascript" src="/EShopping/js/global.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+	<script type="application/javascript" src="/BookShopping/js/global.js"></script>
     
     <script type="application/javascript">
 		$(document).ready(function () {    
@@ -117,6 +120,7 @@
 				$("input:radio:checked").parent("label").addClass("checked");
 			});
 			on_num_change();
+			
 		});
 		
 		function on_num_change() {
@@ -126,7 +130,7 @@
 				}
 				
 				if ( isNaN($("#input_count").val()) || $("#input_count").val() === '0' || e.keyCode == 190){
-					$("#input_count").val(1);
+					$("#input_count").val();
 				}
 			});
 		}
@@ -139,7 +143,7 @@
 			} else {
 				var clothes_detail_id = get_num_in_str($("input:radio:checked").attr("id"));
 				$.ajax({
-					url: "/EShopping/customer/AddToShoppingCart.action",
+					url: "/BookShopping/customer/AddToShoppingCart.action",
 					type:"GET",
 					contentType:"application/json;charset=utf-8",
 					dataType:"json",
@@ -157,7 +161,7 @@
 		
 		function add_to_favorite(id) {
 			$.ajax({
-				url:"/EShopping/customer/AddFavorite.action",
+				url:"/BookShopping/customer/AddFavorite.action",
 				type:"GET",
 				contentType:"application/json;charset=utf-8",
 				dataType:"json",
@@ -174,11 +178,11 @@
 			});
 		}
 		
-		function on_clothes_size_selected(i) {
+		/* function on_clothes_size_selected(i) {
 			$("#remainder").removeAttr("hidden");
 			$("#remainder span").text(i);
 			$("#input_count").removeAttr("disabled");
-		}
+		} */
 	</script>
 </body>
 </html>

@@ -10,12 +10,12 @@
                
            	<ul class="nav">
                	<li id="logo">
-                   	<a href="${applicationScope['basePath'] }/customer/RedirectToHome.action"><img src="/EShopping/img/logo_cut_30px.png" /></a>
+                   	<a href="${applicationScope['basePath'] }/customer/RedirectToHome.action"><img src="/BookShopping/img/logo_cut_30px.png" /></a>
                    </li>
                    
                    <c:forEach items="${applicationScope['topCategoryList'] }" var="category">
                 		<li>
-	                   	<a href="${applicationScope['basePath']}/customer/PrepareClothesInfoList.action?categoryId=${category.categoryId }&pageNow=1">${category.categoryName }</a>
+	                   	<a href="${applicationScope['basePath']}/customer/PrepareBooksInfoList.action?categoryId=${category.categoryId }&pageNow=1">${category.categoryName }</a>
 	                       <ul id="category${category.categoryId }" class="catalog">
 	                       </ul>
 	                   	</li>
@@ -29,13 +29,13 @@
                    
                    	<c:if test="${empty sessionScope['currentNickName'] }">
 	                   	<li id="myAccount_login">
-	                   		<a href="/EShopping/login.jsp">登录/注册<br></a>
+	                   		<a href="/BookShopping/login.jsp">登录/注册<br></a>
 	                   	</li>
                    	</c:if>
 	                       
 	                <c:if test="${not empty sessionScope['currentNickName'] }">
 	                	<li id="myAccount">
-	                        <a href="/EShopping/customer/PreparePersonalHome.action">Hi, ${sessionScope['currentNickName'] }<br />
+	                        <a href="/BookShopping/customer/PreparePersonalHome.action">Hi, ${sessionScope['currentNickName'] }<br />
 										我的账户</a>
 	                        <ul>
 	                            <li>
