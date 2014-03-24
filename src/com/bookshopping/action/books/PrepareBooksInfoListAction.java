@@ -29,27 +29,12 @@ public class PrepareBooksInfoListAction extends ActionSupport implements Servlet
 		int fromIndex = (pageNow-1) * pageSize;
 		int toIndex = ((pageNow * pageSize) > booksList.size()) ? booksList.size() : (pageNow * pageSize);
 		booksList = booksList.subList(fromIndex, toIndex);
-//		for (TbBooks clothes : booksList) {
-//			Hibernate.initialize(clothes.getTbBooksdetails());
-//		}
-		TbBooks books = BooksService.getBooksByBooksId(booksId);
-//		Hibernate.initialize(clothes.getTbBooksdetails());
-		Hibernate.initialize(books.getTbCategory());
-		Hibernate.initialize(books.getTbComments());
-//		List<TbBooksdetail> clothesDetailList = clothes.getTbBooksdetails();
-		int customerLevel;
-		try {
-			TbCustomer customer = CustomerService.getCurrentCustomer();
-			customerLevel = DiscountService.getDiscountLevelByPoints(customer.getPoints());
-		} catch (CustomerNotFoundException ex) {
-			customerLevel = 0;
-		}
+//		
 		
 		request.setAttribute("booksList", booksList);
 		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("categoryId", categoryId);
-		request.setAttribute("currentClothes", books);
-		request.setAttribute("customerLevel", customerLevel);
+		
 		return SUCCESS;
 	}
 
