@@ -96,5 +96,29 @@
 		<action name="PrepareBooksDetail" class="PrepareBooksDetailAction">
 			<result name="success">/WEB-INF/jsp/customer/booksDetail.jsp</result>
 		</action>
+		<action name="SearchBooks" class="SearchBooksAction">
+			<result name="success">/WEB-INF/jsp/customer/searchResult.jsp</result>
+		</action>
+	</package>
+	
+	<package name="FavoriteAction" namespace="/customer" extends="Authority">
+		<action name="PrepareFavorite" class="PrepareFavoriteAction">
+			<result name="success">/WEB-INF/jsp/customer/favorite.jsp</result>
+			<interceptor-ref name="bookshoppingLogin" />
+		</action>
+	</package>
+	
+	<package name="FavoriteAjaxAction" namespace="/customer" extends="Authority">
+		<action name="AddFavorite" class="AddFavoriteAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="DeleteFavorite" class="DeleteFavoriteAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<interceptor-ref name="bookshoppingLogin" />
+		</action>
 	</package>
 </struts>    

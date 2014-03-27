@@ -6,8 +6,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 	
 	<bean id="PrepareBooksInfoListAction" class="com.bookshopping.action.books.PrepareBooksInfoListAction" scope="prototype" />
-	<bean id="PrepareBooksDetailAction" class="com.bookshopping.action.books.PrepareBooksDetailAction" scope="prototype" />
-	<!-- 
-	<bean id="SearchClothesAction" class="com.eshopping.action.clothes.SearchClothesAction" scope="prototype" /> -->
+	<bean id="PrepareBooksDetailAction" class="com.bookshopping.action.books.PrepareBooksDetailAction" scope="prototype" /> 
+	<bean id="SearchBooksAction" class="com.bookshopping.action.books.SearchBooksAction" scope="prototype" /> 
+	
 	
 </beans>

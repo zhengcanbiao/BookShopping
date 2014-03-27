@@ -29,7 +29,7 @@ public class TbFavorite implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TbFavorite(TbCustomer tbCustomer, TbBooks tbBooks) {
+	public TbFavorite( TbBooks tbBooks,TbCustomer tbCustomer) {
 		this.tbCustomer = tbCustomer;
 		this.tbBooks = tbBooks;
 	}

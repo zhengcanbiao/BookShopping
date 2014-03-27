@@ -9,6 +9,7 @@ import com.bookshopping.domain.TbCategory;
 import com.bookshopping.exception.BooksNotFoundException;
 import com.bookshopping.service.comparator.BooksNameComparator;
 import com.bookshopping.service.comparator.BooksPriceComparator;
+import com.bookshopping.service.comparator.BooksPublicationDateComparator;
 import com.bookshopping.service.comparator.BooksSalesComparator;
 import com.bookshopping.utils.SearchUtil;
 import com.bookshopping.utils.SpringUtil;
@@ -19,7 +20,10 @@ public class BooksService {
 	public static final int ORDER_BY_SALES_DESC = 2;
 	public static final int ORDER_BY_PRICE_ASC = 3;
 	public static final int ORDER_BY_PRICE_DESC = 4;
-	public static final int ORDER_BY_NAME = 5;
+	public static final int ORDER_BY_NAME = 5; 
+	public static final int ORDER_BY_PUBLICATION_DATE_ASC = 6; 
+	public static final int ORDER_BY_PUBLICATION_DATE_DESC = 7; 
+
 	private BooksService() {
 	}
 	
@@ -50,7 +54,7 @@ public class BooksService {
 	@SuppressWarnings("unchecked")
 	public static List<TbBooks> searchBooks(String keyword, int orderIndex) {
 		List<TbBooks> list = SearchUtil.searchForKeyword(keyword.split("\\s+"), "TbBooks",
-				new String[]{"BooksName", "Producer", "Material", "BooksDescription"});
+				new String[]{"BookName", "Publisher", "Author", "BooksDescription","PublicationDate"});
 		switch (orderIndex) {
 		case ORDER_BY_NAME:
 			sortByBooksName(list);
@@ -65,6 +69,12 @@ public class BooksService {
 			sortByBooksSalesAsc(list);
 			break;
 		case ORDER_BY_SALES_DESC:
+			sortByBooksSalesDesc(list);
+			break;
+		case ORDER_BY_PUBLICATION_DATE_ASC:
+			sortByBooksSalesDesc(list);
+			break;
+		case ORDER_BY_PUBLICATION_DATE_DESC:
 			sortByBooksSalesDesc(list);
 			break;
 		default:
@@ -97,7 +107,16 @@ public class BooksService {
 		Collections.sort(list, new BooksPriceComparator(true));
 		return list;
 	}
+	
+	public static List<TbBooks> sortByBooksPublicationDateAsc(List<TbBooks> list) {
+		Collections.sort(list, new BooksPublicationDateComparator(true));
+		return list;
+	}
 
+	public static List<TbBooks> sortByBooksPublicationDateDesc(List<TbBooks> list) {
+		Collections.sort(list, new BooksPublicationDateComparator(false));
+		return list;
+	}
 	public static void updateBooks(TbBooks books) {
 	    getTbBooksProvider().updateBooks(books);
     }
