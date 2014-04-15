@@ -165,7 +165,7 @@
 				type:"GET",
 				contentType:"application/json;charset=utf-8",
 				dataType:"json",
-				data:{clothesId: id},
+				data:{booksId: id},
 				success: function(result) {
 					if (result == "success") {
 						show_tips("添加收藏成功", "ok");

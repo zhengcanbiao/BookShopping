@@ -91,12 +91,14 @@ public class CustomerService {
 		initSession();
 		try {
 		    List<Map<String, String>> values = CookieUtil.getCookieValues("bookshoppingUser");
+		    if(values==null)
+		    	System.out.println("cookies null");
+		    else{
 		    String customerName = values.get(0).get("customerName");
 		    String password = values.get(0).get("password");
 		    if (CustomerService.validateCustomer(customerName, password)) {
 		    	putCustomerIntoSession(customerName);
-		    } else {
-		    	throw new CookieNotExistException();
+		    } 
 		    }
 		} catch (CustomerNotFoundException ex) {
 			throw new CookieNotExistException();
@@ -141,7 +143,7 @@ public class CustomerService {
 	}
 	
 	public static void clearCookie() {
-		CookieUtil.removeCookie("eshoppingUser");
+		CookieUtil.removeCookie("bookshoppingUser");
 	}
 	
 	private static void initSession() {

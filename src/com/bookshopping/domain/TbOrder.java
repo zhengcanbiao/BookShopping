@@ -1,8 +1,9 @@
 package com.bookshopping.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +34,7 @@ public class TbOrder implements java.io.Serializable {
 	private boolean isComment;
 	private boolean valid;
 	private Integer discount;
-	private Set<TbOrderdetail> tbOrderdetails = new HashSet<TbOrderdetail>(0);
+	private List<TbOrderdetail> tbOrderdetails = new ArrayList<TbOrderdetail>(0);
 
 	// Constructors
 
@@ -61,7 +62,7 @@ public class TbOrder implements java.io.Serializable {
 	public TbOrder(TbCustomer tbCustomer, String receiverInfo,
 			Integer orderStatus, Date orderTime, Integer totalPrice,
 			Integer finalPrice, boolean isComment, boolean valid,
-			Integer discount, Set<TbOrderdetail> tbOrderdetails) {
+			Integer discount, List<TbOrderdetail> tbOrderdetails) {
 		this.tbCustomer = tbCustomer;
 		this.receiverInfo = receiverInfo;
 		this.orderStatus = orderStatus;
@@ -169,11 +170,11 @@ public class TbOrder implements java.io.Serializable {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "tbOrder")
-	public Set<TbOrderdetail> getTbOrderdetails() {
+	public List<TbOrderdetail> getTbOrderdetails() {
 		return this.tbOrderdetails;
 	}
 
-	public void setTbOrderdetails(Set<TbOrderdetail> tbOrderdetails) {
+	public void setTbOrderdetails(List<TbOrderdetail> tbOrderdetails) {
 		this.tbOrderdetails = tbOrderdetails;
 	}
 

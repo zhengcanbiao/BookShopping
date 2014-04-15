@@ -22,7 +22,7 @@
                    </c:forEach>
                    
                    <li id="search">
-                   	<form class="navbar-search pull-left" action="SearchClothes.action?pageNow=1" method="get">
+                   	<form class="navbar-search pull-left" action="SearchBooks.action?pageNow=1" method="get">
                        	<input id="search_input" name="keyword" type="text" class="search-query" placeholder="Search" />
                     </form>
                    </li>

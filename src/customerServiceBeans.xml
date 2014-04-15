@@ -15,4 +15,6 @@
 	<bean id="ForgetPasswordAction" class="com.bookshopping.action.customer.ForgetPasswordAction" scope="prototype">
 		<property name="mailSender" ref="mailSender" />
 	</bean>
+	<bean id="PreparePersonalHomeAction" class="com.bookshopping.action.customer.PreparePersonalHomeAction" scope="prototype" />
+	<bean id="LogoutAction" class="com.bookshopping.action.customer.LogoutAction" scope="prototype" />
 </beans>

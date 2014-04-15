@@ -3,11 +3,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/EShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/flat-button.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/eshopping.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/account.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bookshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/account.css" rel="stylesheet" media="screen" />
 <title>个人主页</title>
 </head>
 
@@ -19,7 +19,7 @@
     	<div class="container">
         
         	<ul class="inline bread">
-              <li><a href="/EShopping/customer/RedirectToHome.action">首页</a></li>
+              <li><a href="/BookShopping/customer/RedirectToHome.action">首页</a></li>
               <li><i class="icon-angle-right"> </i></li>
               <li>个人主页</li>
             </ul>
@@ -51,7 +51,7 @@
                             <c:if test="${not empty requestScope['recentOrders'] }">
                             	<c:forEach items="${requestScope['recentOrders']}" var="order">
 	                            	<div class="account_home_item">
-	                            	<img src="${order.tbOrderdetails[0].tbClothesdetail.picUrl }" />
+	                            	<img src="${order.tbOrderdetails[0].tbBooks.picUrl }" />
 	                                <ul class="inline">
 	                                    <li>&yen;${order.finalPrice }</li>
 	                                    <li><c:choose>
@@ -63,7 +63,7 @@
 	                                    <li>                                    	
 	                                    <c:choose>
                                     		<c:when test="${order.orderStatus==-1 }">
-                                    			<a href="/EShopping/customer/PrepareOrderInfoList.action" class="btn" onClick="return delete_order('${requestScope['currentOrder'].orderId}')">删除订单</a>
+                                    			<a href="/BookShopping/customer/PrepareOrderInfoList.action" class="btn" onClick="return delete_order('${requestScope['currentOrder'].orderId}')">删除订单</a>
                                     		</c:when>
                                     		<c:when test="${order.orderStatus==1 }">
                                     			<a href="${applicationScope['basePath'] }/customer/CancelOrder.action?orderId=${order.orderId }" onClick="return cancel_order()">取消订单</a>
@@ -96,12 +96,12 @@
                             <c:if test="${not empty requestScope['cartList'] }">
                             	<c:forEach items="${requestScope['cartList'] }" var="cart">
 	                            	<div class="account_cart_item">
-	                            	<a href="/EShopping/customer/PrepareClothesDetail.action?clothesId=${cart.tbClothesdetail.tbClothes.clothesId }">
-	                                    <img src="${cart.tbClothesdetail.picUrl }" />
+	                            	<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${cart.tbBooks.booksId }">
+	                                    <img src="${cart.tbBooks.picUrl }" />
 	                                    
 	                                    <div class="account_cart_item_text">
-	                                        <p class="account_cart_item_name">${cart.tbClothesdetail.tbClothes.clothesName }</p>
-	                                        <span class="account_cart_item_price">&yen;${cart.tbClothesdetail.tbClothes.price }</span><span class="account_cart_item_count">数量:${cart.clothesNumber }</span>
+	                                        <p class="account_cart_item_name">${cart.tbBooks.bookName }</p>
+	                                        <span class="account_cart_item_price">&yen;${cart.tbBooks.price }</span><span class="account_cart_item_count">数量:${cart.booksNumber }</span>
 	                                    </div>
 	                                </a>
 	                            	</div>	
@@ -122,10 +122,10 @@
 	<%@ include file="footer.jsp" %>
 
 
-	<script type="application/javascript" src="/EShopping/js/jquery-1.9.1.min.js"></script>
-    <script type="application/javascript" src="/EShopping/js/bootstrap.js"></script>
-    <script type="application/javascript" src="/EShopping/js/account.js"></script>
-    <script type="application/javascript" src="/EShopping/js/global.js"></script>
+	<script type="application/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/account.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/global.js"></script>
 
 
 	<script type="application/javascript">
@@ -135,7 +135,7 @@
 		function delete_order(order_id) {
     		if (window.confirm("确认删除订单？")) {
     			$.ajax({
-    				url: "/EShopping/customer/DeleteOrder.action",
+    				url: "/BookShopping/customer/DeleteOrder.action",
     				type: "GET",
     				aysnc: false,
     				contentType: "application/json;charset=utf-8",

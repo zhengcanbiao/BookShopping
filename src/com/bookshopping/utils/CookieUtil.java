@@ -36,7 +36,7 @@ public class CookieUtil {
 		}
 	}
 	
-	public static List<Map<String, String>> getCookieValues(String key) throws CookieNotExistException {
+	public static List<Map<String, String>> getCookieValues(String key)  {
 		Cookie[] cookies = ServletActionContext.getRequest().getCookies();
 		String value = null;
 		if (cookies != null) {
@@ -48,7 +48,7 @@ public class CookieUtil {
 			}
 		}
 		if (value == null) {
-			System.out.println("cookies里面有没有值");
+			//System.out.println("cookies里面有没有值");
 			//throw new CookieNotExistException();
 			return null;
 		} else {
