@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	
+	<import resource="classpath:mailBeans.xml" />
+	<bean id="LoginAction" class="com.bookshopping.action.customer.LoginAction" scope="prototype" />
+	<bean id="RegisterAction" class="com.bookshopping.action.customer.RegisterAction" scope="prototype" />
+	<bean id="CheckCustomerNameAction" class="com.bookshopping.action.customer.CheckCustomerNameAction" scope="prototype" />
+	<bean id="CheckNickNameAction" class="com.bookshopping.action.customer.CheckNickNameAction" scope="prototype" />
+	<bean id="CheckPasswordAction" class="com.bookshopping.action.customer.CheckPasswordAction" scope="prototype" />
+	<bean id="ForgetPasswordAction" class="com.bookshopping.action.customer.ForgetPasswordAction" scope="prototype">
+		<property name="mailSender" ref="mailSender" />
+	</bean>
+	<bean id="PreparePersonalHomeAction" class="com.bookshopping.action.customer.PreparePersonalHomeAction" scope="prototype" />
+	<bean id="LogoutAction" class="com.bookshopping.action.customer.LogoutAction" scope="prototype" />
+</beans>
