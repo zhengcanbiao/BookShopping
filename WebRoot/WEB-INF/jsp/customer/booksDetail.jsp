@@ -177,6 +177,7 @@
 				}
 			});
 		}
+		$("#header3").css("visibility", "hidden");
 		
 		/* function on_clothes_size_selected(i) {
 			$("#remainder").removeAttr("hidden");

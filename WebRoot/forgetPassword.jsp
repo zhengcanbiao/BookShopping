@@ -28,7 +28,7 @@
          </div>
     </div>
     
-    <div class="body">
+    <div class="body1">
     	<div class="container row-fluid">
             <div class="span6">
             	<form id="forget_password_form" action="/BookShopping/findPasswordSuccess.jsp" class="form-horizontal" onSubmit="return find_password_submit()">

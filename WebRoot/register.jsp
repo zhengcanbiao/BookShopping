@@ -28,7 +28,7 @@
          </div>
     </div>
     
-    <div class="body">
+    <div class="body1">
     	<div class="container row-fluid">
         	<div class="span7">
             	
