@@ -16,10 +16,55 @@
 
 <body>
 	<%@ include file="header.jsp" %>
+
     
     <div class="body">
     	
     	<div class="container">
+			<div id="header4">
+				<div id="header4_logo">
+					<img src="/BookShopping/img/logo1.png" />
+				</div>
+				<div id="tuijian">
+	   				<div id="but">
+		    			<button type="button" class="btn btn-info">新书推荐</button>
+		    			<button type="button" class="btn btn-info">主编推荐</button>
+	    			</div>
+	    			<div>
+	     	            		<c:forEach begin="0" end="10" var="i" >
+			            			<c:if test="${i < fn:length(requestScope['booksCategoryList'][0]) }">
+					            	<div class="item span3">
+					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><p class="item-name">${i+1}.${requestScope['booksCategoryList'][0][i].bookName }</p></a>
+					            		<c:if test="${i < 1 }">
+					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><img src="${requestScope['booksCategoryList'][0][i].picUrl }" /></a>	
+					            		<h5 class="item-price">&yen;<span>${requestScope['booksCategoryList'][0][i].price/100.0 }</span></h5>
+					            		</c:if>
+					            	</div>
+					            	</c:if>
+			            		</c:forEach>    		
+	    			</div>
+				</div>
+				<div id="xiaoshou">
+	    			<div id="but">
+		    			<button type="button" class="btn btn-info">总榜</button>
+		    			<button type="button" class="btn btn-info">小说</button>
+		    			<button type="button" class="btn btn-info">经管</button>
+	    			</div>
+					<div>
+	 		            		<c:forEach begin="0" end="10" var="i" >
+			            			<c:if test="${i < fn:length(requestScope['booksCategoryList'][0]) }">
+					            	<div class="item span3">
+					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><p class="item-name">${i+1}.${requestScope['booksCategoryList'][0][i].bookName }</p></a>
+					            		<c:if test="${i < 0 }">
+					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><img src="${requestScope['booksCategoryList'][0][i].picUrl }" /></a>	
+					            		<h5 class="item-price">&yen;<span>${requestScope['booksCategoryList'][0][i].price/100.0 }</span></h5>
+					            		</c:if>
+					            	</div>
+					            	</c:if>
+			            		</c:forEach>   				
+					</div>
+				</div>
+			</div>	
 
         	
             <c:forEach begin="1" end="${fn:length(requestScope['booksCategoryList']) }" var="booksListIndex">

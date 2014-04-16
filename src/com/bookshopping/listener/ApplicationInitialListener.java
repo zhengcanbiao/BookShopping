@@ -57,8 +57,8 @@ public class ApplicationInitialListener extends ContextLoaderListener implements
 	private void initialCategory() {
 		List<TbCategory> list = CategoryService.getTopCategory();
 		System.out.println(list);
-		int toIndex = (list.size() > 4) ? 4 : list.size();
-		context.setAttribute("topCategoryList", list.subList(0, toIndex));
+		//int toIndex = (list.size() > 4) ? 4 : list.size();
+		context.setAttribute("topCategoryList", list);
 	}
 	
 	private void initialDiscount() {
