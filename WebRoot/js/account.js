@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 function delete_address(i) {
 	$.ajax({
-		url:"/EShopping/customer/DeleteAddress.action",
+		url:"/BookShopping/customer/DeleteAddress.action",
 		type:"GET",
 		contentType:"application/json;charset=utf-8",
 		dataType:"json",
@@ -24,7 +24,7 @@ function delete_address(i) {
 
 function set_default_address(i) {
 	$.ajax({
-		url:"/EShopping/customer/SetDefaultAddress.action",
+		url:"/BookShopping/customer/SetDefaultAddress.action",
 		type:"GET",
 		contentType:"application/json;charset=utf-8",
 		dataType:"json",
@@ -54,7 +54,7 @@ function delete_favorite(i) {
 	
 	if (window.confirm("确定删除？")) {
 		$.ajax({
-			url:"/EShopping/customer/DeleteFavorite.action",
+			url:"/BookShopping/customer/DeleteFavorite.action",
 			type:"GET",
 			async: false,
 			contentType:"application/json;charset=utf-8",
@@ -76,7 +76,7 @@ function delete_favorite(i) {
 
 function on_province_selected() {
 	$.ajax({
-		url:"/EShopping/customer/GetCityList.action",
+		url:"/BookShopping/customer/GetCityList.action",
 		type:"GET",
 		contentType:"application/json;charset=utf-8",
 		dataType:"json",
@@ -99,7 +99,7 @@ function on_city_selected() {
 		type: "GET",
 		contentType:"application/json;charset=utf-8",
 		dataType:"json",
-		url:"/EShopping/customer/GetTownList.action",
+		url:"/BookShopping/customer/GetTownList.action",
 		data:{cityId: $('#new_address_form #city_dropdown').val()},
 		success: function(result) {
 			var resultJson = eval(result);

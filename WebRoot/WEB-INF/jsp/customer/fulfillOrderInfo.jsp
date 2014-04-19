@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/EShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/flat-button.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/eshopping.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/cart.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/cart.css" rel="stylesheet" media="screen" />
 
 <title>结算中心</title>
 </head>
@@ -23,7 +23,7 @@
     	<div class="container">
         
         	<ul class="inline bread">
-              <li><a href="/EShopping/customer/RedirectToHome.acction">首页</a></li>
+              <li><a href="/BookShopping/customer/RedirectToHome.acction">首页</a></li>
               <li><i class="icon-angle-right"> </i></li>
               <li>结算中心</li>
             </ul>
@@ -107,7 +107,7 @@
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 
-                <form id="new_address_form" action="/EShopping/customer/GenerateOrderInfo.action" class="form-horizontal" onSubmit="return add_new_address()">
+                <form id="new_address_form" action="/BookShopping/customer/GenerateOrderInfo.action" class="form-horizontal" onSubmit="return add_new_address()">
                 <p class="eshopping_title">添加新地址</p>
                 
                 <div class="control-group">
@@ -171,10 +171,10 @@
     
     <%@ include file="footer.jsp" %>
 
-	<script type="application/javascript" src="/EShopping/js/jquery-1.9.1.min.js"></script>
-    <script type="application/javascript" src="/EShopping/js/bootstrap.js"></script>
-    <script type="application/javascript" src="/EShopping/js/global.js"></script>
-    <script type="application/javascript" src="/EShopping/js/check.js"></script>
+	<script type="application/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/global.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/check.js"></script>
     
     <script type="application/javascript">
 		$(document).ready(function(e) {
@@ -188,7 +188,7 @@
 		
 		function on_province_selected() {
 			$.ajax({
-				url:"/EShopping/customer/GetCityList.action",
+				url:"/BookShopping/customer/GetCityList.action",
 				type:"GET",
 				contentType:"application/json;charset=utf-8",
 				dataType:"json",
@@ -211,7 +211,7 @@
 				type: "GET",
 				contentType:"application/json;charset=utf-8",
 				dataType:"json",
-				url:"/EShopping/customer/GetTownList.action",
+				url:"/BookShopping/customer/GetTownList.action",
 				data:{cityId: $("#city_dropdown").val()},
 				success: function(result) {
 					var resultJson = eval(result);
@@ -226,7 +226,7 @@
 		
 		function prepare_province_list() {
 			$.ajax({
-				url: "/EShopping/customer/GetProvinceList.action",
+				url: "/BookShopping/customer/GetProvinceList.action",
 				type: "GET",
 				contentType:"application/json;charset=utf-8",
 				dataType:"json",
@@ -242,7 +242,7 @@
 		
 		function confirm_order() {
 			if ($("[name='address']").val()) {
-				$("#order_btn").parent().attr("href", "/EShopping/customer/AddOrder.action?receiverInfo=" + $("[name='address']").val());
+				$("#order_btn").parent().attr("href", "/BookShopping/customer/AddOrder.action?receiverInfo=" + $("[name='address']").val());
 			} else {
 				show_tips("请选择地址信息", "warning");
 			}
@@ -258,7 +258,7 @@
 			}
 			else {
 				$.ajax({
-					url: "/EShopping/customer/AddAddress.action",
+					url: "/BookShopping/customer/AddAddress.action",
 					type: "POST",
 					async: false,
 					dataType:"json",

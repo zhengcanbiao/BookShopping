@@ -67,9 +67,9 @@ a:hover{
 
 	<div class="header">
     	<div class="container">
-        <img src="/EShopping/img/logo_cut_30px.png"/>
+        <img src="/BookShopping/img/logo_cut_30px.png"/>
         尊敬的管理员，Eshopping网上衣城  诚心感谢你的默默付出
-       <form name="form1" method="post" action="/EShopping/manager/ManagerLogout.action" enctype="multipart/form-data" onsubmit="return Confirm()">
+       <form name="form1" method="post" action="/BookShopping/manager/ManagerLogout.action" enctype="multipart/form-data" onsubmit="return Confirm()">
         <input type="submit"  class="Button" value="注销" style="float:right; margin-top:-25px;"/>
         </form>
         </div><!-- 内容放在这里面 -->
@@ -84,19 +84,19 @@ a:hover{
            
             <div class="left_block">
             <ul>
-            <li><a href="/EShopping/manager/Jump.action?jumpId=3">回到首页</a></li>
-            <li><a href="/EShopping/manager/Jump.action?jumpId=0">修改密码</a></li>
-            <li><a href="/EShopping/manager/PrepareCategory.action">商品类别管理</a></li>
-            <li><a href="/EShopping/manager/PrepareClothes.action">商品管理</a></li>
-            <li><a href="/EShopping/manager/PrepareOrder.action">订单管理</a></li>
-            <li><a href="/EShopping/manager/Jump.action?jumpId=6">销售量统计</a></li>
-            <li><a href="/EShopping/manager/PrepareCustomer.action">会员管理</a></li>
-            <li><a href="/EShopping/manager/Jump.action?jumpId=4">折扣管理</a></li>
+            <li><a href="/BookShopping/manager/Jump.action?jumpId=3">回到首页</a></li>
+            <li><a href="/BookShopping/manager/Jump.action?jumpId=0">修改密码</a></li>
+            <li><a href="/BookShopping/manager/PrepareCategory.action">商品类别管理</a></li>
+            <li><a href="/BookShopping/manager/PrepareClothes.action">商品管理</a></li>
+            <li><a href="/BookShopping/manager/PrepareOrder.action">订单管理</a></li>
+            <li><a href="/BookShopping/manager/Jump.action?jumpId=6">销售量统计</a></li>
+            <li><a href="/BookShopping/manager/PrepareCustomer.action">会员管理</a></li>
+            <li><a href="/BookShopping/manager/Jump.action?jumpId=4">折扣管理</a></li>
             </ul>
             </div><!-- 左边部分 -->
             
             <div class="right_block">
-            <form name="form2" method="post" action="/EShopping/manager/ModifyClothesDetail.action" enctype="multipart/form-data">
+            <form name="form2" method="post" action="/BookShopping/manager/ModifyClothesDetail.action" enctype="multipart/form-data">
             修改商品
             <hr />
             <input type="hidden" name="clothesId" value="${requestScope['Clothes'].clothesId }" />
@@ -143,7 +143,7 @@ a:hover{
             <br />
             <input type="button" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改商品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="float:left; margin-left:90px;" onclick="verify('${requestScope.remainderList[0]}', '${requestScope.remainderList[1]}', '${requestScope.remainderList[2]}')"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  			</form>
-            <form name="form3" method="post" action="/EShopping/manager/PrepareClothes.action" enctype="multipart/form-data">
+            <form name="form3" method="post" action="/BookShopping/manager/PrepareClothes.action" enctype="multipart/form-data">
             <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返回&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="float:left; margin-left:50px;margin-top:-14px;"/>
             </form>
             <br />
@@ -156,13 +156,13 @@ a:hover{
         
         </div><!-- 内容放在这里面 -->
     </div><!-- 底部 -->
-    <script src="/EShopping/js/jquery-1.9.1.min.js"></script>
-    <script src="/EShopping/js/alert.js"></script>
+    <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script src="/BookShopping/js/alert.js"></script>
     <script type="text/javascript">
       function on_first_category_selected() {
 		var firstCategoryId = $("#first_category_dropdown").val();
 		$.ajax({
-			url: "/EShopping/manager/GetSubcategoryList.action",
+			url: "/BookShopping/manager/GetSubcategoryList.action",
 			type: "GET",
 			contextType: "application/json;charset=utf-8",
 			data: {parentId: firstCategoryId},
@@ -406,19 +406,19 @@ a:hover{
          	</c:forEach>
          </select>
 	    <br>商品介绍: <input name="clothesDescription" type="text" value="${requestScope['Clothes'].clothesDescription }"/>
-	    <br>商品图片: <img src="/EShopping${requestScope['ClothesDetailList'].get(0).picUrl}" width="100px;" height="100px;"/>
+	    <br>商品图片: <img src="/BookShopping${requestScope['ClothesDetailList'].get(0).picUrl}" width="100px;" height="100px;"/>
 	    	<input type="file" name="image">
 	    <br>
 	    <input type="submit" value="提交" />
     	<input type="reset" value="重置" />
   	</form>
   	
-	<script type="text/javascript" src="/EShopping/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript">
 		function on_first_category_selected() {
 	 		var firstCategoryId = $("#first_category_dropdown").val();
 	 		$.ajax({
-	 			url: "/EShopping/GetSubcategoryList.action",
+	 			url: "/BookShopping/GetSubcategoryList.action",
 	 			type: "GET",
 	 			contextType: "application/json;charset=utf-8",
 	 			data: {parentId: firstCategoryId},

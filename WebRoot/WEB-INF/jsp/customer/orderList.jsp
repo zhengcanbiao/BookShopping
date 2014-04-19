@@ -7,11 +7,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/EShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/flat-button.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/eshopping.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/account.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/account.css" rel="stylesheet" media="screen" />
 <title>我的订单</title>
 </head>
 
@@ -24,9 +24,9 @@
     	<div class="container">
         
         	<ul class="inline bread">
-              <li><a href="/EShopping/customer/RedirectToHome.action">首页</a></li>
+              <li><a href="/BookShopping/customer/RedirectToHome.action">首页</a></li>
               <li><i class="icon-angle-right"> </i></li>
-              <li><a href="/EShopping/customer/PreparePersonalHome.action">我的账户</a></li>
+              <li><a href="/BookShopping/customer/PreparePersonalHome.action">我的账户</a></li>
               <li><i class="icon-angle-right"> </i></li>
               <li>我的订单</li>
             </ul>
@@ -74,9 +74,9 @@
                             
                             <tr>
                                 <td>
-                                    <a href="/EShopping/customer/PrepareClothesDetail.action?clothesId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.tbClothes.clothesId }"><img src="${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.picUrl }" /></a>
+                                    <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.tbClothes.clothesId }"><img src="${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.picUrl }" /></a>
                                     <div class="cart_item_name">
-                                    <a href="/EShopping/customer/PrepareClothesDetail.action?clothesId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.tbClothes.clothesId }">${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.tbClothes.clothesName }</a>
+                                    <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.tbClothes.clothesId }">${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.tbClothes.clothesName }</a>
                                     <p>尺码: 
                                     <c:choose>
                                     	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.size==0 }">S</c:when>
@@ -120,9 +120,9 @@
                             <c:forEach begin="2" end="${fn:length(requestScope['orderList'][orderIndex-1].tbOrderdetails) }" var="index">
                             <tr>
                                 <td>
-                                    <a href="/EShopping/customer/PrepareClothesDetail.action?clothesId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.tbClothes.clothesId }"><img src="${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.picUrl }" /></a>
+                                    <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.tbClothes.clothesId }"><img src="${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.picUrl }" /></a>
                                     <div class="cart_item_name">
-                                    <a href="/EShopping/customer/PrepareClothesDetail.action?clothesId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.tbClothes.clothesId }">${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.tbClothes.clothesName }</a>
+                                    <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.tbClothes.clothesId }">${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.tbClothes.clothesName }</a>
                                     <p>尺码:
                                     <c:choose> 
                                     	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.size==0 }">S</c:when>
@@ -172,10 +172,10 @@
 
 	<%@ include file="footer.jsp" %>
 
-	<script type="application/javascript" src="/EShopping/js/jquery-1.9.1.min.js"></script>
-    <script type="application/javascript" src="/EShopping/js/bootstrap.js"></script>
-    <script type="application/javascript" src="/EShopping/js/account.js"></script>
-    <script type="application/javascript" src="/EShopping/js/global.js"></script>
+	<script type="application/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/account.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/global.js"></script>
     <script type="application/javascript">
     	function cancel_order() {
     		return window.confirm("确定取消订单？")
@@ -183,7 +183,7 @@
     	function delete_order(order_id) {
     		if (window.confirm("确认删除订单？")) {
     			$.ajax({
-    				url: "/EShopping/customer/DeleteOrder.action",
+    				url: "/BookShopping/customer/DeleteOrder.action",
     				type: "GET",
     				contentType: "application/json;charset=utf-8",
     				dataType: "json",
