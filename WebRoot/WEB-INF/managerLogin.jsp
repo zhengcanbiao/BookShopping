@@ -27,8 +27,8 @@
 
 </style>
 <body class="aj"  onLoad="createCode();">
-	<img src="/EShopping/img/logo_cut_30px_gery.png">
-	<form name="form1" method="post" action="/EShopping/manager/ManagerLogin.action" enctype="multipart/form-data" onsubmit="return verify()">
+	<img src="/BookShopping/img/logo_cut_30px_gery.png">
+	<form name="form1" method="post" action="/BookShopping/manager/ManagerLogin.action" enctype="multipart/form-data" onsubmit="return verify()">
 		<h2>管理员登录</h2>
 		<p>用户名:
 		<input name="adminName" type="text" id="username" >
@@ -41,8 +41,8 @@
 		<br>
 	</form>
 	${requestScope['errorMsg'] }
-	<script src="/EShopping/js/jquery-1.9.1.min.js"></script>
-	<script src="/EShopping/js/alert.js"></script>
+	<script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+	<script src="/BookShopping/js/alert.js"></script>
 	<script type="text/javascript">
 	function verify()
 	{
@@ -63,7 +63,7 @@
 		else {
 			var flag = false;
 			$.ajax({
-			url: "/EShopping/manager/AdminExist.action",
+			url: "/BookShopping/manager/AdminExist.action",
 			type: "GET",
 			async: false,
 			contextType: "application/json;charset=utf-8",

@@ -62,9 +62,9 @@ a:hover{
 
 	<div class="header">
     	<div class="container">
-        <img src="/EShopping/img/logo_cut_30px.png" />
+        <img src="/BookShopping/img/logo_cut_30px.png" />
         尊敬的管理员，Eshopping网上衣城  诚心感谢你的默默付出
-        <form name="form1" method="post" action="/EShopping/manager/ManagerLogout.action" enctype="multipart/form-data" onsubmit="return Confirm()">
+        <form name="form1" method="post" action="/BookShopping/manager/ManagerLogout.action" enctype="multipart/form-data" onsubmit="return Confirm()">
         <input type="submit" class="Button"  value="注销" style="float:right; margin-top:-25px;"/>
         </form>
         </div><!-- 内容放在这里面 -->
@@ -79,23 +79,23 @@ a:hover{
            
             <div class="left_block">
             <ul>
-            <li><a href="/EShopping/manager/Jump.action?jumpId=3">回到首页</a></li>
-            <li><a href="/EShopping/manager/Jump.action?jumpId=0">修改密码</a></li>
-            <li><a href="/EShopping/manager/PrepareCategory.action">商品类别管理</a></li>
-            <li><a href="/EShopping/manager/PrepareClothes.action">商品管理</a></li>
-            <li><a href="/EShopping/manager/PrepareOrder.action">订单管理</a></li>
-            <li><a href="/EShopping/manager/Jump.action?jumpId=6">销售量统计</a></li>
-            <li><a href="/EShopping/manager/PrepareCustomer.action">会员管理</a></li>
-            <li><a href="/EShopping/manager/Jump.action?jumpId=4">折扣管理</a></li>
+            <li><a href="/BookShopping/manager/Jump.action?jumpId=3">回到首页</a></li>
+            <li><a href="/BookShopping/manager/Jump.action?jumpId=0">修改密码</a></li>
+            <li><a href="/BookShopping/manager/PrepareCategory.action">商品类别管理</a></li>
+            <li><a href="/BookShopping/manager/PrepareClothes.action">商品管理</a></li>
+            <li><a href="/BookShopping/manager/PrepareOrder.action">订单管理</a></li>
+            <li><a href="/BookShopping/manager/Jump.action?jumpId=6">销售量统计</a></li>
+            <li><a href="/BookShopping/manager/PrepareCustomer.action">会员管理</a></li>
+            <li><a href="/BookShopping/manager/Jump.action?jumpId=4">折扣管理</a></li>
             </ul>
             </div><!-- 左边部分 -->
             
             <div class="right_block">
 	
 	销售量趋势查询
-	<a href="/EShopping/manager/Jump.action?jumpId=7" style="float:right">销售量查询</a>
+	<a href="/BookShopping/manager/Jump.action?jumpId=7" style="float:right">销售量查询</a>
 	<hr/>
-    <form action="/EShopping/manager/PrepareSales.action" method="post"  onsubmit="return verify()">
+    <form action="/BookShopping/manager/PrepareSales.action" method="post"  onsubmit="return verify()">
     	起始时间：
     	<c:choose>
     		<c:when test="${not empty requestScope['beginDate'] }">
@@ -147,7 +147,7 @@ a:hover{
 	    	<c:set var="index" value="${status.index }" />
 	    	<tr>
 	    		<td>${item.clothesId }</td>
-	    		<td><a href="/EShopping/manager/PrepareSalesChart.action?clothesId=${item.clothesId }&beginDate=${requestScope['beginDate'] }&endDate=${requestScope['endDate'] }">${item.clothesName }</a></td>
+	    		<td><a href="/BookShopping/manager/PrepareSalesChart.action?clothesId=${item.clothesId }&beginDate=${requestScope['beginDate'] }&endDate=${requestScope['endDate'] }">${item.clothesName }</a></td>
 	    		<td>${requestScope['salesList'].get(index)[0] }</td>
 	    		<td>&yen;<fmt:formatNumber value="${requestScope['salesList'].get(index)[1]/100.0 }" pattern="#0.00"/></td>
 	    	</tr>
@@ -162,8 +162,8 @@ a:hover{
     	<div class="container">
         </div><!-- 内容放在这里面 -->
     </div><!-- 底部 -->
-     <script src="/EShopping/js/jquery-1.9.1.min.js"></script>
-     <script src="/EShopping/js/alert.js"></script>
+     <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+     <script src="/BookShopping/js/alert.js"></script>
             <script type="text/javascript">
             function verify()
 			{
@@ -195,7 +195,7 @@ a:hover{
             function on_first_category_selected() {
     	 		var firstCategoryId = $("#first_category_dropdown").val();
     	 		$.ajax({
-    	 			url: "/EShopping/manager/GetSubcategoryList.action",
+    	 			url: "/BookShopping/manager/GetSubcategoryList.action",
     	 			type: "GET",
     	 			contextType: "application/json;charset=utf-8",
     	 			data: {parentId: firstCategoryId},
@@ -280,12 +280,12 @@ a:hover{
 	    	</tr>
 	    </c:forEach>
     </table>
-    <script type="text/javascript" src="/EShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript">
 	 	function on_first_category_selected() {
 	 		var firstCategoryId = $("#first_category_dropdown").val();
 	 		$.ajax({
-	 			url: "/EShopping/GetSubcategoryList.action",
+	 			url: "/BookShopping/GetSubcategoryList.action",
 	 			type: "GET",
 	 			contextType: "application/json;charset=utf-8",
 	 			data: {parentId: firstCategoryId},

@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/EShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/flat-button.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/eshopping.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/cart.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/account.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/cart.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/account.css" rel="stylesheet" media="screen" />
 
 <title>订单详情</title>
 </head>
@@ -23,11 +23,11 @@
     	<div class="container">
         
         	<ul class="inline bread">
-              <li><a href="/EShopping/customer/RedirectToHome.action">首页</a></li>
+              <li><a href="/BookShopping/customer/RedirectToHome.action">首页</a></li>
               <li><i class="icon-angle-right"> </i></li>
-              <li><a href="/EShopping/customer/PreparePersonalHome.action">我的账户</a></li>
+              <li><a href="/BookShopping/customer/PreparePersonalHome.action">我的账户</a></li>
               <li><i class="icon-angle-right"> </i></li>
-              <li><a href="/EShopping/customer/PrepareOrderInfoList.action">我的订单</a></li>
+              <li><a href="/BookShopping/customer/PrepareOrderInfoList.action">我的订单</a></li>
               <li><i class="icon-angle-right"> </i></li>
               <li>订单详情</li>
             </ul>
@@ -49,7 +49,7 @@
                 
 	               	<c:choose>
 	               		<c:when test="${requestScope['currentOrder'].orderStatus==-1 }">
-	               			<a href="/EShopping/customer/PrepareOrderInfoList.action" class="btn" onClick="return delete_order('${requestScope['currentOrder'].orderId}')">删除订单</a>
+	               			<a href="/BookShopping/customer/PrepareOrderInfoList.action" class="btn" onClick="return delete_order('${requestScope['currentOrder'].orderId}')">删除订单</a>
 	               		</c:when>
 	               		<c:when test="${requestScope['currentOrder'].orderStatus==1 }">
 	               			<a class="btn" href="${applicationScope['basePath'] }/customer/CancelOrder.action?orderId=${requestScope['currentOrder'].orderId }" onClick="return cancel_order()">取消订单</a>
@@ -82,9 +82,9 @@
                     <c:forEach items="${requestScope['orderDetailList'] }" var="orderDetail">
 	                    <tr>
 	                        <td>
-	                            <a href="/EShopping/customer/PrepareClothesDetail.action?clothesId=${orderDetail.tbClothesdetail.tbClothes.clothesId }"><img src="${orderDetail.tbClothesdetail.picUrl }" /></a>
+	                            <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${orderDetail.tbClothesdetail.tbClothes.clothesId }"><img src="${orderDetail.tbClothesdetail.picUrl }" /></a>
 	                            <div class="cart_item_name">
-	                            <a href="/EShopping/customer/PrepareClothesDetail.action?clothesId=${orderDetail.tbClothesdetail.tbClothes.clothesId }">${orderDetail.tbClothesdetail.tbClothes.clothesName }</a>
+	                            <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${orderDetail.tbClothesdetail.tbClothes.clothesId }">${orderDetail.tbClothesdetail.tbClothes.clothesName }</a>
 	                            <p>尺码:
                                     <c:choose>
                                     	<c:when test="${orderDetail.tbClothesdetail.size==0 }">S</c:when>
@@ -126,9 +126,9 @@
 
 
 
-	<script type="application/javascript" src="/EShopping/js/jquery-1.9.1.min.js"></script>
-    <script type="application/javascript" src="/EShopping/js/bootstrap.js"></script>
-    <script type="application/javascript" src="/EShopping/js/global.js"></script>
+	<script type="application/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/global.js"></script>
     <script type="application/javascript">
     	function cancel_order() {
     		return window.confirm("确定取消订单？")
@@ -136,7 +136,7 @@
     	function delete_order(order_id) {
     		if (window.confirm("确认删除订单？")) {
     			$.ajax({
-    				url: "/EShopping/customer/DeleteOrder.action",
+    				url: "/BookShopping/customer/DeleteOrder.action",
     				type: "GET",
     				aysnc: false,
     				contentType: "application/json;charset=utf-8",
