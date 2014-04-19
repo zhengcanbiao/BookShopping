@@ -17,4 +17,9 @@
 	</bean>
 	<bean id="PreparePersonalHomeAction" class="com.bookshopping.action.customer.PreparePersonalHomeAction" scope="prototype" />
 	<bean id="LogoutAction" class="com.bookshopping.action.customer.LogoutAction" scope="prototype" />
+	<bean id="PreparePersonalInfoAction" class="com.bookshopping.action.customer.PreparePersonalInfoAction" scope="prototype" />
+	<bean id="ModifyPersonalInfoAction" class="com.bookshopping.action.customer.ModifyPersonalInfoAction" scope="prototype" />
+	<bean id="ModifyPasswordAction" class="com.bookshopping.action.customer.ModifyPasswordAction" scope="prototype" />
+	<bean id="RedirectToModifyPasswordAction" class="com.bookshopping.action.customer.RedirectToModifyPasswordAction" scope="prototype" />
+	
 </beans>

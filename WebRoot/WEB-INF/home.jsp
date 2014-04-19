@@ -11,6 +11,6 @@
     </head>
     
     <body>
-     <br><a href="/EShopping/managerLogin.jsp">后台</a>
+     <br><a href="/BookShopping/managerLogin.jsp">后台</a>
     </body>
 </html>

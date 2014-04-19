@@ -62,9 +62,9 @@ a:hover{
 
 	<div class="header">
     	<div class="container">
-         <img src="/EShopping/img/logo_cut_30px.png" />
+         <img src="/BookShopping/img/logo_cut_30px.png" />
         尊敬的管理员，Eshopping网上衣城  诚心感谢你的默默付出
-        <form name="form1" method="post" action="/EShopping/manager/ManagerLogout.action" enctype="multipart/form-data" onsubmit="return Confirm()">
+        <form name="form1" method="post" action="/BookShopping/manager/ManagerLogout.action" enctype="multipart/form-data" onsubmit="return Confirm()">
         <input type="submit"  class="Button" value="注销" style="float:right; margin-top:-25px;"/>
         </form>
         </div><!-- 内容放在这里面 -->
@@ -79,21 +79,21 @@ a:hover{
            
             <div class="left_block">
             <ul>
-             <li><a href="/EShopping/manager/Jump.action?jumpId=3">回到首页</a></li>
-            <li><a href="/EShopping/manager/Jump.action?jumpId=0">修改密码</a></li>
-            <li><a href="/EShopping/manager/PrepareCategory.action">商品类别管理</a></li>
-            <li><a href="/EShopping/manager/PrepareClothes.action">商品管理</a></li>
-            <li><a href="/EShopping/manager/PrepareOrder.action">订单管理</a></li>
-            <li><a href="/EShopping/manager/Jump.action?jumpId=6">销售量统计</a></li>
-            <li><a href="/EShopping/manager/PrepareCustomer.action">会员管理</a></li>
-            <li><a href="/EShopping/manager/Jump.action?jumpId=4">折扣管理</a></li>
+             <li><a href="/BookShopping/manager/Jump.action?jumpId=3">回到首页</a></li>
+            <li><a href="/BookShopping/manager/Jump.action?jumpId=0">修改密码</a></li>
+            <li><a href="/BookShopping/manager/PrepareCategory.action">商品类别管理</a></li>
+            <li><a href="/BookShopping/manager/PrepareClothes.action">商品管理</a></li>
+            <li><a href="/BookShopping/manager/PrepareOrder.action">订单管理</a></li>
+            <li><a href="/BookShopping/manager/Jump.action?jumpId=6">销售量统计</a></li>
+            <li><a href="/BookShopping/manager/PrepareCustomer.action">会员管理</a></li>
+            <li><a href="/BookShopping/manager/Jump.action?jumpId=4">折扣管理</a></li>
             </ul>
             </div><!-- 左边部分 -->
             
 
             <div class="right_block">
             商品管理
-    <form name="form1" method="post" action="/EShopping/manager/SearchClothes.action" enctype="multipart/form-data">
+    <form name="form1" method="post" action="/BookShopping/manager/SearchClothes.action" enctype="multipart/form-data">
     	<input type="submit" style="float:right" value="搜索" />
 		<select name="searchChoice" style="float:right">
 			<option value="0" <c:if test="${requestScope['searchChoice']==0 }">selected="selected"</c:if> >按ID排序</option>
@@ -104,7 +104,7 @@ a:hover{
 	</form>
 	<br/>
     <hr/>
-		<form name="form1" method="post" action="/EShopping/manager/Jump.action?jumpId=1" enctype="multipart/form-data">
+		<form name="form1" method="post" action="/BookShopping/manager/Jump.action?jumpId=1" enctype="multipart/form-data">
             <input type="submit" value="添加商品" style="float:right; margin-right:0px;"/>
             </form>    
             <table align="left" width="700px">
@@ -137,13 +137,13 @@ a:hover{
 	  		</c:otherwise>
 	  	</c:choose>	
 	  	<td>&yen;<fmt:formatNumber value='${item.getPrice()/100.0}' pattern='#0.00'/></td>
-	  	<td><a href="/EShopping/manager/PrepareClothesDetail.action?clothesId=${item.getClothesId()}">修改</a></td>
+	  	<td><a href="/BookShopping/manager/PrepareClothesDetail.action?clothesId=${item.getClothesId()}">修改</a></td>
 	  	<c:choose>
 	  		<c:when test="${item.valid==true }">
-	  			<td><a href="#" id="click1" onclick="show_confirm('/EShopping/manager/ValidateClothes.action?clothesId=${item.getClothesId()}&valid=0','1')">下架</a></td>
+	  			<td><a href="#" id="click1" onclick="show_confirm('/BookShopping/manager/ValidateClothes.action?clothesId=${item.getClothesId()}&valid=0','1')">下架</a></td>
 	  		</c:when>
 	  		<c:otherwise>
-	  			<td><a href="#" id="click2" onclick="show_confirm('/EShopping/manager/ValidateClothes.action?clothesId=${item.getClothesId()}&valid=1','2')">上架</a></td>
+	  			<td><a href="#" id="click2" onclick="show_confirm('/BookShopping/manager/ValidateClothes.action?clothesId=${item.getClothesId()}&valid=1','2')">上架</a></td>
 	  		</c:otherwise>
 	  	</c:choose>	
 	  	</tr>
@@ -160,8 +160,8 @@ a:hover{
         <br />
         </div><!-- 内容放在这里面 -->
     </div><!-- 底部 -->
-    <script src="/EShopping/js/jquery-1.9.1.min.js"></script>
-    <script src="/EShopping/js/alert.js"></script>
+    <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script src="/BookShopping/js/alert.js"></script>
           <script type="text/javascript">
 	function Confirm()
 	{
@@ -231,7 +231,7 @@ a:hover{
 	}
 	</script>
     
-  <!--   <script src="/EShopping/js/jquery-1.9.1.min.js"></script>
+  <!--   <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
             <script type="application/javascript">
             $('#click').click(function(){
 				if($('#click').text() == "下架"){
@@ -307,7 +307,7 @@ a:hover{
 	    <c:set var="index" value="${status.index }" />
 	    ${item.getClothesName()}
 	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	    <img src="/EShopping${requestScope['ClothesDetailList'][index].picUrl}" width="30px;" height="30px;"/>
+	    <img src="/BookShopping${requestScope['ClothesDetailList'][index].picUrl}" width="30px;" height="30px;"/>
 	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	  	&yen;${item.getPrice()/100.0}
 	  	<a href="PrepareClothesDetail.action?clothesId=${item.getClothesId()}">修改</a>

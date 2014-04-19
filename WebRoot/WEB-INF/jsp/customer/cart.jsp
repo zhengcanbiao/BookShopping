@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/EShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/flat-button.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/eshopping.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/cart.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/cart.css" rel="stylesheet" media="screen" />
 
 <title>购物车</title>
 </head>
@@ -25,7 +25,7 @@
         	<ul class="inline bread">
               <li><a href="${applicationScope['basePath'] }/customer/RedirectToHome.action">首页</a></li>
               <li><i class="icon-angle-right"> </i></li>
-              <li><a href="/EShopping/customer/PrepareCartItemList.action">购物车</a></li>
+              <li><a href="/BookShopping/customer/PrepareCartItemList.action">购物车</a></li>
             </ul>
         
         	<p class="eshopping_title">购物车中的商品</p>
@@ -110,9 +110,9 @@
 
 
 
-	<script type="application/javascript" src="/EShopping/js/jquery-1.9.1.min.js"></script>
-    <script type="application/javascript" src="/EShopping/js/bootstrap.js"></script>
-    <script type="application/javascript" src="/EShopping/js/global.js"></script>
+	<script type="application/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/global.js"></script>
     
     <script>
 		function on_num_change(cartId, max_num ) {
@@ -138,7 +138,7 @@
 				show_tips("请输入数量","warning");
 			}
 			else {
-				$(updateId).attr("href", "/EShopping/customer/ModifyCart.action?cartId=" + cartId + "&clothesNumber=" + $(input_count_id).val());
+				$(updateId).attr("href", "/BookShopping/customer/ModifyCart.action?cartId=" + cartId + "&clothesNumber=" + $(input_count_id).val());
 				$(updateId).removeAttr("hidden");
 			}
 		}
@@ -146,7 +146,7 @@
 		function delete_cart(cart_id) {
 			if (window.confirm("确认删除商品？")) {
 				$.ajax({
-					url: "/EShopping/customer/DeleteCart.action",
+					url: "/BookShopping/customer/DeleteCart.action",
 					type: "GET",
 					async:false,
 					contentType:"application/json;charset=utf-8",

@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/EShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/flat-button.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/eshopping.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/cart.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/account.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/cart.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/account.css" rel="stylesheet" media="screen" />
 
 <title>评价</title>
 </head>
@@ -23,11 +23,11 @@
     	<div class="container">
         
         	<ul class="inline bread">
-              <li><a href="/EShopping/customer/RedirectToHome.action">首页</a></li>
+              <li><a href="/BookShopping/customer/RedirectToHome.action">首页</a></li>
               <li><i class="icon-angle-right"> </i></li>
-              <li><a href="/EShopping/customer/PreparePersonalHome.action">我的账户</a></li>
+              <li><a href="/BookShopping/customer/PreparePersonalHome.action">我的账户</a></li>
               <li><i class="icon-angle-right"> </i></li>
-              <li><a href="/EShopping/customer/PrepareOrderInfoList.action">我的订单</a></li>
+              <li><a href="/BookShopping/customer/PrepareOrderInfoList.action">我的订单</a></li>
               <li><i class="icon-angle-right"> </i></li>
               <li>评价</li>
             </ul>
@@ -37,7 +37,7 @@
         	<c:forEach items="${requestScope['clothesDetailList'] }" var="orderDetail">
 	            <div class="comment_block row-fluid" id="comment_div_${orderDetail.orderDetailId }">
 	            	<div class="comment_item span6">
-	                    <a href="/EShopping/customer/PrepareClothesDetail.action?clothesId=${orderDetail.tbClothesdetail.tbClothes.clothesId }"><img src="${orderDetail.tbClothesdetail.picUrl }" /></a>
+	                    <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${orderDetail.tbClothesdetail.tbClothes.clothesId }"><img src="${orderDetail.tbClothesdetail.picUrl }" /></a>
 	                    <div class="text_block">
 	                        <a href="${applicationScope['basePath'] }/customer/PrepareClothesDetail.action?clothesId=${orderDetail.tbClothesdetail.tbClothes.clothesId }">${orderDetail.tbClothesdetail.tbClothes.clothesName }</a>
 	                        <br>
@@ -68,9 +68,9 @@
    
 	<%@ include file="footer.jsp" %>
 
-	<script type="application/javascript" src="/EShopping/js/jquery-1.9.1.min.js"></script>
-    <script type="application/javascript" src="/EShopping/js/bootstrap.js"></script>
-    <script type="application/javascript" src="/EShopping/js/global.js"></script>
+	<script type="application/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/global.js"></script>
     
     <script type="application/javascript">
     
@@ -86,13 +86,13 @@
     		});
 			data = "[" + data + "]";
     		$.ajax({
-    			url:"/EShopping/customer/AddComment.action",
+    			url:"/BookShopping/customer/AddComment.action",
     			type:"POST",
     			async:false,
     			dataType:"json",
     			data:{commentsJson: data},
     			success: function(result) {
-    				window.location.href="/EShopping/customer/PrepareOrderInfoList.action?orderId=" + order_id;
+    				window.location.href="/BookShopping/customer/PrepareOrderInfoList.action?orderId=" + order_id;
     			}
     		});
     	}

@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/EShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/flat-button.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/eshopping.css" rel="stylesheet" media="screen" />
-<link href="/EShopping/css/account.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/account.css" rel="stylesheet" media="screen" />
 <title>地址簿</title>
 </head>
 
@@ -20,9 +20,9 @@
     	<div class="container">
         
         	<ul class="inline bread">
-              <li><a href="/EShopping/customer/RedirectToHome.action">首页</a></li>
+              <li><a href="/BookShopping/customer/RedirectToHome.action">首页</a></li>
               <li><i class="icon-angle-right"> </i></li>
-              <li><a href="/EShopping/customer/PreparePersonalHome.action">我的账户</a></li>
+              <li><a href="/BookShopping/customer/PreparePersonalHome.action">我的账户</a></li>
               <li><i class="icon-angle-right"> </i></li>
               <li class="active">地址簿</li>
             </ul>
@@ -134,7 +134,7 @@
                         </div>
                     </form>
                     
-                    <form id="modify_address_form" action="/EShopping/customer/ModifyAddress.action" class="form-horizontal" style="display:none;" onSubmit="return modify_address()">
+                    <form id="modify_address_form" action="/BookShopping/customer/ModifyAddress.action" class="form-horizontal" style="display:none;" onSubmit="return modify_address()">
                     	<p class="myAccount_title">修改地址</p>
                     	<input type="hidden" name="addressId" id="addressId" />
                     	<div class="control-group">
@@ -208,11 +208,11 @@
     
 	<%@ include file="footer.jsp" %>
 	
-	<script type="application/javascript" src="/EShopping/js/jquery-1.9.1.min.js"></script>
-    <script type="application/javascript" src="/EShopping/js/bootstrap.js"></script>
-    <script type="application/javascript" src="/EShopping/js/account.js"></script>
-    <script type="application/javascript" src="/EShopping/js/check.js"></script>
-	<script type="application/javascript" src="/EShopping/js/global.js"></script>
+	<script type="application/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/account.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/check.js"></script>
+	<script type="application/javascript" src="/BookShopping/js/global.js"></script>
 	<script type="application/javascript">
 	
 		$(document).ready(function(e) {
@@ -225,7 +225,7 @@
 		
 		function on_modify_province_selected() {
 			$.ajax({
-				url:"/EShopping/customer/GetCityList.action",
+				url:"/BookShopping/customer/GetCityList.action",
 				type:"GET",
 				async: false,
 				contentType:"application/json;charset=utf-8",
@@ -250,7 +250,7 @@
 				contentType:"application/json;charset=utf-8",
 				dataType:"json",
 				async:false,
-				url:"/EShopping/customer/GetTownList.action",
+				url:"/BookShopping/customer/GetTownList.action",
 				data:{cityId: $('#modify_address_form #city_dropdown').val()},
 				success: function(result) {
 					var resultJson = eval(result);
@@ -283,7 +283,7 @@
 			var wrong;
 			if (address_submit('new_address_form')) {
 				$.ajax({
-					url: "/EShopping/customer/AddAddress.action",
+					url: "/BookShopping/customer/AddAddress.action",
 					type: "POST",
 					async: false,
 					dataType:"json",
