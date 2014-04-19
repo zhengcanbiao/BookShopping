@@ -19,7 +19,7 @@
                 
             	<ul class="nav">
                 	<li id="logo">
-                    	<a href="/BookShopping/customer/RedirectToHome.action"><img src="/BookShopping/img/logo_cut_30px.png" /></a>
+                    	<a href="/BookShopping/customer/RedirectToHome.action"><img src="/BookShopping/img/login_logo.png" /></a>
                     </li>
                    
                 </ul>

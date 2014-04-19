@@ -75,6 +75,9 @@
     <script type="application/javascript" src="/EShopping/js/bootstrap.js"></script>
     <script type="application/javascript" src="/EShopping/js/account.js"></script>
 	<script type="application/javascript" src="/EShopping/js/global.js"></script>
+	<script type="application/javascript">
+		$("#header3").css("visibility", "hidden");
+	</script>
 	
 </body>
 </html>

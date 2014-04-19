@@ -22,7 +22,7 @@ a {
 a:hover,
 a:focus {
   color: #16A085;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .navbar {
@@ -136,7 +136,6 @@ a {
 	height:25px;
 	background: #F1C40F;
 	padding-top: 5px;
-	border-radius:5px;
 }
 .nav  li {
 	width:100px;
@@ -167,8 +166,28 @@ a {
 	border-radius:10px;
 	margin-left: 5px;
 }
+#header4 #tuijian #but strong{
+	margin-left: 5px;
+	font-size: 16px;
+	padding-right: 5px;
+
+}
+#header4 #xiaoshou #but strong{
+	margin-left: 5px;
+	font-size: 16px;
+	padding-right: 5px;
+
+}
+#header4 #tuijian #but .btn{
+	margin-top : 10px;
+}
+#header4 #xiaoshou #but .btn{
+	width : 40px;
+	height: 20px;
+	font-size: 5px;
+}
 #header4 #xiaoshou{
-		position: relative;
+	position: relative;
 	height: 400px;
 	width: 200px;
 	float: left;
@@ -177,13 +196,88 @@ a {
 	background-color:#eee;
 	border-radius:10px;
 }
+#header4 #xiaoshou #but ul li {
+	width: 60px;
+}
 
+#content_xinshu, #content_zhubian, #content_zongbang, #content_wenyi, #content_jingying {
+	display: none;
+}
+
+/* #content_zongbang .span3 h5 ,#content_wenyi .span3 h5, #content_jingying .span3 h5{
+	float: left;
+} */
+#content_zongbang .span3 a ,#content_wenyi .span3 a, #content_jingying .span3 a{
+	float: left;
+}
+#content_xinshu .span1 a ,#content_zhubian .span1 a{
+	float: left;
+}
+#content_xinshu .span1 p ,#zhubian .span1 p{
+	float: left;
+	margin-left: 0px;
+}
+#tuijian_content{
+	position: relative;
+	width: 300px;
+	height: 130px;
+	float: left;
+}
+#bookname_item{
+	position: relative;
+	width:300px;
+	height: 20px;
+}
+#bookname_items{
+	position: relative;
+	width:220px;
+	height: 90px;
+	float: left;
+}
+#bookname_items_1{
+	position: relative;
+	width:150px;
+	height:90px;
+	float:left;
+}
+#bookname_item_2{
+	position: relative;
+	width:160px;
+	height:40px;
+	float:left;	
+}
+.span20 a{
+	float:left;
+}
+
+
+
+
+/*photo of login*/
+#photo_left{
+	position: absolute;
+	width: 500px;
+	height: 300px;
+}
 
 
 /*control the style of each elements*/
 .span3 {
 	width: 200px;
 	margin-left: 0px;
+}
+.span1 {
+	width: 450px;
+	margin-left: 0px;
+}
+.span20 {
+	width:225px;
+	height:100px;
+	margin-left:0px;
+}
+.carousel-indicators {
+	top: 95%;
+	right: 40%;
 }
 
 
@@ -205,8 +299,6 @@ a {
 }
 .nav .catalog li:hover {
 	background:#F1C40F;
-	-webkit-transition-duration: 0.2s;
-	-moz-transition-duration:0.2s;
 }
 
 .nav .catalog li a {
@@ -243,9 +335,8 @@ a {
 
 .footer img {
 	position:relative;
-	height:16px;
+	height:23px;
 	right:6px;
-	top:1px;
 }
 
 /*alert tips*/

@@ -19,7 +19,7 @@
                 
             	<ul class="nav">
                 	<li id="logo">
-                    	<a href="/BookShopping/customer/RedirectToHome.action"><img src="img/logo_cut_30px.png" /></a>
+                    	<a href="/BookShopping/customer/RedirectToHome.action"><img src="/BookShopping/img/login_logo.png" /></a>
                     </li>
                    
                 </ul>
@@ -30,6 +30,9 @@
     
     <div class="body1">
     	<div class="container row-fluid">
+    	    <div id="photo_left">
+    			<img src="/BookShopping/img/left.png" />
+		    </div>
         	<div class="span7">
             	
             </div>

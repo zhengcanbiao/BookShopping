@@ -87,6 +87,9 @@
 		$(document).ready(function(e) {
 			personal_check();
 		});
+
+		$("#header3").css("visibility", "hidden");
+
 	</script>
 	
 </body>

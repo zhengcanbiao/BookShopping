@@ -60,6 +60,48 @@ $(document).ready(function() {
 				  //hide its submenu
 				  $('ul', this).stop().slideUp('fast');            
 	});
+	$('.carousel').carousel();
+	
+	var active = "active";
+	var temp = ".zongbang";
+	var choose = "#content_zongbang";
+	$('.zhubian').mouseover(function(){
+        $('.xinshu').removeClass(active);
+        $(this).addClass(active);
+        $('#content_xinshu').css("display","none");
+        $('#content_zhubian').css("display","block");
+	});
+	$('.xinshu').mouseover(function(){
+        $('.zhubian').removeClass(active);
+        $(this).addClass(active);
+        $('#content_zhubian').css("display","none");
+        $('#content_xinshu').css("display","block");
+	});
+	
+	$('.zongbang').mouseover(function(){
+        $(temp).removeClass(active);
+        $(this).addClass(active);
+        temp = ".zongbang";
+        $(choose).css("display","none");
+        $('#content_zongbang').css("display","block");
+        choose = "#content_zongbang";
+	});
+	$('.wenyi').mouseover(function(){
+        $(temp).removeClass(active);
+        $(this).addClass(active);
+        temp = ".wenyi";
+        $(choose).css("display","none");
+        $('#content_wenyi').css("display","block");
+        choose = "#content_wenyi";
+	});
+	$('.jingying').mouseover(function(){
+        $(temp).removeClass(active);
+        $(this).addClass(active);
+        temp = ".jingying";
+        $(choose).css("display","none");
+        $('#content_jingying').css("display","block");
+        choose = "#content_jingying";
+	});
 	
 });
 

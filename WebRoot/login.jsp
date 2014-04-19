@@ -13,24 +13,30 @@
 </head>
 
 <body>
-	<div class="header">
+ 	<div class="header">
     	<div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
             	<div class="container">
                 
             	<ul class="nav">
                 	<li id="logo">
-                    	<a href="/BookShopping/customer/RedirectToHome.action"><img src="/BookShopping/img/logo_cut_30px.png" /></a>
+                    	<a href="/BookShopping/customer/RedirectToHome.action"><img  src="/BookShopping/img/login_logo.png" /></a>
                     </li>
                    
                 </ul>
                 </div>
             </div>
          </div>
-    </div>
+    </div> 
+<!--     <div id="photo_left">
+    	<img src="/BookShopping/img/photo_left.png" />
+    </div> -->
     
     <div class="body1">
     	<div class="container row-fluid">
+    	    <div id="photo_left">
+    			<img src="/BookShopping/img/left.png" />
+		    </div>
         	<div class="span7">
             </div>
             
