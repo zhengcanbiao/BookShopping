@@ -491,26 +491,22 @@ function find_password_check() {
 
 /*修改密码*/
 function modify_password_check() {
-	var wrong = 0;
 	$("#input_original_password").blur(function() {
 		if ( $("#input_original_password").val() == '') {
 			$("#original_password_span").addClass("label-important");
 			$("#original_password_span").text("请输入原始密码");
-			wrong = 1;
 		}
 		else {
 			if ($("#input_original_password").val().length < 6) {
 				$("#original_password_span").removeClass("label-success");
 				$("#original_password_span").addClass("label-important");
 				$("#original_password_span").text("密码长度6~16位");
-				wrong = 1;
 			}
 			else {
 				if ($("#input_original_password").val().length > 16) {
 					$("#original_password_span").removeClass("label-success");
 					$("#original_password_span").addClass("label-important");
 					$("#original_password_span").text("密码长度6~16位");
-					wrong = 1;
 				}
 				else {
 					$.ajax({
@@ -597,7 +593,6 @@ function modify_password_check() {
 			}
 		}
 	});
-	return (wrong === 0);
 }
 
 function modify_password_submit() {

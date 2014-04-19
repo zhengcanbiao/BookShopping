@@ -8,7 +8,7 @@
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bookshopping.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/cart.css" rel="stylesheet" media="screen" />
 
 <title>购物车</title>
@@ -28,7 +28,7 @@
               <li><a href="/BookShopping/customer/PrepareCartItemList.action">购物车</a></li>
             </ul>
         
-        	<p class="eshopping_title">购物车中的商品</p>
+        	<p class="bookshopping_title">购物车中的商品</p>
             
             <table class="table table-striped">
             	<tr>

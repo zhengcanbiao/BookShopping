@@ -8,7 +8,7 @@
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bookshopping.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/cart.css" rel="stylesheet" media="screen" />
 
 <title>结算中心</title>
@@ -28,7 +28,7 @@
               <li>结算中心</li>
             </ul>
         
-        	<p class="eshopping_title">填写订单详情</p>
+        	<p class="bookshopping_title">填写订单详情</p>
             
             <div class="pay_address">
             	<h4>选择地址</h4>
@@ -108,7 +108,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 
                 <form id="new_address_form" action="/BookShopping/customer/GenerateOrderInfo.action" class="form-horizontal" onSubmit="return add_new_address()">
-                <p class="eshopping_title">添加新地址</p>
+                <p class="bookshopping_title">添加新地址</p>
                 
                 <div class="control-group">
                     <label for="input_receiver" class="control-label">收件人</label>

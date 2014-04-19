@@ -7,7 +7,7 @@
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bookshopping.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/cart.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/account.css" rel="stylesheet" media="screen" />
 
@@ -32,7 +32,7 @@
               <li>评价</li>
             </ul>
         
-        	<p class="eshopping_title">评价</p>
+        	<p class="bookshopping_title">评价</p>
         	
         	<c:forEach items="${requestScope['clothesDetailList'] }" var="orderDetail">
 	            <div class="comment_block row-fluid" id="comment_div_${orderDetail.orderDetailId }">

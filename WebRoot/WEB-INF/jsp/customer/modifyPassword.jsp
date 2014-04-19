@@ -6,7 +6,7 @@
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bookshopping.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/account.css" rel="stylesheet" media="screen" />
 <title>修改密码</title>
 </head>
@@ -33,7 +33,7 @@
                 <div class="span10">
                     <p class="myAccount_title">修改密码</p>
                     
-                    <form id="edit_password_form" action="ModifyPassword.action" class="form-horizontal" onSubmit="return modify_password_check()">
+                    <form id="edit_password_form" action="ModifyPassword.action" class="form-horizontal" onSubmit="return modify_password_submit()">
 
                         <div id="edit_password">
                             <div class="control-group">
