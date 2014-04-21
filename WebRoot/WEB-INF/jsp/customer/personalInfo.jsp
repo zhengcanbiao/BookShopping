@@ -88,8 +88,6 @@
 			personal_check();
 		});
 
-		$("#header3").css("visibility", "hidden");
-
 	</script>
 	
 </body>

@@ -312,7 +312,7 @@
 			return address_submit('modify_address_form')
 		}
 
-		$("#header3").css("visibility", "hidden");
+
 
 	</script>
 </body>

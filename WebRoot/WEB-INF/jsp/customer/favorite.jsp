@@ -79,8 +79,6 @@
     <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
     <script type="application/javascript" src="/BookShopping/js/account.js"></script>
 	<script type="application/javascript" src="/BookShopping/js/global.js"></script>
-    <script type="application/javascript">
-		$("#header3").css("visibility", "hidden");
-	</script>
+
 </body>
 </html>

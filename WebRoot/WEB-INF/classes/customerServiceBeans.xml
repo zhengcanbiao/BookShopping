@@ -21,5 +21,6 @@
 	<bean id="ModifyPersonalInfoAction" class="com.bookshopping.action.customer.ModifyPersonalInfoAction" scope="prototype" />
 	<bean id="ModifyPasswordAction" class="com.bookshopping.action.customer.ModifyPasswordAction" scope="prototype" />
 	<bean id="RedirectToModifyPasswordAction" class="com.bookshopping.action.customer.RedirectToModifyPasswordAction" scope="prototype" />
+	<bean id="PrepareCreditsAction" class="com.bookshopping.action.customer.PrepareCreditsAction" scope="prototype" />
 	
 </beans>

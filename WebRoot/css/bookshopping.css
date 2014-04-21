@@ -99,6 +99,9 @@ a {
 
 
 /* header css  */
+.header{
+	height: 217px;
+}
 .header .container #header1{
 	position: relative;
 	height: 35px;
@@ -306,7 +309,13 @@ a {
 	display:block;
 }
 
+#home_header{
+	height: 172px;
+}
 
+.nav-tabs > li > a{
+	border-radius: 0px;
+}
 /*body*/
 
 .body1 {

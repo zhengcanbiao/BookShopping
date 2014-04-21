@@ -11,11 +11,11 @@
 	<bean id="tbBooksProvider" class="com.bookshopping.dao.provider.TbBooksProvider" scope="prototype" />
 	<bean id="tbAdminProvider" class="com.bookshopping.dao.provider.TbAdminProvider" scope="prototype" /> 
 	<bean id="tbFavoriteProvider" class="com.bookshopping.dao.provider.TbFavoriteProvider" scope="prototype" />
-	
-	<!-- <bean id="tbAddressProvider" class="com.bookshopping.dao.provider.TbAddressProvider" scope="prototype" />
+	<bean id="tbAddressProvider" class="com.bookshopping.dao.provider.TbAddressProvider" scope="prototype" />
 	<bean id="tbCityProvider" class="com.bookshopping.dao.provider.TbCityProvider" scope="prototype" />
 	<bean id="tbTownProvider" class="com.bookshopping.dao.provider.TbTownProvider" scope="prototype" />
 	<bean id="tbProvinceProvider" class="com.bookshopping.dao.provider.TbProvinceProvider" scope="prototype" />
+	<!-- 
 	
 	<bean id="tbClothesdetailProvider" class="com.bookshopping.dao.provider.TbClothesdetailProvider" scope="prototype" />
 	<bean id="tbCartProvider" class="com.bookshopping.dao.provider.TbCartProvider" scope="prototype" />

@@ -83,7 +83,6 @@
         	modify_password_check();
         });
 
-		$("#header3").css("visibility", "hidden");
 
 	</script>
     

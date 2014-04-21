@@ -152,7 +152,6 @@
     			});
     		}
     	}
-		$("#header3").css("visibility", "hidden");
 
 	</script>
 

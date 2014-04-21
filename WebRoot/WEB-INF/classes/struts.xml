@@ -153,4 +153,36 @@
 			<interceptor-ref name="bookshoppingLogin" />
 		</action>
 	</package>
+	
+	<package name="AddressAjaxAction" namespace="/customer" extends="Authority">
+		<action name="GetProvinceList" class="GetProvinceListAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<interceptor-ref name="bookshoppingLogin" />
+		</action>
+		<action name="GetCityList" class="GetCityListAction">
+			<result type="json">
+				<param name="root">result</param> 
+			</result>
+		</action>
+		<action name="GetTownList" class="GetTownListAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="DeleteAddress" class="DeleteAddressAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<interceptor-ref name="bookshoppingLogin" />
+		</action>
+		<action name="SetDefaultAddress" class="SetDefaultAddressAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<interceptor-ref name="bookshoppingLogin" />
+		</action>
+	</package>
+	
 </struts>    
