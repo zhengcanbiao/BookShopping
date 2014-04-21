@@ -18,7 +18,7 @@ public class FavoriteService {
 		try {
 			TbCustomer customer = CustomerService.getCurrentCustomer();
 			List<TbFavorite> favorites = customer.getTbFavorites();
-			if (favorites.size() >= 10) {
+			if (favorites.size() >= 10) {//只放10个收藏
 				throw new NoMoreFavoriteException();
 			}
 			for (TbFavorite favorite : favorites) {

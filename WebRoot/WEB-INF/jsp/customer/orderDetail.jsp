@@ -7,7 +7,7 @@
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bookshopping.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/cart.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/account.css" rel="stylesheet" media="screen" />
 
@@ -32,7 +32,7 @@
               <li>订单详情</li>
             </ul>
         
-        	<p class="eshopping_title">订单详情</p>
+        	<p class="bookshopping_title">订单详情</p>
             
             <div class="order_condition_block">
             	<h4 class="order_condition">订单状态: <span>

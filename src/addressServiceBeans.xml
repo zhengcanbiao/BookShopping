@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	
+	<bean id="PrepareAddressAction" class="com.bookshopping.action.address.PrepareAddressAction" scope="prototype" />
+	<bean id="AddAddressAction" class="com.bookshopping.action.address.AddAddressAction" scope="prototype" />
+	<bean id="ModifyAddressAction" class="com.bookshopping.action.address.ModifyAddressAction" scope="prototype" />
+	<bean id="GetProvinceListAction" class="com.bookshopping.action.address.GetProvinceListAction" scope="prototype" />
+	<bean id="GetCityListAction" class="com.bookshopping.action.address.GetCityListAction" scope="prototype" />
+	<bean id="GetTownListAction" class="com.bookshopping.action.address.GetTownListAction" scope="prototype" />
+	<bean id="DeleteAddressAction" class="com.bookshopping.action.address.DeleteAddressAction" scope="prototype" />
+	<bean id="SetDefaultAddressAction" class="com.bookshopping.action.address.SetDefaultAddressAction" scope="prototype" />
+
+</beans>

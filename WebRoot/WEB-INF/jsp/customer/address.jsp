@@ -7,7 +7,7 @@
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
-<link href="/BookShopping/css/eshopping.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bookshopping.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/account.css" rel="stylesheet" media="screen" />
 <title>地址簿</title>
 </head>
@@ -199,10 +199,10 @@
             
         </div>
         
-        <div id="alert_tips">
+        <!-- <div id="alert_tips">
         	<i class="icon-2x icon-ok"></i><span>添加到购物车成功</span>
             <button type="button" class="close" onClick="$('#alert_tips').fadeOut('fast')">×</button>
-        </div>
+        </div> -->
         
     </div>
     
