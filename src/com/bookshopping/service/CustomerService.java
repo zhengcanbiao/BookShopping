@@ -114,7 +114,7 @@ public class CustomerService {
 	
 	public static TbCustomer getCurrentCustomer() throws CustomerNotFoundException {
 		initSession();
-		System.out.println((String) session.get("currentCustomerName"));
+		System.out.println("当前用户名："+(String) session.get("currentCustomerName"));
 		return getCustomerByCustomerName((String) session.get("currentCustomerName"));
 	}
 	

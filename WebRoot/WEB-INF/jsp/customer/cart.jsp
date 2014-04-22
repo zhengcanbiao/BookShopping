@@ -39,7 +39,7 @@
                     <th class="cart_operation_column"> </th>
                 </tr>
                 
-                <c:if test="${empty requestScope['clothesDetailList'] }">
+                <c:if test="${empty requestScope['booksList'] }">
                     <tr>
                 	<td colspan="5">
                     	购物车为空!快去购物吧
@@ -47,30 +47,33 @@
                 	</tr>
                 </c:if>
                 
-                <c:if test="${not empty requestScope['clothesDetailList'] }">
-                <c:forEach begin="1" end="${fn:length(requestScope['clothesDetailList']) }" var="index">
+                <c:if test="${not empty requestScope['booksList'] }">
+                <c:forEach begin="1" end="${fn:length(requestScope['booksList']) }" var="index">
 	                <tr id="cart_item_${requestScope['cartItemList'][index-1].cartId}">
 	                	<td>
-	                    	<a href="${applicationScope['basePath'] }/customer/PrepareClothesDetail.action?clothesId=${requestScope['clothesDetailList'][index-1].tbClothes.clothesId }&categoryId=${requestScope['clothesDetailList'][index-1].tbClothes.tbCategory.categoryId }"><img src="${requestScope['clothesDetailList'][index-1].picUrl }" /></a>
+	                    	<a href="${applicationScope['basePath'] }/customer/PrepareBooksDetail.action?booksId=${requestScope['booksList'][index-1].booksId }&categoryId=${requestScope['booksList'][index-1].tbCategory.categoryId }"><img src="${requestScope['booksList'][index-1].picUrl }" /></a>
 	                        <div class="cart_item_name">
-	                    	<a href="${applicationScope['basePath'] }/customer/PrepareClothesDetail.action?clothesId=${requestScope['clothesDetailList'][index-1].tbClothes.clothesId }&categoryId=${requestScope['clothesDetailList'][index-1].tbClothes.tbCategory.categoryId }">${requestScope['clothesDetailList'][index-1].tbClothes.clothesName }</a>
-	                        <p>尺码:<c:choose>
-                        			<c:when test="${requestScope['clothesDetailList'][index-1].size==0 }">S</c:when>
-                        			<c:when test="${requestScope['clothesDetailList'][index-1].size==1 }">M</c:when>
-                        			<c:when test="${requestScope['clothesDetailList'][index-1].size==2 }">L</c:when>
-                        			</c:choose></p>
+	                    	<a href="${applicationScope['basePath'] }/customer/PrepareBooksDetail.action?booksId=${requestScope['booksList'][index-1].booksId }&categoryId=${requestScope['booksList'][index-1].tbCategory.categoryId }">${requestScope['booksList'][index-1].bookName }</a>
+	                        <p>作者:
+	                        <%-- <c:choose>
+                        			<c:when test="${requestScope['booksList'][index-1].size==0 }">S</c:when>
+                        			<c:when test="${requestScope['booksList'][index-1].size==1 }">M</c:when>
+                        			<c:when test="${requestScope['booksList'][index-1].size==2 }">L</c:when>
+                        			</c:choose> --%>
+                        			${requestScope['booksList'][index-1].author}
+                        			</p>
 	                        </div>
 	                    </td>
 	                    <td>
 	                    	&yen;${requestScope['priceList'][index-1] }
 	                    </td>
 	                    <td>
-	                    	<input id="input_count_${requestScope['cartItemList'][index-1].cartId}" type="text" value="${requestScope['cartItemList'][index-1].clothesNumber }" onKeyUp="on_num_change('${requestScope.cartItemList[index-1].cartId}', '${requestScope.cartItemList[index-1].tbClothesdetail.remainder }')"/>
+	                    	<input id="input_count_${requestScope['cartItemList'][index-1].cartId}" type="text" value="${requestScope['cartItemList'][index-1].booksNumber }" onKeyUp="on_num_change('${requestScope.cartItemList[index-1].cartId}', '${requestScope.cartItemList[index-1].tbBooks.remainder }')"/>
 	                        <a hidden="hidden" id="update${requestScope['cartItemList'][index-1].cartId}" href="${applicationScope['basePath']}/ModifyCart.action?cartId=${requestScope['cartItemList'][index-1].cartId}"></a>
-                            <p>剩余库存<span>${requestScope.cartItemList[index-1].tbClothesdetail.remainder }</span>件</p>
+                            <p>剩余库存<span>${requestScope.cartItemList[index-1].tbBooks.remainder }</span>件</p>
 	                    </td>
 	                    <td>
-	                    	&yen;${requestScope['priceList'][index-1] * requestScope['cartItemList'][index-1].clothesNumber }
+	                    	&yen;${requestScope['priceList'][index-1] * requestScope['cartItemList'][index-1].booksNumber }
 	                    </td>
 	                    <td>
 	                    	<a href="#" onClick="delete_cart('${requestScope['cartItemList'][index-1].cartId}')"><i class="icon-trash"></i></a>
@@ -138,7 +141,7 @@
 				show_tips("请输入数量","warning");
 			}
 			else {
-				$(updateId).attr("href", "/BookShopping/customer/ModifyCart.action?cartId=" + cartId + "&clothesNumber=" + $(input_count_id).val());
+				$(updateId).attr("href", "/BookShopping/customer/ModifyCart.action?cartId=" + cartId + "&booksNumber=" + $(input_count_id).val());
 				$(updateId).removeAttr("hidden");
 			}
 		}

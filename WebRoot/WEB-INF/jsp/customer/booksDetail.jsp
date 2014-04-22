@@ -58,7 +58,7 @@
                         <ul class="inline" id="size_list">
                         	<c:forEach items="${requestScope['clothesDetailList'] }" var="clothesDetail">
                         	<li><label <c:if test="${clothesDetail.remainder<=0}">class="disabled"</c:if>>
-                        		<input <c:if test="${clothesDetail.remainder<=0}">disabled="disabled"</c:if> id="clothesDetail${clothesDetail.clothesDetailId }" value="${clothesDetail.size }" onClick="on_clothes_size_selected('${clothesDetail.remainder}')" type="radio" name="size"/>
+                        		<input <c:if test="${clothesDetail.remainder<=0}">disabled="disabled"</c:if> id="clothesDetail${clothesDetail.booksId }" value="${clothesDetail.size }" onClick="on_clothes_size_selected('${clothesDetail.remainder}')" type="radio" name="size"/>
                         		<c:choose>
                         			<c:when test="${clothesDetail.size==0 }">S</c:when>
                         			<c:when test="${clothesDetail.size==1 }">M</c:when>
@@ -73,7 +73,7 @@
                         
                         <p id="remainder" >剩余<span>${requestScope['currentBooks'].remainder}</span>件</p>
                         
-                        <div class="btn_block"><button onClick="add_to_cart()" class="btn btn-large btn-primary">加入购物车</button>
+                        <div class="btn_block"><button onClick="add_to_cart('${requestScope.currentBooks.booksId}')" class="btn btn-large btn-primary">加入购物车</button>
                         <button onClick="add_to_favorite('${requestScope.currentBooks.booksId}')" class="btn btn-large"  <c:if test="${empty sessionScope['currentCustomerName'] }">disabled="disabled"</c:if> >点击收藏</button></div>
                         </c:if>
                         <c:if test="${requestScope['currentBooks'].valid==false }">
@@ -115,15 +115,15 @@
     
     <script type="application/javascript">
 		$(document).ready(function () {    
-			$("input:radio").click(function(){
+			/* $("input:radio").click(function(){
 				$("input:radio").parent("label").removeClass("checked");
 				$("input:radio:checked").parent("label").addClass("checked");
-			});
+			}); */
 			on_num_change();
 			
 		});
 		
-		function on_num_change() {
+		 function on_num_change() {
 			$("#input_count").keyup(function(e) {
 				if ( $("#input_count").val() > parseInt($("#remainder span").text()) ) {
 					$("#input_count").val($("#remainder span").text());
@@ -133,21 +133,23 @@
 					$("#input_count").val();
 				}
 			});
-		}
+		} 
 		
-		function add_to_cart() {
-			if (!$("input:radio:checked").val()) {
+		function add_to_cart(id) {
+			//alert(id);
+		   alert($('#input_count').val());
+			/* if (!$("input:radio:checked").val()) {
 				show_tips("请选择尺码","warning");
 			} else if ($("#input_count").val() === '') {
 				show_tips("请输入数量","warning");
-			} else {
-				var clothes_detail_id = get_num_in_str($("input:radio:checked").attr("id"));
+			} else { */
+				/* var clothes_detail_id = get_num_in_str($("input:radio:checked").attr("id")); */
 				$.ajax({
 					url: "/BookShopping/customer/AddToShoppingCart.action",
 					type:"GET",
 					contentType:"application/json;charset=utf-8",
 					dataType:"json",
-					data:{clothesDetailId: clothes_detail_id, clothesNumber: $('#input_count').val()},
+					data:{booksId: id, booksNumber: $('#input_count').val()},
 					success: function(result) {
 						if (result == "success") {
 							show_tips("添加到购物车成功", "ok");
@@ -156,7 +158,7 @@
 						}
 					}
 				});
-			}
+			
 		}
 		
 		function add_to_favorite(id) {

@@ -15,10 +15,11 @@
 	<bean id="tbCityProvider" class="com.bookshopping.dao.provider.TbCityProvider" scope="prototype" />
 	<bean id="tbTownProvider" class="com.bookshopping.dao.provider.TbTownProvider" scope="prototype" />
 	<bean id="tbProvinceProvider" class="com.bookshopping.dao.provider.TbProvinceProvider" scope="prototype" />
-	<!-- 
-	
-	<bean id="tbClothesdetailProvider" class="com.bookshopping.dao.provider.TbClothesdetailProvider" scope="prototype" />
 	<bean id="tbCartProvider" class="com.bookshopping.dao.provider.TbCartProvider" scope="prototype" />
 	<bean id="tbOrderProvider" class="com.bookshopping.dao.provider.TbOrderProvider" scope="prototype" />
-	<bean id="tbOrderdetailProvider" class="com.bookshopping.dao.provider.TbOrderdetailProvider" scope="prototype" />-->
+	<bean id="tbOrderdetailProvider" class="com.bookshopping.dao.provider.TbOrderdetailProvider" scope="prototype" />
+	<!-- 
+	
+	<bean id="tbClothesdetailProvider" class="com.bookshopping.dao.provider.TbClothesdetailProvider" scope="prototype" />-->
+	
 </beans>

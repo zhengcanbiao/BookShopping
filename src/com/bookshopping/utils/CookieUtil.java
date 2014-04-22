@@ -36,7 +36,7 @@ public class CookieUtil {
 		}
 	}
 	
-	public static List<Map<String, String>> getCookieValues(String key)  {
+	public static List<Map<String, String>> getCookieValues(String key) throws CookieNotExistException {
 		Cookie[] cookies = ServletActionContext.getRequest().getCookies();
 		String value = null;
 		if (cookies != null) {
@@ -48,9 +48,9 @@ public class CookieUtil {
 			}
 		}
 		if (value == null) {
-			//System.out.println("cookies里面有没有值");
-			//throw new CookieNotExistException();
-			return null;
+			System.out.println("cookies里面有没有值");
+			throw new CookieNotExistException();
+			//return null;
 		} else {
 			JSONArray jsonArray = JSONArray.fromObject(value);
 			List<Map<String, String>> list = new ArrayList<Map<String, String>>(0);

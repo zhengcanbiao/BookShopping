@@ -21,6 +21,7 @@
 	<import resource="classpath:ajaxServiceBeans.xml"/>
 	<import resource="classpath:favoriteServiceBeans.xml"/>
 	<import resource="classpath:addressServiceBeans.xml"/>
+	<import resource="classpath:cartServiceBeans.xml"/>
 	
 	<bean id="CloseHibernateAdvice" class="com.bookshopping.advice.CloseHibernateAdvice" />
 	<aop:config proxy-target-class="true" />
