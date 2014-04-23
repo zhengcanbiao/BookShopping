@@ -126,12 +126,30 @@ a {
 	position: relative;
 	float: right;
 	margin-top: 15px;
+	width: 420px;
+	right:-20px;
+}
+
+.pull-left{
+	width: 420px;
+	background-color: #1ABC9C;
+}
+.navbar-search .search-query{
+	border-radius: 0px;
+	width:340px;
+	border: 2px solid #1ABC9C;
+}
+#search a{
+	color: #fff;
+	padding-left:3px;
+}
+#search a:hover{
+	color: gray;
 }
 #header3{
 	position: relative;
 	height: 30px;
 	background-color:#eee;
-	border-radius:10px;
 }
 #header3 li p{
 	position: relative;
@@ -166,7 +184,6 @@ a {
 	float: left;
 	overflow: hidden;
 	background-color:#eee;
-	border-radius:10px;
 	margin-left: 5px;
 }
 #header4 #tuijian #but strong{
@@ -197,7 +214,6 @@ a {
 	margin-left: 5px;
 	overflow: hidden;
 	background-color:#eee;
-	border-radius:10px;
 }
 #header4 #xiaoshou #but ul li {
 	width: 60px;
@@ -295,7 +311,19 @@ a {
 	width:180px;
 	display:none;
 }
-
+#cart ul {
+	position:absolute;
+	list-style:none;
+	right:0px;
+	margin-top:30px;
+	background:#eee;
+	width:70px;
+	display:none;
+}
+#cart ul li{
+	text-align:left;
+	background:#BDC3C7;
+}
 .nav .catalog li {
 	text-align:left;
 	background:#BDC3C7;
@@ -311,6 +339,9 @@ a {
 
 #home_header{
 	height: 172px;
+}
+#home_header1{
+	height: 0px;
 }
 
 .nav-tabs > li > a{

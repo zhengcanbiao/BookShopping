@@ -4,7 +4,7 @@
 
 <div class="header">
 	<div class="container">
-		<div id="header1">
+		<div id="header1" >
 			<c:if test="${empty sessionScope['currentNickName'] }">
 				<p>欢迎来到网上书城</p>
 		        <a href="/BookShopping/login.jsp">登录/注册<br></a>
@@ -26,8 +26,9 @@
 		    <div id="search" >
 		       <form class="navbar-search pull-left" action="SearchBooks.action?pageNow=1" method="get">
 		            <input id="search_input" name="keyword" type="text" class="search-query" placeholder="Search" />
-		       </form>
-		    </div>				
+		       		<a href="#">搜索</a>   
+		       </form>    
+		    </div>		
 		</div>
 		<ul id="header3" class="nav nav-pills nav-justified">
 					<li>

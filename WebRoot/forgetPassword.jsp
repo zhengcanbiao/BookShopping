@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<div class="header">
+	<div id="home_header1" class="header">
     	<div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
             	<div class="container">

@@ -185,4 +185,30 @@
 		</action>
 	</package>
 	
+	<package name="CartAction" namespace="/customer" extends="Authority">
+		<action name="PrepareCartItemList" class="PrepareCartItemListAction">
+			<result name="success">/WEB-INF/jsp/customer/cart.jsp</result>
+		</action>
+		<action name="ModifyCart" class="ModifyCartAction">
+			<result name="success" type="redirectAction">PrepareCartItemList</result>
+		</action>
+	</package>
+	
+	<package name="CartAjaxAction" namespace="/customer" extends="Authority">
+		<action name="GetCartItemList" class="GetCartItemListAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="AddToShoppingCart" class="AddToShoppingCartAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="DeleteCart" class="DeleteCartAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
 </struts>    

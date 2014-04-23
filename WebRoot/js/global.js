@@ -1,4 +1,11 @@
 $(document).ready(function() {
+	$("#search .pull-left a").click(function(){
+		var temp = $("#search_input").val();
+		location.href= "/BookShopping/customer/SearchBooks.action?keyword=" + temp;
+	});
+	$("#search_input").click(function(){
+		$("#search_input").css("border-color","#1ABC9C");
+	});
 	$(".catalog").each(function(index, element) {
 		var id = get_num_in_str(element.id);
 		get_subcategory_list(id);
@@ -44,10 +51,10 @@ $(document).ready(function() {
 					}
 				}
 			});
-			$('#cart ul', this).stop().slideDown('fast');
+			$('ul', this).stop().slideDown('fast');
 		},
 		function() {
-			$('#cart ul', this).stop().slideUp('fast'); 
+			$('ul', this).stop().slideUp('fast'); 
 		}
 	);
 	

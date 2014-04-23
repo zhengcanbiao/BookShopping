@@ -39,6 +39,7 @@
 		    <div id="search" >
 		       <form class="navbar-search pull-left" action="SearchBooks.action?pageNow=1" method="get">
 		            <input id="search_input" name="keyword" type="text" class="search-query" placeholder="Search" />
+		            <a href="#">搜索</a> 
 		       </form>
 		    </div>				
 		</div>
