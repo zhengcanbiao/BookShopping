@@ -9,10 +9,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * TbFavorite entity. @author MyEclipse Persistence Tools
  */
 @Entity
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "tb_favorite", catalog = "db_bookshopping")
 public class TbFavorite implements java.io.Serializable {
 
@@ -35,8 +40,9 @@ public class TbFavorite implements java.io.Serializable {
 	}
 
 	// Property accessors
+	@GenericGenerator(name = "generator", strategy = "increment")
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "generator")
 	@Column(name = "FavoriteID", unique = true, nullable = false)
 	public Integer getFavoriteId() {
 		return this.favoriteId;

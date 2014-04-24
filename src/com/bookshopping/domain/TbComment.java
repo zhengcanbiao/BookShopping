@@ -10,10 +10,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * TbComment entity. @author MyEclipse Persistence Tools
  */
 @Entity
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "tb_comment", catalog = "db_bookshopping")
 public class TbComment implements java.io.Serializable {
 
@@ -41,8 +46,9 @@ public class TbComment implements java.io.Serializable {
 	}
 
 	// Property accessors
+	@GenericGenerator(name = "generator", strategy = "increment")
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "generator")
 	@Column(name = "CommentID", unique = true, nullable = false)
 	public Integer getCommentId() {
 		return this.commentId;

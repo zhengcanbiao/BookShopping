@@ -9,11 +9,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * TbCart entity. @author MyEclipse Persistence Tools
  */
 @Entity
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "tb_cart", catalog = "db_bookshopping")
+
 public class TbCart implements java.io.Serializable {
 
 	// Fields
@@ -37,8 +43,9 @@ public class TbCart implements java.io.Serializable {
 	}
 
 	// Property accessors
+	@GenericGenerator(name = "generator", strategy = "increment")
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "generator")
 	@Column(name = "CartID", unique = true, nullable = false)
 	public Integer getCartId() {
 		return this.cartId;

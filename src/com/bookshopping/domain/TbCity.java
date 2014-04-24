@@ -13,10 +13,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * TbCity entity. @author MyEclipse Persistence Tools
  */
 @Entity
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "tb_city", catalog = "db_bookshopping")
 public class TbCity implements java.io.Serializable {
 
@@ -50,8 +55,9 @@ public class TbCity implements java.io.Serializable {
 	}
 
 	// Property accessors
+	@GenericGenerator(name = "generator", strategy = "increment")
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "generator")
 	@Column(name = "CityID", unique = true, nullable = false)
 	public Integer getCityId() {
 		return this.cityId;

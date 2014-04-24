@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * TbAdmin entity. @author MyEclipse Persistence Tools
  */
@@ -31,8 +33,9 @@ public class TbAdmin implements java.io.Serializable {
 	}
 
 	// Property accessors
+	@GenericGenerator(name = "generator", strategy = "assigned")
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "generator")
 	@Column(name = "AdminName", unique = true, nullable = false, length = 25)
 	public String getAdminName() {
 		return this.adminName;

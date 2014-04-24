@@ -82,20 +82,21 @@
                     <c:forEach items="${requestScope['orderDetailList'] }" var="orderDetail">
 	                    <tr>
 	                        <td>
-	                            <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${orderDetail.tbClothesdetail.tbClothes.clothesId }"><img src="${orderDetail.tbClothesdetail.picUrl }" /></a>
+	                            <a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${orderDetail.tbBooks.booksId }"><img src="${orderDetail.tbBooks.picUrl }" /></a>
 	                            <div class="cart_item_name">
-	                            <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${orderDetail.tbClothesdetail.tbClothes.clothesId }">${orderDetail.tbClothesdetail.tbClothes.clothesName }</a>
-	                            <p>尺码:
-                                    <c:choose>
+	                            <a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${orderDetail.tbBooks.booksId }">${orderDetail.tbBooks.bookName }</a>
+	                            <p>作者:
+                                    <%-- <c:choose>
                                     	<c:when test="${orderDetail.tbClothesdetail.size==0 }">S</c:when>
                                     	<c:when test="${orderDetail.tbClothesdetail.size==1 }">M</c:when>
                                     	<c:when test="${orderDetail.tbClothesdetail.size==2 }">L</c:when>
-                                    </c:choose>	                            
+                                    </c:choose>	     --%>
+                                                            
 	                            </p>
 	                            </div>
 	                        </td>
 	                        <td>
-	                            &yen;${orderDetail.tbClothesdetail.tbClothes.price/100.0 }
+	                            &yen;${orderDetail.tbBooks.price/100.0 }
 	                        </td>
 	                        <td>
 	                            ${orderDetail.quantity }

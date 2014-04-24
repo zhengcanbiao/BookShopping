@@ -6,17 +6,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * TbDiscount entity. @author MyEclipse Persistence Tools
  */
 @Entity
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "tb_discount", catalog = "db_bookshopping")
 public class TbDiscount implements java.io.Serializable {
 
 	// Fields
 
 	private Integer discountPoints;
-	private Integer discountRate;
+	private Integer discountRate = new Integer(100);;
 
 	// Constructors
 
@@ -30,8 +35,9 @@ public class TbDiscount implements java.io.Serializable {
 	}
 
 	// Property accessors
+	@GenericGenerator(name = "generator", strategy = "assigned")
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "generator")
 	@Column(name = "DiscountPoints", unique = true, nullable = false)
 	public Integer getDiscountPoints() {
 		return this.discountPoints;

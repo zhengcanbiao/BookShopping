@@ -17,6 +17,7 @@
 
 <body>
 
+ 
 	<%@ include file="header.jsp" %>
 	    
     <div class="body">
@@ -74,20 +75,21 @@
                             
                             <tr>
                                 <td>
-                                    <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.tbClothes.clothesId }"><img src="${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.picUrl }" /></a>
+                                    <a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbBooks.booksId }"><img src="${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbBooks.picUrl }" /></a>
                                     <div class="cart_item_name">
-                                    <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.tbClothes.clothesId }">${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.tbClothes.clothesName }</a>
-                                    <p>尺码: 
-                                    <c:choose>
-                                    	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.size==0 }">S</c:when>
-                                    	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.size==1 }">M</c:when>
-                                    	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.size==2 }">L</c:when>
-                                    </c:choose>
+                                    <a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbBooks.booksId }">${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbBooks.bookName }</a>
+                                    <p>作者: 
+                                    <%-- <c:choose>
+                                    	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].size==0 }">S</c:when>
+                                    	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].size==1 }">M</c:when>
+                                    	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].size==2 }">L</c:when>
+                                    </c:choose> --%>
+                                    ${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbBooks.author}
                                     </p>
                                     </div>
                                 </td>
                                 <td>
-                                    &yen;${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbClothesdetail.tbClothes.price / 100.0 }
+                                    &yen;${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbBooks.price / 100.0 }
                                 </td>
                                 <td>
                                     ${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].quantity }
@@ -120,20 +122,22 @@
                             <c:forEach begin="2" end="${fn:length(requestScope['orderList'][orderIndex-1].tbOrderdetails) }" var="index">
                             <tr>
                                 <td>
-                                    <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.tbClothes.clothesId }"><img src="${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.picUrl }" /></a>
+                                    <a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbBooks.booksId }"><img src="${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbBooks.picUrl }" /></a>
                                     <div class="cart_item_name">
-                                    <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.tbClothes.clothesId }">${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.tbClothes.clothesName }</a>
-                                    <p>尺码:
-                                    <c:choose> 
-                                    	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.size==0 }">S</c:when>
-                                    	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.size==1 }">M</c:when>
-                                    	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.size==2 }">L</c:when>
-                                    </c:choose>
+                                    <a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbBooks.booksId }">${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbBooks.bookName }</a>
+                                    <p>作者:
+                                    <%-- <c:choose> 
+                                    	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].size==0 }">S</c:when>
+                                    	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].size==1 }">M</c:when>
+                                    	<c:when test="${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].size==2 }">L</c:when>
+                                    </c:choose> --%>
+                                    ${requestScope['orderList'][orderIndex-1].tbOrderdetails[0].tbBooks.author}
+                                    
                                     </p>
                                     </div>
                                 </td>
                                 <td>
-                                    &yen;${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbClothesdetail.tbClothes.price / 100.0 }
+                                    &yen;${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].tbBooks.price / 100.0 }
                                 </td>
                                 <td>
                                     ${requestScope['orderList'][orderIndex-1].tbOrderdetails[index-1].quantity }

@@ -13,10 +13,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * TbCategory entity. @author MyEclipse Persistence Tools
  */
 @Entity
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "tb_category", catalog = "db_bookshopping")
 public class TbCategory implements java.io.Serializable {
 
@@ -24,8 +29,8 @@ public class TbCategory implements java.io.Serializable {
 
 	private Integer categoryId;
 	private String categoryName;
-	private Integer parentId;
-	private boolean valid;
+	private Integer parentId = new Integer(0);
+	private boolean valid = new Boolean(true);
 	private List<TbBooks> tbBookses = new ArrayList<TbBooks>(0);
 
 
@@ -52,8 +57,9 @@ public class TbCategory implements java.io.Serializable {
 	}
 
 	// Property accessors
+	@GenericGenerator(name = "generator", strategy = "increment")
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "generator")
 	@Column(name = "CategoryID", unique = true, nullable = false)
 	public Integer getCategoryId() {
 		return this.categoryId;

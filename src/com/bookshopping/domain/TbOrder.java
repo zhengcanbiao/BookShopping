@@ -1,5 +1,6 @@
 package com.bookshopping.domain;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * TbOrder entity. @author MyEclipse Persistence Tools
  */
@@ -27,13 +30,13 @@ public class TbOrder implements java.io.Serializable {
 	private String orderId;
 	private TbCustomer tbCustomer;
 	private String receiverInfo;
-	private Integer orderStatus;
-	private Date orderTime;
+	private Integer orderStatus = new Integer(0);
+	private Date orderTime = new Timestamp(System.currentTimeMillis());
 	private Integer totalPrice;
 	private Integer finalPrice;
-	private boolean isComment;
-	private boolean valid;
-	private Integer discount;
+	private boolean isComment = new Boolean(false);
+	private boolean valid = new Boolean(true);
+	private Integer discount = new Integer(100);
 	private List<TbOrderdetail> tbOrderdetails = new ArrayList<TbOrderdetail>(0);
 
 	// Constructors
@@ -43,19 +46,13 @@ public class TbOrder implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
+	
 	public TbOrder(TbCustomer tbCustomer, String receiverInfo,
-			Integer orderStatus, Date orderTime, Integer totalPrice,
-			Integer finalPrice, boolean isComment, boolean valid,
-			Integer discount) {
+	        Integer totalPrice,Integer finalPrice) {
 		this.tbCustomer = tbCustomer;
 		this.receiverInfo = receiverInfo;
-		this.orderStatus = orderStatus;
-		this.orderTime = orderTime;
 		this.totalPrice = totalPrice;
 		this.finalPrice = finalPrice;
-		this.isComment = isComment;
-		this.valid = valid;
-		this.discount = discount;
 	}
 
 	/** full constructor */
@@ -76,8 +73,9 @@ public class TbOrder implements java.io.Serializable {
 	}
 
 	// Property accessors
+	@GenericGenerator(name = "generator", strategy = "assigned")
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator="generator")
 	@Column(name = "OrderID", unique = true, nullable = false, length = 32)
 	public String getOrderId() {
 		return this.orderId;

@@ -51,27 +51,30 @@
                         <th class="cart_subtotal_column">小计</th>
                     </tr>
                     
-                    <c:forEach begin="1" end="${fn:length(requestScope['clothesDetailList']) }" var="index">
+                    <c:forEach begin="1" end="${fn:length(requestScope['booksDetailList']) }" var="index">
 	                    <tr>
 	                        <td>
-	                            <a href="#"><img src="${requestScope['clothesDetailList'][index-1].picUrl }" /></a>
+	                            <a href="#"><img src="${requestScope['booksDetailList'][index-1].picUrl }" /></a>
 	                            <div class="cart_item_name">
-	                            <a href="#">${requestScope['clothesDetailList'][index-1].tbClothes.clothesName }</a>
-	                            <p>尺码: <c:choose>
-                        			<c:when test="${requestScope['clothesDetailList'][index-1].size==0 }">S</c:when>
-                        			<c:when test="${requestScope['clothesDetailList'][index-1].size==1 }">M</c:when>
-                        			<c:when test="${requestScope['clothesDetailList'][index-1].size==2 }">L</c:when>
-                        			</c:choose></p>
+	                            <a href="#">${requestScope['booksDetailList'][index-1].bookName }</a>
+	                            <p>作者: 
+	                            <%-- <c:choose>
+                        			<c:when test="${requestScope['booksDetailList'][index-1].size==0 }">S</c:when>
+                        			<c:when test="${requestScope['booksDetailList'][index-1].size==1 }">M</c:when>
+                        			<c:when test="${requestScope['booksDetailList'][index-1].size==2 }">L</c:when>
+                        			</c:choose> --%>
+                        			${requestScope['booksDetailList'][index-1].author }
+                        			</p>
 	                            </div>
 	                        </td>
 	                        <td>
-	                            &yen;${requestScope['clothesDetailList'][index-1].tbClothes.price/100.0 }
+	                            &yen;${requestScope['booksDetailList'][index-1].price/100.0 }
 	                        </td>
 	                        <td>
-	                            ${requestScope['cartItemList'][index-1].clothesNumber }
+	                            ${requestScope['cartItemList'][index-1].booksNumber }
 	                        </td>
 	                        <td>
-	                            &yen;${requestScope['clothesDetailList'][index-1].tbClothes.price/100.0 * requestScope['cartItemList'][index-1].clothesNumber }
+	                            &yen;${requestScope['booksDetailList'][index-1].price/100.0 * requestScope['cartItemList'][index-1].booksNumber }
 	                        </td>
 	                    </tr>                    	
                     </c:forEach>
@@ -92,7 +95,7 @@
                 </div> 
             </div> 
             
-            <a href="#"><button class="btn btn-large btn-primary" type="button" id="order_btn" onClick="confirm_order()" <c:if test="${empty requestScope['clothesDetailList'] }">disabled="disabled"</c:if>  >确认下单</button></a>
+            <a href="#"><button class="btn btn-large btn-primary" type="button" id="order_btn" onClick="confirm_order()" <c:if test="${empty requestScope['booksDetailList'] }">disabled="disabled"</c:if>  >确认下单</button></a>
             <a href="${applicationScope['basePath'] }/customer/PrepareCartItemList.action">返回购物车</a>
 
             

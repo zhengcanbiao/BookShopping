@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * TbOrderdetail entity. @author MyEclipse Persistence Tools
  */
@@ -40,8 +42,9 @@ public class TbOrderdetail implements java.io.Serializable {
 	}
 
 	// Property accessors
+	@GenericGenerator(name = "generator", strategy = "increment")
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "generator")
 	@Column(name = "OrderDetailID", unique = true, nullable = false)
 	public Integer getOrderDetailId() {
 		return this.orderDetailId;
