@@ -10,6 +10,15 @@ $(document).ready(function() {
 		var id = get_num_in_str(element.id);
 		get_subcategory_list(id);
 	});
+	$('#zhanghu').hover(
+			  function () {
+				  //show its submenu
+				  $('ul', this).stop().slideDown('fast');
+			  }, 
+			  function () {
+				  //hide its submenu
+				  $('ul', this).stop().slideUp('fast');            
+	});
 	
 	$('#cart').hover(
 		function() {
@@ -27,18 +36,11 @@ $(document).ready(function() {
 						var resultJson = eval(result);
 						$(resultJson).each(function(index, item) {
 							if (index < 5) {
-								var size = item.size;
-								var sizeStr;
-								switch (size) {
-								case 0: sizeStr="S"; break;
-								case 1: sizeStr="M"; break;
-								case 2: sizeStr="L"; break;
-								}
 								$('#cart ul').append("<li class='header-item'>" +
-										"<a href='/BookShopping/customer/PrepareClothesDetail.action?clothesId=" + item.clothesId + "&categoryId=" + item.categoryId + "'><img src='"+ item.picUrl +"' />" +
+										"<a href='/BookShopping/customer/PrepareBooksDetail.action?booksId=" + item.booksId + "&categoryId=" + item.categoryId + "'><img src='"+ item.picUrl +"' />" +
 												"<div class='header-item-text'>" +
-													"<p>尺码:" + sizeStr + "</p>" +
-													"<span class='header-item-price'>&yen;" + item.price + "</span><span class='header-item-count'>数量:" + item.clothesNumber + "</span>" +
+													"<p>书名:" + item.bookName + "</p>" +
+													"<span class='header-item-price'>&yen;" + item.price + "</span><span class='header-item-count'>数量:" + item.sales + "</span>" +
 	 											"</div></a></li>");
 							}
 						});

@@ -113,13 +113,11 @@ a {
 }
 .header .container #header1 a{
 
-	float: left;
+	float: right;
 	margin-top: 5px;
-	margin-left: 5px;
 }
 .header .container #header1 #cart{
 	float: right;
-	margin-top: 5px;
 	margin-right: 5px;
 }
 .header .container #header2 #search{
@@ -127,7 +125,7 @@ a {
 	float: right;
 	margin-top: 15px;
 	width: 420px;
-	right:-20px;
+	right:50px;
 }
 
 .pull-left{
@@ -268,6 +266,9 @@ a {
 .span20 a{
 	float:left;
 }
+#header1 .list-unstyled{
+	margin-bottom: 0px;
+}
 
 
 
@@ -311,22 +312,59 @@ a {
 	width:180px;
 	display:none;
 }
+
 #cart ul {
 	position:absolute;
 	list-style:none;
 	right:0px;
-	margin-top:30px;
-	background:#eee;
-	width:70px;
+	width:270px;
 	display:none;
+	z-index: 101;
+	background:#eee;
+	margin-top:30px;
 }
 #cart ul li{
 	text-align:left;
-	background:#BDC3C7;
+	background:#eee;
 }
-.nav .catalog li {
+/* #cart ul li:hover{
+	background:#F1C40F;
+	-webkit-transition-duration: 0.2s;
+	-moz-transition-duration:0.2s;
+} */
+.header .container #header1 #cart ul li a{
+	padding:10px;
+	display:block;
+	float: left;
+}
+
+#zhanghu ul {
+	position:absolute;
+	list-style:none;
+	right:80px;
+	margin-top:30px;
+	background:#eee;
+	width:90px;
+	display:none;
+	z-index: 100;
+}
+#zhanghu ul li{
 	text-align:left;
 	background:#BDC3C7;
+}
+#zhanghu ul li:hover {
+	background:#F1C40F;
+}
+.header .container #header1 #zhanghu ul li a {
+    display: block;
+    padding: 5px;
+    float: left;
+}
+
+
+.nav .catalog li {
+	text-align:left;
+ 	background:#BDC3C7; 
 }
 .nav .catalog li:hover {
 	background:#F1C40F;
@@ -338,11 +376,58 @@ a {
 }
 
 #home_header{
-	height: 172px;
+	height: 162px;
 }
 #home_header1{
 	height: 0px;
 }
+
+
+
+
+
+
+
+
+
+
+/*header cart item */
+.header-item {
+	height:70px;
+	clear:both;
+}
+
+.header-item img {
+	height:50px;
+	float:left;
+	margin-bottom:10px;
+}
+
+.header-item p {
+	padding:0;
+	margin:0;
+}
+
+.header-item-text {
+	margin-left:60px;
+}
+
+.header-item-text .header-item-name {
+	max-width:200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.header-item-text .header-item-count {
+	margin-left:20px;
+} 
+.header .container #header1 .header-item-text p {
+	float:none;
+}
+
+
+
 
 .nav-tabs > li > a{
 	border-radius: 0px;
