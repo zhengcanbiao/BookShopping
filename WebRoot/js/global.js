@@ -30,9 +30,10 @@ $(document).ready(function() {
 				dataType:"json",
 				success: function(result) {
 					$('#cart ul').empty();
-					if (result === "[]") {
+					if (result === "[]" || result == null ) {
 						$('#cart ul').append("<li><a href='/BookShopping/customer/RedirectToHome.action'>购物车是空的, 快去购物吧!</a></li>");
 					} else {
+					//	alert(result);
 						var resultJson = eval(result);
 						$(resultJson).each(function(index, item) {
 							if (index < 5) {
@@ -40,7 +41,7 @@ $(document).ready(function() {
 										"<a href='/BookShopping/customer/PrepareBooksDetail.action?booksId=" + item.booksId + "&categoryId=" + item.categoryId + "'><img src='"+ item.picUrl +"' />" +
 												"<div class='header-item-text'>" +
 													"<p>书名:" + item.bookName + "</p>" +
-													"<span class='header-item-price'>&yen;" + item.price + "</span><span class='header-item-count'>数量:" + item.sales + "</span>" +
+													"<span class='header-item-price'>&yen;" + item.price + "</span><span class='header-item-count'>数量:" + item.booksNumber + "</span>" +
 	 											"</div></a></li>");
 							}
 						});
