@@ -27,8 +27,8 @@
             		<c:forEach begin="${(index-1)*4 }" end="${(index-1)*4+3 }" var="i" >
             			<c:if test="${i < fn:length(requestScope['booksList']) }">
 		            	<div class="item span3">
-		            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksDetail.action?booksId=${requestScope['booksList'][i].booksId }"><img src="${requestScope['booksList'][i].picUrl }" /></a>	
-		            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksDetail.action?booksId=${requestScope['booksList'][i].booksId }"><p class="item-name">${requestScope['booksList'][i].bookName }</p></a>
+		            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksList'][i].booksId }"><img src="${requestScope['booksList'][i].picUrl }" /></a>	
+		            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksList'][i].booksId }"><p class="item-name">${requestScope['booksList'][i].bookName }</p></a>
 		            		<h5 class="item-price">&yen;<span>${requestScope['booksList'][i].price/100.0 }</span></h5>
 		            	</div>
 		            	</c:if>
@@ -39,11 +39,11 @@
             
             <div class="pagination">
                 <ul>
-                	<c:if test="${pageNow!=1 }"><li><a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?categoryId=${requestScope['categoryId'] }&pageNow=${pageNow-1 }">prev</a></li></c:if>
+                	<c:if test="${pageNow!=1 }"><li><a href="/BookShopping/customer/PrepareBooksInfoList.action?categoryId=${requestScope['categoryId'] }&pageNow=${pageNow-1 }">prev</a></li></c:if>
                 	<c:forEach begin="1" end="${requestScope['pageCount'] }" var="index">
-                		<li <c:if test="${pageNow==index }">class="active"</c:if>><a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?categoryId=${requestScope['categoryId'] }&pageNow=${index }">${index }</a></li>
+                		<li <c:if test="${pageNow==index }">class="active"</c:if>><a href="/BookShopping/customer/PrepareBooksInfoList.action?categoryId=${requestScope['categoryId'] }&pageNow=${index }">${index }</a></li>
                 	</c:forEach>
-                    <c:if test="${pageNow!=pageCount }"><li><a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?categoryId=${requestScope['categoryId'] }&pageNow=${pageNow+1 }">Next</a></li></c:if>
+                    <c:if test="${pageNow!=pageCount }"><li><a href="/BookShopping/customer/PrepareBooksInfoList.action?categoryId=${requestScope['categoryId'] }&pageNow=${pageNow+1 }">Next</a></li></c:if>
                 </ul>
             </div>
                     

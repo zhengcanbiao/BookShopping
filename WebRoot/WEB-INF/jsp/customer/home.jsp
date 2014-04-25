@@ -22,7 +22,7 @@
 				<p>欢迎来到网上书城</p>
 		    </c:if>
 		    <ul id="cart" >
-		       	<a href="${applicationScope['basePath'] }/customer/PrepareCartItemList.action"><i class="icon-shopping-cart"> </i>购物车</a>
+		       	<a href="/BookShopping/customer/PrepareCartItemList.action"><i class="icon-shopping-cart"> </i>购物车</a>
 		    	<ul>
 		    	</ul>
 		    </ul>
@@ -34,14 +34,14 @@
 		        	<ul  class="list-unstyled" id="zhanghu">
 		                <a href="/BookShopping/customer/PreparePersonalHome.action">我的账户</a>
 		                <ul>
-	                            <li><a href="${applicationScope['basePath'] }/customer/PreparePersonalHome.action"><i class="icon-angle-right"> </i>个人主页</a></li>
-	                            <li><a href="${applicationScope['basePath'] }/customer/PrepareOrderInfoList.action"><i class="icon-angle-right"> </i>我的订单</a></li>
-	                            <li><a href="${applicationScope['basePath'] }/customer/PrepareFavorite.action"><i class="icon-angle-right"> </i>收藏夹</a></li>
-                                <li><a href="${applicationScope['basePath'] }/customer/PrepareAddress.action"><i class="icon-angle-right"> </i>地址簿</a></li>
-                                <li><a href="${applicationScope['basePath'] }/customer/PreparePersonalInfo.action"><i class="icon-angle-right"> </i>修改信息</a></li>
-                                <li><a href="${applicationScope['basePath'] }/customer/RedirectToModifyPassword.action"><i class="icon-angle-right"> </i>修改密码</a></li>
-                                <li><a href="${applicationScope['basePath'] }/customer/PrepareCredits.action"><i class="icon-angle-right"> </i>我的积分</a></li>
-                                <li><a href="${applicationScope['basePath'] }/customer/Logout.action"><i class="icon-angle-right"> </i>退出登录</a></li>
+	                            <li><a href="/BookShopping/customer/PreparePersonalHome.action"><i class="icon-angle-right"> </i>个人主页</a></li>
+	                            <li><a href="/BookShopping/customer/PrepareOrderInfoList.action"><i class="icon-angle-right"> </i>我的订单</a></li>
+	                            <li><a href="/BookShopping/customer/PrepareFavorite.action"><i class="icon-angle-right"> </i>收藏夹</a></li>
+                                <li><a href="/BookShopping/customer/PrepareAddress.action"><i class="icon-angle-right"> </i>地址簿</a></li>
+                                <li><a href="/BookShopping/customer/PreparePersonalInfo.action"><i class="icon-angle-right"> </i>修改信息</a></li>
+                                <li><a href="/BookShoppingasePath'] }/customer/RedirectToModifyPassword.action"><i class="icon-angle-right"> </i>修改密码</a></li>
+                                <li><a href="/BookShopping/customer/PrepareCredits.action"><i class="icon-angle-right"> </i>我的积分</a></li>
+                                <li><a href="/BookShopping/customer/Logout.action"><i class="icon-angle-right"> </i>退出登录</a></li>
 	                    </ul>
 		            </ul>
 		     </c:if>
@@ -136,10 +136,10 @@
 			            			<c:if test="${i < fn:length(requestScope['booksCategoryList'][0]) }">
 					            		<c:if test="${i < 1 }">
 						            	<div class="item span1">
-						            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][0][i].picUrl }" width="120px" height="160px"/></a>		
+						            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][0][i].picUrl }" width="120px" height="160px"/></a>		
 											<div id="tuijian_content">
 												<div id="bookname_item">
-												<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][0][i].bookName }</p></a>
+												<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][0][i].bookName }</p></a>
 												</div>
 												<h5>${requestScope['booksCategoryList'][0][i].author } 著/ ${requestScope['booksCategoryList'][0][i].publisher }</h5>	
 												<h5> &yen;<span>${requestScope['booksCategoryList'][0][i].price/100.0 }</span> </h5>  
@@ -149,10 +149,10 @@
 					            		
 					            		<c:if test="${i < 5 && i > 0 }">
 					            		<div class="item span20">
-	  	 						            	<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][0][i].picUrl }" width="60px" height="90px"/></a>	
+	  	 						            	<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][0][i].picUrl }" width="60px" height="90px"/></a>	
  	  	 						            	<div id="bookname_items_1">
  	  	 						            		<div id="bookname_item_2">
-														<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][0][i].bookName }</p></a>
+														<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][0][i].bookName }</p></a>
  	  	 						            		</div>
 													<h5> &yen;<span>${requestScope['booksCategoryList'][0][i].price/100.0 }</span> </h5>  
 												</div>  		
@@ -166,10 +166,10 @@
 			            			<c:if test="${i < fn:length(requestScope['booksCategoryList'][1]) }">
 					            		<c:if test="${i < 1 }">
 						            	<div class="item span1">
-						            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][1][i].picUrl }" width="120px" height="160px"/></a>		
+						            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][1][i].picUrl }" width="120px" height="160px"/></a>		
 											<div id="tuijian_content">
 												<div id="bookname_item">
-												<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][1][i].bookName }</p></a>
+												<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][1][i].bookName }</p></a>
 												</div>
 												<h5>${requestScope['booksCategoryList'][1][i].author } 著/ ${requestScope['booksCategoryList'][1][i].publisher }</h5>	
 												<h5> &yen;<span>${requestScope['booksCategoryList'][1][i].price/100.0 }</span> </h5>  
@@ -179,10 +179,10 @@
 					            		
 					            		<c:if test="${i < 5 && i > 0 }">
 					            		<div class="item span20">
-	  	 						            	<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][1][i].picUrl }" width="60px" height="90px"/></a>	
+	  	 						            	<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][1][i].picUrl }" width="60px" height="90px"/></a>	
  	  	 						            	<div id="bookname_items_1">
  	  	 						            		<div id="bookname_item_2">
-														<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][1][i].bookName }</p></a>
+														<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][1][i].bookName }</p></a>
  	  	 						            		</div>
 													<h5> &yen;<span>${requestScope['booksCategoryList'][1][i].price/100.0 }</span> </h5>  
 												</div>  		
@@ -209,11 +209,11 @@
 			            			<c:if test="${i < fn:length(requestScope['booksCategoryList'][0]) }">
 					            	<div class="item span3">
 					            		<c:if test="${i > 0 }">
-					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><p class="item-name"><strong>${i+1}.</strong>${requestScope['booksCategoryList'][0][i].bookName }</p></a>
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><p class="item-name"><strong>${i+1}.</strong>${requestScope['booksCategoryList'][0][i].bookName }</p></a>
 										</c:if>
 					            		<c:if test="${i < 1 }">
-					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][0][i].picUrl }" width="60px" height="80px"/></a>	
-					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][0][i].bookName }</p></a>
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][0][i].picUrl }" width="60px" height="80px"/></a>	
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][0][i].bookName }</p></a>
 					            		<h5 class="item-price">&yen;<span>${requestScope['booksCategoryList'][0][i].price/100.0 }</span></h5>
 					            		</c:if>
 					            	</div>
@@ -225,11 +225,11 @@
 			            			<c:if test="${i < fn:length(requestScope['booksCategoryList'][1]) }">
 					            	<div class="item span3">
 					            		<c:if test="${i > 0 }">
-					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><p class="item-name"><strong>${i+1}.</strong>${requestScope['booksCategoryList'][1][i].bookName }</p></a>
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><p class="item-name"><strong>${i+1}.</strong>${requestScope['booksCategoryList'][1][i].bookName }</p></a>
 										</c:if>
 					            		<c:if test="${i < 1 }">
-					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][1][i].picUrl }" width="60px" height="80px"/></a>	
-					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][1][i].bookName }</p></a>
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][1][i].picUrl }" width="60px" height="80px"/></a>	
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][1][i].bookName }</p></a>
 					            		<h5 class="item-price">&yen;<span>${requestScope['booksCategoryList'][1][i].price/100.0 }</span></h5>
 					            		</c:if>
 					            	</div>
@@ -241,11 +241,11 @@
 			            			<c:if test="${i < fn:length(requestScope['booksCategoryList'][2]) }">
 					            	<div class="item span3">
 					            		<c:if test="${i > 0 }">
-					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][2][i].booksId }"><p class="item-name"><strong>${i+1}.</strong>${requestScope['booksCategoryList'][2][i].bookName }</p></a>
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][2][i].booksId }"><p class="item-name"><strong>${i+1}.</strong>${requestScope['booksCategoryList'][2][i].bookName }</p></a>
 										</c:if>
 					            		<c:if test="${i < 1 }">
-					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][2][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][2][i].picUrl }" width="60px" height="80px"/></a>	
-					            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksInfoList.action?booksId=${requestScope['booksCategoryList'][2][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][2][i].bookName }</p></a>
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][2][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][2][i].picUrl }" width="60px" height="80px"/></a>	
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][2][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][2][i].bookName }</p></a>
 					            		<h5 class="item-price">&yen;<span>${requestScope['booksCategoryList'][2][i].price/100.0 }</span></h5>
 					            		</c:if>
 					            	</div>
@@ -266,8 +266,8 @@
 	            		<c:forEach begin="${(index)*4 }" end="${(index)*4+3 }" var="i" >
 	            			<c:if test="${i < fn:length(requestScope['booksCategoryList'][booksListIndex-1]) }">
 			            	<div class="item span3">
-			            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][booksListIndex-1][i].booksId }"><img src="${requestScope['booksCategoryList'][booksListIndex-1][i].picUrl }" /></a>	
-			            		<a href="${applicationScope['basePath'] }/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][booksListIndex-1][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][booksListIndex-1][i].bookName }</p></a>
+			            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][booksListIndex-1][i].booksId }"><img src="${requestScope['booksCategoryList'][booksListIndex-1][i].picUrl }" /></a>	
+			            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][booksListIndex-1][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][booksListIndex-1][i].bookName }</p></a>
 			            		<h5 class="item-price">&yen;<span>${requestScope['booksCategoryList'][booksListIndex-1][i].price/100.0 }</span></h5>
 			            	</div>
 			            	</c:if>
