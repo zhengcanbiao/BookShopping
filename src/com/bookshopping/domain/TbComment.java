@@ -1,6 +1,7 @@
 package com.bookshopping.domain;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,6 +37,14 @@ public class TbComment implements java.io.Serializable {
 	public TbComment() {
 	}
 
+	/** minimal constructor */
+	public TbComment(TbCustomer tbCustomer,TbBooks tbBooks,
+	        String commentContent) {
+		this.tbCustomer = tbCustomer;
+		this.tbBooks = tbBooks;
+		this.commentContent = commentContent;
+	}
+	
 	/** full constructor */
 	public TbComment(TbCustomer tbCustomer, TbBooks tbBooks, Date commentTime,
 			String commentContent) {

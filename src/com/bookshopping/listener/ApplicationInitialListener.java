@@ -73,7 +73,8 @@ public class ApplicationInitialListener extends ContextLoaderListener implements
 	
 	private void initAdmin() {
 		try {
-			if(AdminService.getTbAdminProvider().getAdminList() == null)
+			//System.out.println(AdminService.getTbAdminProvider().getAdminList());
+			if(AdminService.getTbAdminProvider().getAdminList().isEmpty())
 			AdminService.getTbAdminProvider().addAdmin(new TbAdmin("admin", SHAEncypherUtil.encryptSHA("111111")));
 		} catch (Exception ex) {
 			ex.printStackTrace();

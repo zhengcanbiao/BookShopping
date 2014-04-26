@@ -34,21 +34,22 @@
         
         	<p class="bookshopping_title">评价</p>
         	
-        	<c:forEach items="${requestScope['clothesDetailList'] }" var="orderDetail">
+        	<c:forEach items="${requestScope['booksDetailList'] }" var="orderDetail">
 	            <div class="comment_block row-fluid" id="comment_div_${orderDetail.orderDetailId }">
 	            	<div class="comment_item span6">
-	                    <a href="/BookShopping/customer/PrepareClothesDetail.action?clothesId=${orderDetail.tbClothesdetail.tbClothes.clothesId }"><img src="${orderDetail.tbClothesdetail.picUrl }" /></a>
+	                    <a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${orderDetail.tbBooks.booksId }"><img src="${orderDetail.tbBooks.picUrl }" /></a>
 	                    <div class="text_block">
-	                        <a href="${applicationScope['basePath'] }/customer/PrepareClothesDetail.action?clothesId=${orderDetail.tbClothesdetail.tbClothes.clothesId }">${orderDetail.tbClothesdetail.tbClothes.clothesName }</a>
+	                        <a href="${applicationScope['basePath'] }/customer/PrepareBooksDetail.action?booksId=${orderDetail.tbBooks.booksId }">${orderDetail.tbBooks.bookName }</a>
 	                        <br>
-	                        <span>尺码:
-	                        <c:choose>
-		                        <c:when test="${orderDetail.tbClothesdetail.size==0 }">S</c:when>
-		                        <c:when test="${orderDetail.tbClothesdetail.size==1 }">M</c:when>
-		                        <c:when test="${orderDetail.tbClothesdetail.size==2 }">L</c:when>
-	                        </c:choose>
+	                        <span>作者:
+	                        <%-- <c:choose>
+		                        <c:when test="${orderDetail.tbBooks.size==0 }">S</c:when>
+		                        <c:when test="${orderDetail.tbBooks.size==1 }">M</c:when>
+		                        <c:when test="${orderDetail.tbBooks.size==2 }">L</c:when>
+	                        </c:choose> --%>
+	                        ${orderDetail.tbBooks.author} }
 	                        </span>
-	                        <span>&yen;${orderDetail.tbClothesdetail.tbClothes.price/100.0 }</span>
+	                        <span>&yen;${orderDetail.tbBooks.price/100.0 }</span>
 	                    </div>
 	                </div>
 	                
@@ -56,7 +57,7 @@
 	            </div>
         	</c:forEach>
             
-            <button type="button" class="btn btn-large btn-primary btn_comment" onClick="add_comment('${requestScope.clothesDetailList[0].tbOrder.orderId}')">添加评价</button> 
+            <button type="button" class="btn btn-large btn-primary btn_comment" onClick="add_comment('${requestScope.booksDetailList[0].tbOrder.orderId}')">添加评价</button> 
             
             
             
