@@ -101,15 +101,7 @@
 					      <img src="/BookShopping/img/logo4.png" width="300px" height="400px" alt="">
 					    </div>						   				    					 
 					  </div>
-					
-					  <!-- Controls -->
-<!-- 					  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-					    <i class="icon-chevron-left"></i>
-					  </a>
-					  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-					    <span class="icon-chevron-right"></span>
-					  </a> -->
-					</div>
+				</div>
 
 
 				</div>
