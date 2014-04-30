@@ -211,4 +211,222 @@
 			</result>
 		</action>
 	</package>
+	
+	<package name="OrderAction" namespace="/customer" extends="Authority">
+		<action name="GenerateOrderInfo" class="GenerateOrderInfoAction">
+			<result name="success">/WEB-INF/jsp/customer/fulfillOrderInfo.jsp</result>
+			<interceptor-ref name="bookshoppingLogin" />
+		</action>
+		
+		<action name="AddOrder" class="AddOrderAction">
+			<result name="success">/WEB-INF/jsp/customer/generateOrderSuccess.jsp</result>
+			<result name="error">/WEB-INF/jsp/customer/generateOrderFail.jsp</result>
+			<interceptor-ref name="bookshoppingLogin" />
+		</action>
+		<action name="PrepareOrderInfoList" class="PrepareOrderInfoListAction">
+			<result name="success">/WEB-INF/jsp/customer/orderList.jsp</result>
+			<interceptor-ref name="bookshoppingLogin" />
+		</action>
+		<action name="CancelOrder" class="CancelOrderAction">
+			<result name="success" type="redirectAction">PrepareOrderInfoList</result>
+			<interceptor-ref name="bookshoppingLogin" />
+		</action>
+		<action name="PrepareOrderDetail" class="PrepareOrderDetailAction">
+			<result name="success">/WEB-INF/jsp/customer/orderDetail.jsp</result>
+			<interceptor-ref name="bookshoppingLogin" />
+		</action>
+		<action name="ConfirmDelivery" class="ConfirmDeliveryAction">
+			<result name="success" type="redirectAction">PrepareOrderInfoList</result>
+		</action>
+		<action name="ModifyOrderAddress" class="ModifyOrderAddressAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="DeleteOrder" class="DeleteOrderAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="CommentAction" namespace="/customer" extends="Authority">
+		<action name="PrepareComment" class="PrepareCommentAction">
+			<result name="success">/WEB-INF/jsp/customer/orderComment.jsp</result>
+		</action>
+	</package>
+	<package name="CommentAjaxAction" namespace="/customer" extends="Authority">
+		<action name="AddComment" class="AddCommentAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	
+	<!-- 
+	
+	
+	manager
+	
+	
+	 -->
+	 
+	<package name="JsonAction" namespace="/manager" extends="json-default">
+		<!-- <action name="GetSubcategoryList" class="GetSubcategoryListAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="CategoryExist" class="CategoryExistAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action> -->
+		<action name="AdminPwdConfirm" class="AdminPwdConfirmAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- <action name="DiscountConfirm" class="DiscountConfirmAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action> -->
+		<action name="AdminExist" class="AdminExistAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="ManagerAction" namespace="/manager" extends="struts-default">
+		<action name="Jump" class="JumpAction">
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+			<result name="0">/WEB-INF/jsp/manager/managerChangePwd.jsp</result>
+			<result name="1">/WEB-INF/jsp/manager/addClothesDetail.jsp</result>
+			<result name="2">/WEB-INF/jsp/manager/addCategory.jsp</result>
+			<result name="3">/WEB-INF/jsp/manager/managerHome.jsp</result>
+			<result name="4">/WEB-INF/jsp/manager/viewDiscount.jsp</result>
+			<result name="5">/WEB-INF/jsp/manager/addDiscount.jsp</result>
+			<result name="6">/WEB-INF/jsp/manager/viewSales.jsp</result>
+			<result name="7">/WEB-INF/jsp/manager/searchSales.jsp</result>
+		</action>
+		<action name="ManagerLogin" class="ManagerLoginAction">
+			<result name="success">/WEB-INF/jsp/manager/managerHome.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+			<result name="error">/managerLogin.jsp</result>
+		</action>
+		<action name="ManagerChangePsw" class="ManagerChangePwdAction">
+			<result name="success">/WEB-INF/jsp/manager/managerHome.jsp</result>
+			<result name="error">/managerLogin.jsp</result>
+		</action>
+		<action name="ManagerLogout" class="ManagerLogoutAction">
+			<result name="success">/managerLogin.jsp</result>
+			<result name="error">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+	</package>
+	
+	<!-- <package name="ManagerCategoryAction" namespace="/manager" extends="struts-default">
+		<action name="PrepareCategory" class="PrepareCategoryAction">
+			<result name="success">/WEB-INF/jsp/manager/viewCategory.jsp</result>
+		</action>
+		<action name="AddCategory" class="AddCategoryAction">
+			<result name="success" type="chain">PrepareCategory</result>
+		</action>
+		<action name="PrepareCategoryDetail" class="PrepareCategoryDetailAction">
+			<result name="success">/WEB-INF/jsp/manager/modifyCategory.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+		<action name="ModifyCategory" class="ModifyCategoryAction">
+			<result name="success" type="chain">PrepareCategory</result>
+		</action>
+		<action name="DeleteCategory" class="DeleteCategoryAction">
+			<result name="success" type="chain">PrepareCategory</result>
+		</action>
+	</package>
+	
+	<package name="ManagerClothesAction" namespace="/manager" extends="struts-default">
+		<action name="SearchClothes" class="AdminSearchClothesAction">
+			<result name="success">/WEB-INF/jsp/manager/viewClothes.jsp</result>
+		</action>
+		<action name="PrepareClothes" class="PrepareClothesAction">
+			<result name="success">/WEB-INF/jsp/manager/viewClothes.jsp</result>
+		</action>
+		<action name="PrepareClothesDetail" class="AdminPrepareClothesDetailAction">
+			<result name="success">/WEB-INF/jsp/manager/modifyClothesDetail.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+		<action name="ModifyClothesDetail" class="ModifyClothesDetailAction">
+			<result name="success" type="chain">PrepareClothes</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+		<action name="ValidateClothes" class="ValidateClothesAction">
+			<result name="success" type="chain">PrepareClothes</result>
+		</action>
+		<action name="AddClothesDetail" class="AddClothesDetailAction">
+			<result name="success" type="chain">PrepareClothes</result>
+			<result name="input">/WEB-INF/jsp/manager/addClothesDetail.jsp</result>
+		</action>
+	</package>
+	
+	<package name="ManagerOrderAction" namespace="/manager" extends="struts-default">
+		<action name="PrepareOrder" class="PrepareOrderAction">
+			<result name="success">/WEB-INF/jsp/manager/viewOrder.jsp</result>
+		</action>
+		<action name="SearchOrder" class="SearchOrderAction">
+			<result name="success">/WEB-INF/jsp/manager/viewOrder.jsp</result>
+		</action>
+		<action name="PrepareOrderDetail" class="AdminPrepareOrderDetailAction">
+			<result name="success">/WEB-INF/jsp/manager/viewOrderDetail.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+		<action name="ModifyOrder" class="ModifyOrderAction">
+			<result name="success" type="chain">PrepareOrder</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+	</package>
+	
+	<package name="ManagerSalesAction" namespace="/manager" extends="struts-default">
+		<action name="PrepareSales" class="PrepareSalesAction">
+			<result name="success">/WEB-INF/jsp/manager/viewSales.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+		<action name="PrepareSalesList" class="PrepareSalesListAction">
+			<result name="success">/WEB-INF/jsp/manager/searchSales.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+		<action name="PrepareSalesChart" class="PrepareSalesChartAction">
+			<result name="success">/WEB-INF/jsp/manager/viewSalesChart.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+	</package>
+	
+	<package name="ManagerCustomerAction" namespace="/manager" extends="struts-default">
+		<action name="PrepareCustomer" class="PrepareCustomerAction">
+			<result name="success">/WEB-INF/jsp/manager/viewCustomer.jsp</result>
+		</action>
+		<action name="SearchCustomer" class="SearchCustomerAction">
+			<result name="success">/WEB-INF/jsp/manager/viewCustomer.jsp</result>
+		</action>
+		<action name="ValidateCustomer" class="ValidateCustomerAction">
+			<result name="success" type="chain">PrepareCustomer</result>
+		</action>
+	</package>
+	
+	<package name="ManagerDiscountAction" namespace="/manager" extends="struts-default">
+		<action name="AddDiscount" class="AddDiscountAction">
+			<result name="success">/WEB-INF/jsp/manager/viewDiscount.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/addDiscount.jsp</result>
+		</action>
+		<action name="PrepareDiscount" class="PrepareDiscountAction">
+			<result name="success">/WEB-INF/jsp/manager/modifyDiscount.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+		<action name="ModifyDiscount" class="ModifyDiscountAction">
+			<result name="success">/WEB-INF/jsp/manager/viewDiscount.jsp</result>
+		</action>
+		<action name="DeleteDiscount" class="DeleteDiscountAction">
+			<result name="success">/WEB-INF/jsp/manager/viewDiscount.jsp</result>
+		</action>
+	</package> -->
 </struts>    

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%-- <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -156,48 +156,185 @@ a:hover{
 			}
 	</script>
 </body>
-</html>
+</html> 
 
-
-<%-- 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'viewDiscount.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-  </head>
-  
-  <body>
-    <h3>折扣管理</h3>
-    <a href="Jump.action?jumpId=5">添加折扣</a><br>
-    <table width="500">
-	    <tr>
-		    <td>会员等级</td>
-		    <td>会员积分</td>
-		    <td>对应折扣</td>
-		    <td>操作</td>
-	    </tr>
-	    <c:forEach items="${applicationScope['discountList'] }" begin="1" var="item" varStatus="status">
-	    	<tr>
-	    		<td>等级${status.index }</td>
-	    		<td>${item.discountPoints }</td>
-	    		<td>${item.discountRate }%</td>
-	    		<td><a href="PrepareDiscount.action?discountPoints=${item.discountPoints }&discountRate=${item.discountRate }">修改</a></td>
-	    		<td><a href="DeleteDiscount.action?discountPoints=${item.discountPoints }&discountRate=${item.discountRate }">删除</a></td>
-    		</tr>
-	    </c:forEach>
-    </table>
-  </body>
-</html>
  --%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>折扣管理</title>
+<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<style>
+#right_block {
+	position: relative;
+	width: 700px;
+	margin: auto;
+	padding-top: 150px;
+}
+#add_zhekou {
+	float: right;
+	margin-right: 10px;
+}
+</style>
+</head>
+<body>
+	<div class="admin_head">
+		<p>网上书城系统-管理员后台</p>
+	</div>
+	<div class="admin_container">
+		<div class="admin_left">
+			<div class="welcome">
+				<span>管理员 </span>
+				<a href="/BookShopping/manager/ManagerLogout.action">退出</a>
+			</div>
+			<hr/>
+			<ul>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=3">
+						<i class="icon-home"></i>
+						<span>回到首页</span>
+					</a>				
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=0">
+						<i class="icon-wrench"></i>
+						<span>修改密码</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareCategory.action">
+						<i class="icon-bookmark"></i>
+						<span>商品类别管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareClothes.action">
+						<i class="icon-book"></i>
+						<span>商品管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareOrder.action">
+						<i class="icon-shopping-cart"></i>
+						<span>订单管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=6">
+						<i class="icon-eye-open"></i>
+						<span>销售量统计</span>
+					</a>					
+				</li>				
+				<li>
+					<a href="/BookShopping/manager/PrepareCustomer.action">
+						<i class="icon-user"></i>
+						<span>会员管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=4">
+						<i class="icon-star icon-white"></i>
+						<span class="selected">折扣管理</span>
+					</a>					
+				</li>								
+			</ul>
+		</div>
+		<div class="admin_right">
+			<div class="bg_right">
+				<div class="admin_right_to_center">
+				
+		            <div id="right_block">
+		            		折扣管理
+<!-- 		            <form name="form1" method="post" action="/BookShopping/manager/Jump.action?jumpId=5" enctype="multipart/form-data">
+		            <input type="submit" value="添加折扣" style="float:right; margin-top:-25px;"/>
+		            </form> -->
+		            <button id="add_zhekou" type="button" class="btn btn-default" onclick="add_zhekou()">添加折扣</button>
+		            <hr />
+		            <table width="700">
+		            <tr>
+		            <td>会员等级</td>
+		            <td>会员积分</td>
+		            <td>对应折扣</td>
+		            <td>操作</td>
+		            </tr>
+		            
+		             <c:forEach items="${applicationScope['discountList'] }" begin="1" var="item" varStatus="status">
+			    	<tr>
+			    		<td>等级${status.index }</td>
+			    		<td>${item.discountPoints }</td>
+			    		<td>${item.discountRate }%</td>
+			    		<td><a href="/BookShopping/manager/PrepareDiscount.action?discountPoints=${item.discountPoints }">修改</a></td>
+			    		<td><a href="#" onclick="show_confirm('/BookShopping/manager/DeleteDiscount.action?discountPoints=${item.discountPoints }&discountRate=${item.discountRate }')">删除</a></td>
+			    		
+		    		</tr>
+			    </c:forEach>
+		            </table>
+		            </div>
+		            
+		            
+			
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+    <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/alert.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/manager.js"></script>
+    <script type="text/javascript">		
+    		function show_confirm(path)
+			{
+    			var href = path;
+				var r=confirm("是否确认删除？");
+				if (r==true)
+  			  	{
+  					Alert("删除成功");
+  					window.location.href = href;
+ 				 }
+				else
+  				{
+  					Alert("撤销删除");
+  				}
+			}
+			function add_zhekou(){
+				window.location.href="/BookShopping/manager/Jump.action?jumpId=5";
+			}
+	</script>
+</body>
+</html>

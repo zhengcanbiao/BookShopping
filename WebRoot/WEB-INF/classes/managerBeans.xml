@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+
+	<!--后台模块-->
+	<!-- manager -->
+	<bean id="JumpAction" class="com.bookshopping.action.manager.JumpAction" scope="prototype" />
+	<bean id="ManagerLoginAction" class="com.bookshopping.action.manager.ManagerLoginAction" scope="prototype" />
+	<bean id="ManagerLogoutAction" class="com.bookshopping.action.manager.ManagerLogoutAction" scope="prototype" />
+	<bean id="ManagerChangePwdAction" class="com.bookshopping.action.manager.ManagerChangePwdAction" scope="prototype" />
+	
+	
+</beans>

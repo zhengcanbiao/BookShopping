@@ -6,9 +6,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 	
 	<bean id="GetSubcategoryListAction" class="com.bookshopping.action.category.GetSubcategoryListAction" scope="prototype" />
-	<!-- <bean id="CategoryExistAction" class="com.eshopping.action.managerCategory.CategoryExistAction" scope="prototype" />
-	<bean id="AdminPwdConfirmAction" class="com.eshopping.action.manager.AdminPwdConfirmAction" scope="prototype" />
-	<bean id="DiscountConfirmAction" class="com.eshopping.action.managerDiscount.DiscountConfirmAction" scope="prototype" />
-	<bean id="AdminExistAction" class="com.eshopping.action.manager.AdminExistAction" scope="prototype" /> -->
+	<bean id="AdminPwdConfirmAction" class="com.bookshopping.action.manager.AdminPwdConfirmAction" scope="prototype" />
+	<bean id="AdminExistAction" class="com.bookshopping.action.manager.AdminExistAction" scope="prototype" />
 	
+	<!-- <bean id="CategoryExistAction" class="com.bookshopping.action.managerCategory.CategoryExistAction" scope="prototype" />
+	
+	<bean id="DiscountConfirmAction" class="com.bookshopping.action.managerDiscount.DiscountConfirmAction" scope="prototype" />
+	 -->
 </beans>
