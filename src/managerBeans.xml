@@ -25,5 +25,9 @@
 	<bean id="ModifyBooksDetailAction" class="com.bookshopping.action.managerBooks.ModifyBooksDetailAction" scope="prototype" />
 	<bean id="AddBooksDetailAction" class="com.bookshopping.action.managerBooks.AddBooksDetailAction" scope="prototype" />
 	<bean id="ValidateBooksAction" class="com.bookshopping.action.managerBooks.ValidateBooksAction" scope="prototype" />
-	
+	<!-- managerOrder -->
+	<bean id="SearchOrderAction" class="com.bookshopping.action.managerOrder.SearchOrderAction" scope="prototype" />
+	<bean id="ModifyOrderAction" class="com.bookshopping.action.managerOrder.ModifyOrderAction" scope="prototype" />
+	<bean id="PrepareOrderAction" class="com.bookshopping.action.managerOrder.PrepareOrderAction" scope="prototype" />
+	<bean id="AdminPrepareOrderDetailAction" class="com.bookshopping.action.managerOrder.PrepareOrderDetailAction" scope="prototype" />
 </beans>

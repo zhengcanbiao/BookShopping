@@ -367,10 +367,6 @@
 			<result name="input">/WEB-INF/jsp/manager/addBooksDetail.jsp</result>
 		</action>
 	</package>
-	
-	<!-- 
-	
-	
 	<package name="ManagerOrderAction" namespace="/manager" extends="struts-default">
 		<action name="PrepareOrder" class="PrepareOrderAction">
 			<result name="success">/WEB-INF/jsp/manager/viewOrder.jsp</result>
@@ -387,6 +383,10 @@
 			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
 		</action>
 	</package>
+	<!-- 
+	
+	
+	
 	
 	<package name="ManagerSalesAction" namespace="/manager" extends="struts-default">
 		<action name="PrepareSales" class="PrepareSalesAction">

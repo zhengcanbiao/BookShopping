@@ -133,7 +133,7 @@ a:hover{
 					</a>					
 				</li>
 				<li>
-					<a href="/BookShopping/manager/PrepareClothes.action">
+					<a href="/BookShopping/manager/PrepareBooks.action">
 						<i class="icon-book"></i>
 						<span>商品管理</span>
 					</a>					

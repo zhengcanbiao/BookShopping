@@ -129,21 +129,22 @@ a:hover{
     <table width="800px">
     	<tr>
     		<td>商品信息</td>
-    		<td>尺寸</td>
+    		<td>作者</td>
     		<td>单价</td>
     		<td>数量</td>
     		<td>小计</td>
     	</tr>
     	<tr>
-    		<c:forEach items="${requestScope['clothesDetail'] }" var="item" varStatus="status">
+    		<c:forEach items="${requestScope['books'] }" var="item" varStatus="status">
     			<c:set var="index" value="${status.index }" />
     			<tr>
-    				<td><a href="/BookShopping/manager/PrepareClothesDetail.action?clothesId=${item.tbClothes.getClothesId()}">${item.tbClothes.clothesName }</a></td>
-    				<c:choose>
+    				<td><a href="/BookShopping/manager/PrepareBooksDetail.action?booksId=${item.getBooksId()}">${item.getBookName()}</a></td>
+    				<td>${item.author} </td>
+    				<%-- <c:choose>
 	   					<c:when test="${item.size==0 }"><td>S</td></c:when>
 	   					<c:when test="${item.size==1 }"><td>M</td></c:when>
 	   					<c:when test="${item.size==2 }"><td>L</td></c:when>
-   					</c:choose>
+   					</c:choose> --%>
    					<td>&yen;<fmt:formatNumber value='${requestScope.orderDetail.get(index).price/100.0/requestScope.orderDetail.get(index).quantity }' pattern='#0.00'/></td>
    					<td><fmt:formatNumber value="${requestScope['orderDetail'].get(index).quantity }" pattern="#"/></td>
     				<td>&yen;<fmt:formatNumber value="${requestScope['orderDetail'].get(index).price/100.0 }" pattern="#0.00"/></td>
@@ -285,7 +286,7 @@ a:hover{
     		<c:forEach items="${requestScope['clothesDetail'] }" var="item" varStatus="status">
     			<c:set var="index" value="${status.index }" />
     			<tr>
-    				<td><a href="PrepareClothesDetail.action?clothesId=${item.tbClothes.getClothesId()}">${item.tbClothes.clothesName }</a></td>
+    				<td><a href="PrepareBooksDetail.action?clothesId=${item.tbBooks.getBooksId()}">${item.tbBooks.bookName }</a></td>
     				<c:choose>
 	   					<c:when test="${item.size==0 }"><td>S</td></c:when>
 	   					<c:when test="${item.size==1 }"><td>M</td></c:when>

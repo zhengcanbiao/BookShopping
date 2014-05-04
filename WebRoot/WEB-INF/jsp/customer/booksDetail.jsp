@@ -137,7 +137,7 @@
 		
 		function add_to_cart(id) {
 			//alert(id);
-		   alert($('#input_count').val());
+		   //alert($('#input_count').val());
 			/* if (!$("input:radio:checked").val()) {
 				show_tips("请选择尺码","warning");
 			} else if ($("#input_count").val() === '') {

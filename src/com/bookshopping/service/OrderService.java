@@ -12,6 +12,7 @@ import com.bookshopping.exception.CustomerNotFoundException;
 import com.bookshopping.exception.DiscountNotFoundException;
 import com.bookshopping.exception.OrderNotFoundException;
 import com.bookshopping.utils.OrderIdGenerator;
+import com.bookshopping.utils.SearchUtil;
 import com.bookshopping.utils.SpringUtil;
 
 public class OrderService {
@@ -117,5 +118,15 @@ public class OrderService {
 	public static void updateOrder(TbOrder order) {
 	    getTbOrderProvider().updateOrder(order);
     }
-
+	public static List<TbOrder> getOrderList() throws OrderNotFoundException {
+		return getTbOrderProvider().getOrderList();
+	}
+	public static List<TbOrderdetail> getOrdertailListByOrderId(String orderId) throws OrderNotFoundException {
+		return getTbOrderProvider().getOrdertailListByOrderId(orderId);
+	}
+	@SuppressWarnings("unchecked")
+	public static List<TbOrder> searchOrder(String keyword) {
+		return SearchUtil.searchForKeyword(keyword.split("\\s+"), "TbOrder",
+				new String[]{"OrderID", "CustomerName"});
+	}
 }
