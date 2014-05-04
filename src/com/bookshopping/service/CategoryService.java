@@ -70,4 +70,14 @@ public class CategoryService {
 	public static TbCategory getCategoryByCategoryId(int categoryId) {
 	    return getTbCategoryProvider().getCategoryByCategoryId(categoryId);
     }
+	
+	public static void updateCategory(TbCategory category) {
+		getTbCategoryProvider().updateCategory(category);
+	}
+	
+	public static void addCategory(String categoryName, int parentId) {
+		TbCategory category = new TbCategory(categoryName);
+		category.setParentId(parentId);
+		getTbCategoryProvider().addCategory(category);
+	}
 }

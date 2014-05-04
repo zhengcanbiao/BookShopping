@@ -96,23 +96,21 @@ a:hover{
             </div><!-- 左边部分 -->
             
             <div class="right_block">
-            <form name="form2" method="post" action="/BookShopping/manager/AddClothesDetail.action" enctype="multipart/form-data">
+            <form name="form2" method="post" action="/BookShopping/manager/AddBooksDetail.action" enctype="multipart/form-data">
             添加商品
             <hr />
             <p/>商品名称:&nbsp;&nbsp;&nbsp;
-			<input name="clothesName" type="text" id="clothesname"/><font size="2" color="#FF0000" id="a"> *必填项</font>
+			<input name="bookName" type="text" id="clothesname" /><font size="2" color="#FF0000" id="a"> *必填项</font>
             <p/>商品价格:&nbsp;&nbsp;&nbsp;
-			<input name="price" type="text" id="price"/><font size="2" color="#FF0000" id="a"> *必填项</font>
-            <p/>S尺寸库存量:
-			<input name="remainder0" type="text" id="sremainder"/><font size="2" color="#FF0000" id="a"> *库存量三项必填一项</font>
-            <p/>M尺寸库存量:
-			<input name="remainder1" type="text" id="mremainder"/>
-            <p/>L尺寸库存量:
-			<input name="remainder2" type="text" id="lremainder"/>
-            <p/>生厂商:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input name="producer" type="text" id="producer"/>
-            <p/>材质:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input name="material" type="text" id="material"/>
+			<input name="price" type="text" id="price" /><font size="2" color="#FF0000" id="a" > *必填项</font>
+            <p/>库存量:
+			<input name="remainder" type="text" id="sremainder" /><font size="2" color="#FF0000" id="a" > *库存量三项必填一项</font>
+            <p/>作者:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input name="author" type="text" id="producer" />
+            <p/>出版社:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input name="publisher" type="text" id="material" />
+			<p/>出版日期:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input name="publicationDate" type="text" id="material" />
 			
             <p/>父类别:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<select id="first_category_dropdown"  name="firstCategory" onchange="on_first_category_selected()">
@@ -129,13 +127,13 @@ a:hover{
    			<input type="file" name="image" id="pic" accept="image/jpeg" /> 
    			<font size="2" color="#FF0000" id="a" style="float:right; margin-right:400px; margin-top:-20px;"> *必选项</font>
             <pre style="float:inherit; margin-bottom:5px;">商品介绍:
-			<textarea style="float:left; margin-left:90px; margin-top:-15px;"name="clothesDescription" id="ClothesDescription" class="introduce"></textarea>
+			<textarea style="float:left; margin-left:90px; margin-top:-15px;"name="booksDescription" id="ClothesDescription" class="introduce"></textarea>
             </pre>
             <br/>
             <br/>
             <br/>
             <br/>
-            <input type="button" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;添加商品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="float:left; margin-left:90px;" onclick="verify()"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;添加商品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="float:left; margin-left:90px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  			</form>
             <form name="form3" method="post" action="/BookShopping/manager/PrepareClothes.action" enctype="multipart/form-data">
             <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返回&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="float:left; margin-left:50px;margin-top:-14px;"/>
@@ -385,7 +383,7 @@ a:hover{
 	          子类别: <select id="subcategory_dropdown" name="categoryId">
 	          	<option value='-1' >---请选择父类别---</option>
 	          </select>
-	         商品介绍: <input name="clothesDescription" type="text" > <br>
+	         商品介绍: <input name="booksDescription" type="text" > <br>
 	          商品图片: <input type="file" name="image"><br>
 	          <input type="submit" value="提交" />
     		  <input type="reset" value="重置" />

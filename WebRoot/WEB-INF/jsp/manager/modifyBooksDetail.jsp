@@ -87,7 +87,7 @@ a:hover{
             <li><a href="/BookShopping/manager/Jump.action?jumpId=3">回到首页</a></li>
             <li><a href="/BookShopping/manager/Jump.action?jumpId=0">修改密码</a></li>
             <li><a href="/BookShopping/manager/PrepareCategory.action">商品类别管理</a></li>
-            <li><a href="/BookShopping/manager/PrepareClothes.action">商品管理</a></li>
+            <li><a href="/BookShopping/manager/PrepareBooks.action">商品管理</a></li>
             <li><a href="/BookShopping/manager/PrepareOrder.action">订单管理</a></li>
             <li><a href="/BookShopping/manager/Jump.action?jumpId=6">销售量统计</a></li>
             <li><a href="/BookShopping/manager/PrepareCustomer.action">会员管理</a></li>
@@ -96,54 +96,52 @@ a:hover{
             </div><!-- 左边部分 -->
             
             <div class="right_block">
-            <form name="form2" method="post" action="/BookShopping/manager/ModifyClothesDetail.action" enctype="multipart/form-data">
+            <form name="form2" method="post" action="/BookShopping/manager/ModifyBooksDetail.action" enctype="multipart/form-data">
             修改商品
             <hr />
-            <input type="hidden" name="clothesId" value="${requestScope['Clothes'].clothesId }" />
+            <input type="hidden" name="booksId" value="${requestScope['Books'].booksId }" />
             <p/>商品名称:&nbsp;&nbsp;&nbsp;
-			<input name="clothesName" type="text" id="clothesname" value="${requestScope['Clothes'].clothesName}"/><font size="2" color="#FF0000" id="a"> *必填项</font>
+			<input name="bookName" type="text" id="clothesname" value="${requestScope['Books'].bookName}"/><font size="2" color="#FF0000" id="a"> *必填项</font>
             <p/>商品价格:&nbsp;&nbsp;&nbsp;
-			<input name="price" type="text" id="price" value="<fmt:formatNumber value='${requestScope.Clothes.price/100.0}' pattern='#0.00'/>"/><font size="2" color="#FF0000" id="a" > *必填项</font>
-            <p/>S尺寸库存量:
-			<input name="remainder0" type="text" id="sremainder" value="${requestScope['remainderList'][0]}"/><font size="2" color="#FF0000" id="a" > *库存量三项必填一项</font>
-            <p/>M尺寸库存量:
-			<input name="remainder1" type="text" id="mremainder" value="${requestScope['remainderList'][1]}"/>
-            <p/>L尺寸库存量:
-			<input name="remainder2" type="text" id="lremainder" value="${requestScope['remainderList'][2]}"/>
-            <p/>生厂商:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input name="producer" type="text" id="producer" value="${requestScope['Clothes'].producer }"/>
-            <p/>材质:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input name="material" type="text" id="material" value="${requestScope['Clothes'].material }"/>
+			<input name="price" type="text" id="price" value="<fmt:formatNumber value='${requestScope.Books.price/100.0}' pattern='#0.00'/>"/><font size="2" color="#FF0000" id="a" > *必填项</font>
+            <p/>库存量:
+			<input name="remainder" type="text" id="sremainder" value="${requestScope['Books'].remainder}"/><font size="2" color="#FF0000" id="a" > *库存量三项必填一项</font>
+            <p/>作者:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input name="author" type="text" id="producer" value="${requestScope['Books'].author }"/>
+            <p/>出版社:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input name="publisher" type="text" id="material" value="${requestScope['Books'].publisher }"/>
+			<p/>出版日期:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input name="publicationDate" type="text" id="material" value="${requestScope['Books'].publicationDate }"/>
 			
             <p/>父类别:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             
             <select id="first_category_dropdown" onchange="on_first_category_selected()">
          	<option value="-1">---请选择父类别---</option>
          	<c:forEach items="${applicationScope['topCategoryList'] }" var="category">
-         		<option <c:if test="${requestScope['Clothes'].tbCategory.parentId==category.categoryId }">selected="selected"</c:if> value="${category.categoryId }">${category.categoryName }</option>
+         		<option <c:if test="${requestScope['Books'].tbCategory.parentId==category.categoryId }">selected="selected"</c:if> value="${category.categoryId }">${category.categoryName }</option>
          	</c:forEach>
          </select>
 	    &nbsp;子类别: 
          <select id="subcategory_dropdown" name="secondCategory">
           	<option value="-1">---请选择子类别---</option>
           	<c:forEach items="${requestScope['SubCategoryList'] }" var="subCategory">
-         		<option <c:if test="${requestScope['Clothes'].tbCategory.categoryId==subCategory.categoryId }">selected="selected"</c:if> value="${subCategory.categoryId }">${subCategory.categoryName }</option>
+         		<option <c:if test="${requestScope['Books'].tbCategory.categoryId==subCategory.categoryId }">selected="selected"</c:if> value="${subCategory.categoryId }">${subCategory.categoryName }</option>
          	</c:forEach>
          </select>
 
             <p/>商品图片:&nbsp;&nbsp;&nbsp;
-            <img src="${requestScope['ClothesDetailList'][0].picUrl}" width="100px;" height="100px;"/>
+            <img src="${requestScope['Books'].picUrl}" width="100px;" height="100px;"/>
    			<input type="file" name="image" id="pic" accept="image/jpeg" /> 
             <pre style="float:inherit; margin-bottom:5px;">商品介绍:
-			<textarea style="float:left; margin-left:90px; margin-top:-15px;" name="clothesDescription" id="ClothesDescription" class="introduce">${requestScope['Clothes'].clothesDescription }</textarea>
+			<textarea style="float:left; margin-left:90px; margin-top:-15px;" name="booksDescription" id="BooksDescription" class="introduce">${requestScope['Books'].booksDescription }</textarea>
             </pre>
             <br />
             <br />
             <br />
             <br />
-            <input type="button" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改商品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="float:left; margin-left:90px;" onclick="verify('${requestScope.remainderList[0]}', '${requestScope.remainderList[1]}', '${requestScope.remainderList[2]}')"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改商品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="float:left; margin-left:90px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  			</form>
-            <form name="form3" method="post" action="/BookShopping/manager/PrepareClothes.action" enctype="multipart/form-data">
+            <form name="form3" method="post" action="/BookShopping/manager/PrepareBooks.action" enctype="multipart/form-data">
             <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返回&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="float:left; margin-left:50px;margin-top:-14px;"/>
             </form>
             <br />
@@ -332,7 +330,7 @@ a:hover{
 			Alert("材质名称过长，请重新输入");
 			return false;
 		}
-		else if ($('#ClothesDescription').val().length>200)
+		else if ($('#BooksDescription').val().length>200)
 		{
 			Alert("输入的介绍过长，请重新输入");
 			return false;
@@ -363,7 +361,7 @@ a:hover{
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'modifyClothesDetail.jsp' starting page</title>
+    <title>My JSP 'modifyBooksDetail.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -378,35 +376,35 @@ a:hover{
   
   <body>
   	<h1>修改商品</h1>
-  	<form action="ModifyClothesDetail.action" method="post" enctype="multipart/form-data">
-  		<input type="hidden" name="clothesId" value="${requestScope['Clothes'].clothesId }" />
-  		<br>商品名称: <input name="clothesName" type="text" value="${requestScope['Clothes'].clothesName}"/>
-  		<br>价格： &yen;<input name="price" type="text" value="${requestScope['Clothes'].price/100.0}"/>
+  	<form action="ModifyBooksDetail.action" method="post" enctype="multipart/form-data">
+  		<input type="hidden" name="booksId" value="${requestScope['Books'].booksId }" />
+  		<br>商品名称: <input name="bookName" type="text" value="${requestScope['Books'].bookName}"/>
+  		<br>价格： &yen;<input name="price" type="text" value="${requestScope['Books'].price/100.0}"/>
   		<br>尺寸库存量: 
-	    <c:forEach items="${requestScope['ClothesDetailList'] }" var="item" varStatus="status">
+	    <c:forEach items="${requestScope['BooksDetailList'] }" var="item" varStatus="status">
 	    	<c:set var="index" value="${status.index }" />
 	    	${status.index }
-	    	<input name="remainder${status.index }" type="text" value="${requestScope['ClothesDetailList'].get(index).remainder }"/>
+	    	<input name="remainder${status.index }" type="text" value="${requestScope['BooksDetailList'].get(index).remainder }"/>
     		&nbsp;&nbsp;&nbsp;
     	</c:forEach>
-    	<br>生产商: <input name="producer" type="text" value="${requestScope['Clothes'].producer }"/> 
-    	<br>材质: <input name="material" type="text" value="${requestScope['Clothes'].material }"/>
+    	<br>生产商: <input name="producer" type="text" value="${requestScope['Books'].producer }"/> 
+    	<br>材质: <input name="material" type="text" value="${requestScope['Books'].material }"/>
     	<br>父类别: 
    		<select id="first_category_dropdown"  onChange="on_first_category_selected()">
          	<option value="-1">---请选择父类别---</option>
          	<c:forEach items="${applicationScope['topCategoryList'] }" var="category">
-         		<option <c:if test="${requestScope['Clothes'].tbCategory.parentId==category.categoryId }">selected="selected"</c:if> value="${category.categoryId }">${category.categoryName }</option>
+         		<option <c:if test="${requestScope['Books'].tbCategory.parentId==category.categoryId }">selected="selected"</c:if> value="${category.categoryId }">${category.categoryName }</option>
          	</c:forEach>
          </select>
 	    &nbsp;子类别: 
          <select id="subcategory_dropdown" name="secondCategory">
           	<option value="-1">---请选择子类别---</option>
           	<c:forEach items="${requestScope['SubCategoryList'] }" var="subCategory">
-         		<option <c:if test="${requestScope['Clothes'].tbCategory.categoryId==subCategory.categoryId }">selected="selected"</c:if> value="${subCategory.categoryId }">${subCategory.categoryName }</option>
+         		<option <c:if test="${requestScope['Books'].tbCategory.categoryId==subCategory.categoryId }">selected="selected"</c:if> value="${subCategory.categoryId }">${subCategory.categoryName }</option>
          	</c:forEach>
          </select>
-	    <br>商品介绍: <input name="clothesDescription" type="text" value="${requestScope['Clothes'].clothesDescription }"/>
-	    <br>商品图片: <img src="/BookShopping${requestScope['ClothesDetailList'].get(0).picUrl}" width="100px;" height="100px;"/>
+	    <br>商品介绍: <input name="clothesDescription" type="text" value="${requestScope['Books'].clothesDescription }"/>
+	    <br>商品图片: <img src="/BookShopping${requestScope['BooksDetailList'].get(0).picUrl}" width="100px;" height="100px;"/>
 	    	<input type="file" name="image">
 	    <br>
 	    <input type="submit" value="提交" />

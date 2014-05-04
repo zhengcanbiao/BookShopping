@@ -121,4 +121,33 @@ public class BooksService {
 	    getTbBooksProvider().updateBooks(books);
     }
 	
+	public static TbBooks addBooks(int categoryId, String bookName, int price,
+			int remainder, String author, String publisher,String publicationDate,String picUrl,String booksDescription) {
+		TbBooks books = new TbBooks(CategoryService.getTbCategoryProvider().getCategoryByCategoryId(categoryId),
+				bookName, price,picUrl);
+		books.setAuthor(author);
+		books.setBooksDescription(booksDescription);
+		books.setPublicationDate(publicationDate);
+		books.setPicUrl(picUrl);
+		books.setPublisher(publisher);
+		books.setRemainder(remainder);
+		getTbBooksProvider().addBooks(books);
+		return books;
+	}
+	
+	public static List<TbBooks> getBooksList() throws BooksNotFoundException {
+		return getTbBooksProvider().getBooksList();
+	}
+	
+	public static void setBooksValidByBooksId(Integer booksId, Boolean isValid) throws BooksNotFoundException {
+		TbBooks books = getBooksByBooksId(booksId);
+		books.setValid(isValid);
+		updateBooks(books);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static List<TbBooks> searchBooks(String keyword) {
+		return SearchUtil.searchForKeyword(keyword.split("\\s+"), "TbBooks",
+				new String[]{"BookName", "Publisher", "Author", "BooksDescription","PublicationDate"});
+	}
 }

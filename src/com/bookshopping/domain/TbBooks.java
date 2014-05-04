@@ -30,15 +30,15 @@ public class TbBooks implements java.io.Serializable {
 	private Integer booksId;
 	private TbCategory tbCategory;
 	private String bookName;
-	private String picUrl;
-	private Integer remainder;
-	private String author;
-	private String publisher;
-	private String publicationDate;
-	private String booksDescription;
-	private boolean valid;
+	private String picUrl ;
+	private Integer remainder = new Integer(0);
+	private String author = null;
+	private String publisher = null;
+	private String publicationDate = null;
+	private String booksDescription = null;
+	private Boolean valid = new Boolean(true);
 	private Integer price;
-	private Integer sales;
+	private Integer sales = new Integer(0);
 	private Set<TbOrderdetail> tbOrderdetails = new HashSet<TbOrderdetail>(0);
 	private Set<TbCart> tbCarts = new HashSet<TbCart>(0);
 	private Set<TbFavorite> tbFavorites = new HashSet<TbFavorite>(0);
@@ -51,14 +51,13 @@ public class TbBooks implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public TbBooks(String bookName, String picUrl, Integer remainder,
-			boolean valid, Integer price, Integer sales) {
+	public TbBooks(TbCategory tbCategory,String bookName, Integer price,String picUrl) {
+		this.tbCategory = tbCategory;
 		this.bookName = bookName;
 		this.picUrl = picUrl;
-		this.remainder = remainder;
-		this.valid = valid;
+	
 		this.price = price;
-		this.sales = sales;
+	
 	}
 
 	/** full constructor */

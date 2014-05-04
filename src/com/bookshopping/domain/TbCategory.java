@@ -41,10 +41,9 @@ public class TbCategory implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public TbCategory(String categoryName, Integer parentId, boolean valid) {
+	public TbCategory(String categoryName) {
 		this.categoryName = categoryName;
-		this.parentId = parentId;
-		this.valid = valid;
+		
 	}
 
 	/** full constructor */
