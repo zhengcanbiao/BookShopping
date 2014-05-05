@@ -17,6 +17,8 @@ $(document).ready(function() {
         $(".bt_select i").css("color", icon_white);
     }*/
     
-    
+    $("#dingdang_paixu option").bind('click', function() {
+        $(".selected-status").text($(this).text())
+    })
 
 })

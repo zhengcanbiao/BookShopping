@@ -10,6 +10,234 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>订单管理</title>
+<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<style>
+.right_block{
+	position: relative;
+	width: 800px;
+	margin: auto;
+	padding-top: 50px;
+}
+#form_dingdang input{
+	height: 30px;
+}
+#form_dingdang select{
+	width: 150px;
+}
+#dingdang_but{
+	height: 30px;
+}
+
+</style>
+</head>
+<body>
+	<div class="admin_head">
+		<p>网上书城系统-管理员后台</p>
+	</div>
+	<div class="admin_container">
+		<div class="admin_left">
+			<div class="welcome">
+				<span>管理员 </span>
+				<a href="/BookShopping/manager/ManagerLogout.action">退出</a>
+			</div>
+			<hr/>
+			<ul>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=3">
+						<i class="icon-home"></i>
+						<span>回到首页</span>
+					</a>				
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=0">
+						<i class="icon-wrench"></i>
+						<span>修改密码</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareCategory.action">
+						<i class="icon-bookmark"></i>
+						<span>商品类别管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareClothes.action">
+						<i class="icon-book"></i>
+						<span>商品管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareOrder.action">
+						<i class="icon-shopping-cart icon-white"></i>
+						<span class="selected">订单管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=6">
+						<i class="icon-eye-open"></i>
+						<span>销售量统计</span>
+					</a>					
+				</li>				
+				<li>
+					<a href="/BookShopping/manager/PrepareCustomer.action">
+						<i class="icon-user"></i>
+						<span>会员管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=4">
+						<i class="icon-star"></i>
+						<span>折扣管理</span>
+					</a>					
+				</li>								
+			</ul>
+		</div>
+		<div class="admin_right">
+			<div class="bg_right">
+				<div class="admin_right_to_center">
+					<div class="right_block">
+						订单列表   
+						<form id="form_dingdang" name="form1" method="post" action="/BookShopping/manager/SearchOrder.action" enctype="multipart/form-data">
+					    	<input type="submit" class="btn btn-success" style="float:right" value="搜索" />
+ 							<select name="searchChoice" style="float:right">
+								<option value="0" <c:if test="${requestScope['searchChoice']==0 }">selected="selected"</c:if> >按订单号排序</option>
+								<option value="1" <c:if test="${requestScope['searchChoice']==1 }">selected="selected"</c:if> >按用户名排序</option>
+							</select> 
+<%-- 							<div class="btn-group" style="float:right">
+							    <button class="btn selected-status" name="searchChoice"><c:if test="${requestScope['searchChoice']==0 }">按订单号排序</c:if><c:if test="${requestScope['searchChoice']==1 }">按用户名排序</c:if></button>
+							    <button id="dingdang_but" class="btn dropdown-toggle" data-toggle="dropdown">
+							    <span class="caret"></span>
+							    </button>
+							    <ul class="dropdown-menu"  id="dingdang_paixu">
+								    <option value="0" >按订单号排序</option>
+								    <option value="1" >按用户名排序</option>
+							    </ul>
+						    </div> --%>
+							
+						
+							<input name="keyword" type="text" id="keyword" value="${requestScope['keyword'] }" style="float:right;width:200px;" placeholder="只按照订单号，用户名搜索"/>
+							
+						</form>
+						<br/>
+			            <hr />
+			            <table width="800">
+			            <tr>
+			            <td>订单号</td>
+			            <td>用户</td>
+			            <td>下单时间</td>
+			            <td>订单状态</td>
+			            <td>操作</td>
+			            </tr>
+			            <c:if test="${empty requestScope['orderList'] }">
+			            	<h3>没有找到相应订单</h3>
+			            </c:if>
+			            <c:forEach items="${requestScope['orderList'] }" var="item" varStatus="status">
+			    		<tr>
+			    			<td>${item.orderId }</td>
+			    			<td>${item.tbCustomer.customerName }</td>
+			    			<td>${item.orderTime }</td>
+			    			<c:choose>
+			   					<c:when test="${item.orderStatus==-1 }">
+			   						<td>交易失败</td>
+			   						<td><a href="/BookShopping/manager/PrepareOrderDetail.action?orderId=${item.orderId }">详情</a></td>
+			   					</c:when>
+			   					<c:when test="${item.orderStatus==1 }">
+			   						<td>未发货</td>
+			   						<td>
+			   							<a href="/BookShopping/manager/PrepareOrderDetail.action?orderId=${item.orderId }">详情</a>
+			   							<a href="#" id="click1" onclick="confirm1('/BookShopping/manager/ModifyOrder.action?orderId=${item.orderId }')">发货</a>
+			   						</td>
+			   					</c:when>
+			   					<c:when test="${item.orderStatus==2 }">
+			   						<td>已发货</td>
+			   						<td><a href="/BookShopping/manager/PrepareOrderDetail.action?orderId=${item.orderId }">详情</a></td>
+			   					</c:when>
+			   					<c:when test="${item.orderStatus==3 }">
+			   						<td>交易成功</td>
+			   						<td><a href="/BookShopping/manager/PrepareOrderDetail.action?orderId=${item.orderId }">详情</a></td>
+			   					</c:when>
+			    			</c:choose>
+			    		</tr>
+				    	</c:forEach>
+			         
+			           </table>
+					</div>
+				
+				
+				
+<!-- 	                <form id="form_pwd" name="form2" class="form-horizontal" role="form" action="/BookShopping/manager/ManagerChangePsw.action" method="post" enctype="multipart/form-data" >
+	                	<label>输入旧密码</label>
+	                	<input id="oldPwd" name="old_password" type="password"/>
+	                	<label>输入新密码</label>
+	                	<input id="newPwd" name="new_password" type="password" />
+	                	<label>再次输入新密码</label>
+	                	<input id="renewPwd" name="new_password" type="password" />
+	                	
+	                	<input type="button" value="确认" class="btn btn-large btn-success" style="width:300px; height:40px; margin-top:10px;" onclick="verify()" />
+	                </form> -->
+		            
+		            
+			
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+    <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/alert.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/manager.js"></script>
+            <script type="text/javascript">
+            
+            function confirm1(path)
+			{
+				var href = path;
+            	var click_id = "#click1";
+				if($(click_id).text() == "发货")
+				{
+					var r=confirm("是否确认发货？");
+					if (r==true)
+	  			  		{
+	  					Alert("发货成功");
+	  					setTimeout( function(){window.location.href = href;} ,2000);
+	 				 	}
+					else
+	  					{
+	
+	  					}
+					return r;
+				
+				}
+			}
+                    
+			</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>订单管理</title>
 <style>
 body {
 	margin:0;
@@ -219,66 +447,5 @@ a:hover{
 			</script>
             
 </body>
-</html>
-
-<%-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'viewOrder.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-  </head>
-  
-  <body>
-    <h3>订单列表</h3>
-    <table width="750">
-    	<tr>
-	    	<td>订单号</td>
-	    	<td>用户</td>
-	    	<td>下单时间</td>
-	    	<td>订单状态</td>
-	    	<td>操作</td>
-    	</tr>
-    	<c:forEach items="${requestScope['orderList'] }" var="item" varStatus="status">
-    		<tr>
-    			<td>${item.orderId }</td>
-    			<td>${item.tbCustomer.nickName }</td>
-    			<td>${item.orderTime }</td>
-    			<c:choose>
-   					<c:when test="${item.orderStatus==-1 }">
-   						<td>交易失败</td>
-   						<td><a href="PrepareOrderDetail.action?orderId=${item.orderId }">详情</a></td>
-   					</c:when>
-   					<c:when test="${item.orderStatus==1 }">
-   						<td>未发货</td>
-   						<td>
-   							<a href="PrepareOrderDetail.action?orderId=${item.orderId }">详情</a>
-   							<a href="ModifyOrder.action?orderStatus=2&orderId=${item.orderId }">发货</a>
-   							<a href="ModifyOrder.action?orderStatus=-1&orderId=${item.orderId }">交易失败</a>
-   						</td>
-   					</c:when>
-   					<c:when test="${item.orderStatus==2 }">
-   						<td>已发货</td>
-   						<td><a href="PrepareOrderDetail.action?orderId=${item.orderId }">详情</a></td>
-   					</c:when>
-   					<c:when test="${item.orderStatus==3 }">
-   						<td>交易成功</td>
-   						<td><a href="PrepareOrderDetail.action?orderId=${item.orderId }">详情</a></td>
-   					</c:when>
-    			</c:choose>
-    		</tr>
-    	</c:forEach>
-    </table>
-  </body>
 </html>
  --%>

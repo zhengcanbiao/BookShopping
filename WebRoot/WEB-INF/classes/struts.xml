@@ -272,7 +272,7 @@
 	 -->
 	 
 	<package name="JsonAction" namespace="/manager" extends="json-default">
-		<!-- <action name="GetSubcategoryList" class="GetSubcategoryListAction">
+		 <action name="GetSubcategoryList" class="GetSubcategoryListAction">
 			<result type="json">
 				<param name="root">result</param>
 			</result>
@@ -281,7 +281,7 @@
 			<result type="json">
 				<param name="root">result</param>
 			</result>
-		</action> -->
+		</action> 
 		<action name="AdminPwdConfirm" class="AdminPwdConfirmAction">
 			<result type="json">
 				<param name="root">result</param>
@@ -303,7 +303,7 @@
 		<action name="Jump" class="JumpAction">
 			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
 			<result name="0">/WEB-INF/jsp/manager/managerChangePwd.jsp</result>
-			<result name="1">/WEB-INF/jsp/manager/addClothesDetail.jsp</result>
+			<result name="1">/WEB-INF/jsp/manager/addBooksDetail.jsp</result>
 			<result name="2">/WEB-INF/jsp/manager/addCategory.jsp</result>
 			<result name="3">/WEB-INF/jsp/manager/managerHome.jsp</result>
 			<result name="4">/WEB-INF/jsp/manager/viewDiscount.jsp</result>
@@ -325,8 +325,7 @@
 			<result name="error">/WEB-INF/jsp/manager/managerHome.jsp</result>
 		</action>
 	</package>
-	
-	<!-- <package name="ManagerCategoryAction" namespace="/manager" extends="struts-default">
+	<package name="ManagerCategoryAction" namespace="/manager" extends="struts-default">
 		<action name="PrepareCategory" class="PrepareCategoryAction">
 			<result name="success">/WEB-INF/jsp/manager/viewCategory.jsp</result>
 		</action>
@@ -345,30 +344,29 @@
 		</action>
 	</package>
 	
-	<package name="ManagerClothesAction" namespace="/manager" extends="struts-default">
-		<action name="SearchClothes" class="AdminSearchClothesAction">
-			<result name="success">/WEB-INF/jsp/manager/viewClothes.jsp</result>
+	<package name="ManagerBooksAction" namespace="/manager" extends="struts-default">
+		<action name="SearchBooks" class="AdminSearchBooksAction">
+			<result name="success">/WEB-INF/jsp/manager/viewBooks.jsp</result>
 		</action>
-		<action name="PrepareClothes" class="PrepareClothesAction">
-			<result name="success">/WEB-INF/jsp/manager/viewClothes.jsp</result>
+		<action name="PrepareBooks" class="PrepareBooksAction">
+			<result name="success">/WEB-INF/jsp/manager/viewBooks.jsp</result>
 		</action>
-		<action name="PrepareClothesDetail" class="AdminPrepareClothesDetailAction">
-			<result name="success">/WEB-INF/jsp/manager/modifyClothesDetail.jsp</result>
+		<action name="PrepareBooksDetail" class="AdminPrepareBooksDetailAction">
+			<result name="success">/WEB-INF/jsp/manager/modifyBooksDetail.jsp</result>
 			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
 		</action>
-		<action name="ModifyClothesDetail" class="ModifyClothesDetailAction">
-			<result name="success" type="chain">PrepareClothes</result>
+		<action name="ModifyBooksDetail" class="ModifyBooksDetailAction">
+			<result name="success" type="chain">PrepareBooks</result>
 			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
 		</action>
-		<action name="ValidateClothes" class="ValidateClothesAction">
-			<result name="success" type="chain">PrepareClothes</result>
+		<action name="ValidateBooks" class="ValidateBooksAction">
+			<result name="success" type="chain">PrepareBooks</result>
 		</action>
-		<action name="AddClothesDetail" class="AddClothesDetailAction">
-			<result name="success" type="chain">PrepareClothes</result>
-			<result name="input">/WEB-INF/jsp/manager/addClothesDetail.jsp</result>
+		<action name="AddBooksDetail" class="AddBooksDetailAction">
+			<result name="success" type="chain">PrepareBooks</result>
+			<result name="input">/WEB-INF/jsp/manager/addBooksDetail.jsp</result>
 		</action>
 	</package>
-	
 	<package name="ManagerOrderAction" namespace="/manager" extends="struts-default">
 		<action name="PrepareOrder" class="PrepareOrderAction">
 			<result name="success">/WEB-INF/jsp/manager/viewOrder.jsp</result>
@@ -385,6 +383,10 @@
 			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
 		</action>
 	</package>
+	<!-- 
+	
+	
+	
 	
 	<package name="ManagerSalesAction" namespace="/manager" extends="struts-default">
 		<action name="PrepareSales" class="PrepareSalesAction">

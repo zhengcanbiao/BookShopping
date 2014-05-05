@@ -12,6 +12,22 @@
 	<bean id="ManagerLoginAction" class="com.bookshopping.action.manager.ManagerLoginAction" scope="prototype" />
 	<bean id="ManagerLogoutAction" class="com.bookshopping.action.manager.ManagerLogoutAction" scope="prototype" />
 	<bean id="ManagerChangePwdAction" class="com.bookshopping.action.manager.ManagerChangePwdAction" scope="prototype" />
-	
-	
+	<!-- managerCategory -->
+	<bean id="PrepareCategoryAction" class="com.bookshopping.action.managerCategory.PrepareCategoryAction" scope="prototype" />
+	<bean id="AddCategoryAction" class="com.bookshopping.action.managerCategory.AddCategoryAction" scope="prototype" />
+	<bean id="PrepareCategoryDetailAction" class="com.bookshopping.action.managerCategory.PrepareCategoryDetailAction" scope="prototype" />
+	<bean id="ModifyCategoryAction" class="com.bookshopping.action.managerCategory.ModifyCategoryAction" scope="prototype" />
+	<bean id="DeleteCategoryAction" class="com.bookshopping.action.managerCategory.DeleteCategoryAction" scope="prototype" />
+	<!-- managerBooks -->
+	<bean id="PrepareBooksAction" class="com.bookshopping.action.managerBooks.PrepareBooksAction" scope="prototype" />
+	<bean id="AdminSearchBooksAction" class="com.bookshopping.action.managerBooks.SearchBooksAction" scope="prototype" />
+	<bean id="AdminPrepareBooksDetailAction" class="com.bookshopping.action.managerBooks.PrepareBooksDetailAction" scope="prototype" />
+	<bean id="ModifyBooksDetailAction" class="com.bookshopping.action.managerBooks.ModifyBooksDetailAction" scope="prototype" />
+	<bean id="AddBooksDetailAction" class="com.bookshopping.action.managerBooks.AddBooksDetailAction" scope="prototype" />
+	<bean id="ValidateBooksAction" class="com.bookshopping.action.managerBooks.ValidateBooksAction" scope="prototype" />
+	<!-- managerOrder -->
+	<bean id="SearchOrderAction" class="com.bookshopping.action.managerOrder.SearchOrderAction" scope="prototype" />
+	<bean id="ModifyOrderAction" class="com.bookshopping.action.managerOrder.ModifyOrderAction" scope="prototype" />
+	<bean id="PrepareOrderAction" class="com.bookshopping.action.managerOrder.PrepareOrderAction" scope="prototype" />
+	<bean id="AdminPrepareOrderDetailAction" class="com.bookshopping.action.managerOrder.PrepareOrderDetailAction" scope="prototype" />
 </beans>
