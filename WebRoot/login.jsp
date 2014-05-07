@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
  	<div id="home_header1" class="header">
     	<div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
