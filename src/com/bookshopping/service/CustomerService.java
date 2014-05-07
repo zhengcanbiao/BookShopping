@@ -14,12 +14,14 @@ import org.apache.struts2.ServletActionContext;
 
 import com.bookshopping.dao.provider.TbCustomerProvider;
 import com.bookshopping.domain.TbCustomer;
+import com.bookshopping.domain.TbDiscount;
 import com.bookshopping.domain.TbOrder;
 import com.bookshopping.exception.CookieNotExistException;
 import com.bookshopping.exception.CustomerNotFoundException;
 import com.bookshopping.exception.NoActiveCustomerException;
 import com.bookshopping.utils.CookieUtil;
 import com.bookshopping.utils.SHAEncypherUtil;
+import com.bookshopping.utils.SearchUtil;
 import com.bookshopping.utils.SpringUtil;
 import com.bookshopping.utils.UUIDUtil;
 
@@ -200,9 +202,6 @@ public class CustomerService {
 		getTbCustomerProvider().updateCustomer(customer);
 	}
 	
-	public static TbCustomer getCustomerByCustomerName(String customerName) throws CustomerNotFoundException {
-		return getTbCustomerProvider().getCustomerByCustomerName(customerName);
-    }
 
 	private static String encodePassword(String password) {
 		return SHAEncypherUtil.encryptSHA(password);
@@ -212,12 +211,54 @@ public class CustomerService {
 		emailPattern = Pattern.compile("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?");
 	}
 
-	public static void updateCustomer(TbCustomer customer) {
-		getTbCustomerProvider().updateCustomer(customer);
-    }
 
 	public static boolean isCustomerValid(String customerName) {
 		return getCustomerByCustomerName(customerName).getValid();
     }
-
+	//得到所有顾客列表
+		public static List<TbCustomer> getCustomerList() throws CustomerNotFoundException {
+			return getTbCustomerProvider().getCustomerList();
+		}
+		
+		public static void updateCustomer(TbCustomer customer) {
+			getTbCustomerProvider().updateCustomer(customer);
+		}
+		
+		public static TbCustomer getCustomerByCustomerName(String customerName) throws CustomerNotFoundException {
+			return getTbCustomerProvider().getCustomerByCustomerName(customerName);
+		}
+		
+		public static void setCustomerValidByCustomerName(String customerName, Boolean isValid) throws CustomerNotFoundException {
+			TbCustomer customer = getCustomerByCustomerName(customerName);
+			customer.setValid(isValid);
+			updateCustomer(customer);
+		}
+		
+		//得到所有顾客列表升序
+		public static List<TbCustomer> getCustomerAscListByPoint() throws CustomerNotFoundException {
+			return getTbCustomerProvider().getCustomerAscListByPoint();
+		}
+		
+		/**
+		 * 获取当前用户积分在discountList中的索引
+		 * @param customer
+		 * @return
+		 */
+		@SuppressWarnings("unchecked")
+		public static int getDiscountIndexByCustomer(TbCustomer customer){
+			Map<String, Object> application = ServletActionContext.getContext().getApplication();
+			List<TbDiscount> discountList = (List<TbDiscount>) application.get("discountList");
+			for(int i = 0; i < discountList.size(); i++ ) {
+				if(customer.getPoints() < discountList.get(i).getDiscountPoints()){
+					return i-1;
+				}
+			}
+			return discountList.size() - 1;
+		}
+		
+		@SuppressWarnings("unchecked")
+		public static List<TbCustomer> searchCustomer(String keyword) {
+			return SearchUtil.searchForKeyword(keyword.split("\\s+"), "TbCustomer",
+					new String[]{"CustomerName", "NickName"});
+		}
 }

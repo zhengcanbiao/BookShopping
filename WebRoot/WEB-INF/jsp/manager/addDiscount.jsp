@@ -319,7 +319,7 @@ a:hover{
 							<span class="add-on">%</span>
 						</div>
 	                	
-	                	<input type="button" value="添加" class="btn btn-large btn-success" style="width:140px; height:40px; margin-top:10px;" onclick="verify()" />
+	                	<input type="submit" value="添加" class="btn btn-large btn-success" style="width:140px; height:40px; margin-top:10px;"  />
 	                	<input type="button" value="返回" class="btn btn-large btn-success" style="width:140px; height:40px; margin-top:10px;" onclick="back()" />
 	                </form>
 		            

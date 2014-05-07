@@ -1,9 +1,11 @@
 package com.bookshopping.domain;
 
 import java.sql.Timestamp;
-import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -115,10 +117,14 @@ public class TbCustomer implements java.io.Serializable {
 
 	@Column(name = "RegisterTime", nullable = false, length = 19)
 	public Date getRegisterTime() {
-		return this.registerTime;
+//		SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");     
+//		String date = sDateFormat.format();
+		return this.registerTime;  
+	
 	}
 
 	public void setRegisterTime(Date registerTime) {
+		
 		this.registerTime = registerTime;
 	}
 

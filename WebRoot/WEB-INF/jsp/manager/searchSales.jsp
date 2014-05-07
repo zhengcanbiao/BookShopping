@@ -82,7 +82,7 @@ a:hover{
             <li><a href="/BookShopping/manager/Jump.action?jumpId=3">回到首页</a></li>
             <li><a href="/BookShopping/manager/Jump.action?jumpId=0">修改密码</a></li>
             <li><a href="/BookShopping/manager/PrepareCategory.action">商品类别管理</a></li>
-            <li><a href="/BookShopping/manager/PrepareClothes.action">商品管理</a></li>
+            <li><a href="/BookShopping/manager/PrepareBooks.action">商品管理</a></li>
             <li><a href="/BookShopping/manager/PrepareOrder.action">订单管理</a></li>
             <li><a href="/BookShopping/manager/Jump.action?jumpId=6">销售量统计</a></li>
             <li><a href="/BookShopping/manager/PrepareCustomer.action">会员管理</a></li>
@@ -132,14 +132,14 @@ a:hover{
     		<td>当月销售量</td>
     		<td>当月销售额</td>
     	</tr>
-    	<c:if test="${empty requestScope['clothesList'] }">
+    	<c:if test="${empty requestScope['booksList'] }">
             	<h3>没有找到相应商品</h3>
             </c:if>
-	    <c:forEach items="${requestScope['clothesList'] }" var="item" varStatus="status">
+	    <c:forEach items="${requestScope['booksList'] }" var="item" varStatus="status">
 	    	<c:set var="index" value="${status.index }" />
 	    	<tr>
-	    		<td>${item.clothesId }</td>
-	    		<td><a href="/BookShopping/manager/PrepareClothesDetail.action?clothesId=${item.clothesId}">${item.clothesName }</a></td>
+	    		<td>${item.booksId }</td>
+	    		<td><a href="/BookShopping/manager/PrepareBooksDetail.action?booksId=${item.booksId}">${item.bookName }</a></td>
 	    		<td>${requestScope['salesList2'].get(index)[0] }</td>
 	    		<td>&yen;<fmt:formatNumber value="${requestScope['salesList2'].get(index)[1]/100.0 }" pattern="#0.00"/></td>
 	    		<td>${requestScope['salesList'].get(index)[0] }</td>

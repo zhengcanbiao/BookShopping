@@ -28,7 +28,10 @@ public class TbDiscount implements java.io.Serializable {
 	/** default constructor */
 	public TbDiscount() {
 	}
-
+	public TbDiscount(Integer discountPoints,Integer discountRate) {
+		this.discountRate = discountRate;
+		this.discountPoints = discountPoints;
+	}
 	/** full constructor */
 	public TbDiscount(Integer discountRate) {
 		this.discountRate = discountRate;

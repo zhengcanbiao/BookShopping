@@ -90,7 +90,7 @@
                     <c:forEach items="${requestScope['currentBooks'].tbComments  }" var="comment">
 	                    <div class="comment">
 	                    	<p class="comment_content">${comment.commentContent }</p>
-	                        <p class="comment_time"><i class="icon-time"> </i> ${comment.commentTime }</p>
+	                        <p class="comment_time"><i class="icon-time"> </i> <fmt:formatDate value="${comment.commentTime }" type="both"/></p>
 	                        <p class="comment_user">${comment.tbCustomer.customerName }</p>
 	                    </div>
                     </c:forEach>

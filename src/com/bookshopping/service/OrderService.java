@@ -1,6 +1,9 @@
 package com.bookshopping.service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import com.bookshopping.dao.provider.TbOrderProvider;
 import com.bookshopping.domain.TbBooks;
@@ -11,6 +14,7 @@ import com.bookshopping.domain.TbOrderdetail;
 import com.bookshopping.exception.CustomerNotFoundException;
 import com.bookshopping.exception.DiscountNotFoundException;
 import com.bookshopping.exception.OrderNotFoundException;
+import com.bookshopping.service.comparator.BooksIdComparator;
 import com.bookshopping.utils.OrderIdGenerator;
 import com.bookshopping.utils.SearchUtil;
 import com.bookshopping.utils.SpringUtil;
@@ -128,5 +132,30 @@ public class OrderService {
 	public static List<TbOrder> searchOrder(String keyword) {
 		return SearchUtil.searchForKeyword(keyword.split("\\s+"), "TbOrder",
 				new String[]{"OrderID", "CustomerName"});
+	}
+	
+	public static List<TbOrder> getOrderListBetweenDates(Date beginDate, Date endDate)
+			throws OrderNotFoundException {
+				return getTbOrderProvider().getOrderListBetweenDates(beginDate, endDate);
+			}
+	
+	@SuppressWarnings("unused")
+	public static Map<TbBooks, Integer[]> getBooksMapFromOrderListByCategoryId(List<TbOrder> orderList, Integer categoryId) {
+		Map<TbBooks, Integer[]> booksMap = new TreeMap<TbBooks, Integer[]>(new BooksIdComparator());
+		for (TbOrder order : orderList) {
+			List<TbOrderdetail> orderDetailList = getOrdertailListByOrderId(order.getOrderId());
+			for (TbOrderdetail orderDetail : orderDetailList) {
+				TbBooks books = orderDetail.getTbBooks();
+				Integer[] sales = booksMap.get(books);
+				if (categoryId == -1 || (categoryId != -1 && books.getTbCategory().getCategoryId() == categoryId)) {
+					if (sales == null) {
+						booksMap.put(books, new Integer[]{orderDetail.getQuantity(), orderDetail.getPrice() * order.getDiscount() / 100});//在里面存入了数量和总价
+					} else {
+						booksMap.put(books, new Integer[]{orderDetail.getQuantity() + sales[0], (orderDetail.getPrice() * order.getDiscount() / 100) + sales[1]});
+					}
+				}
+			}
+		}
+		return booksMap;
 	}
 }

@@ -82,7 +82,7 @@ a:hover{
            <li><a href="/BookShopping/manager/Jump.action?jumpId=3">回到首页</a></li>
             <li><a href="/BookShopping/manager/Jump.action?jumpId=0">修改密码</a></li>
             <li><a href="/BookShopping/manager/PrepareCategory.action">商品类别管理</a></li>
-            <li><a href="/BookShopping/manager/PrepareClothes.action">商品管理</a></li>
+            <li><a href="/BookShopping/manager/PrepareBooks.action">商品管理</a></li>
             <li><a href="/BookShopping/manager/PrepareOrder.action">订单管理</a></li>
             <li><a href="/BookShopping/manager/Jump.action?jumpId=6">销售量统计</a></li>
             <li><a href="/BookShopping/manager/PrepareCustomer.action">会员管理</a></li>

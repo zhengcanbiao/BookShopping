@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -138,8 +139,7 @@ a:hover{
 	  	<td>${requestScope['RankList'][index]}级</td>
 	  	<td>${item.getPoints()}积分</td>
 	  	<td>${requestScope['DiscountList'][index].discountRate}%</td>
-	  	<td>${item.getRegisterTime()}</td>
-	  	
+	  	<td><fmt:formatDate value="${item.getRegisterTime()}" type="both"/></td>
 	  	<c:choose>
 	  		<c:when test="${item.valid==true }">
 	  			<td><a href="#" id="click1" onclick="return show_confirm('/BookShopping/manager/ValidateCustomer.action?customerName=${item.getCustomerName()}&valid=0','1')">冻结</a></td>

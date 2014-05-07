@@ -42,4 +42,20 @@ public class DiscountService {
 	public static TbDiscountProvider getTbDiscountProvider() {
 		return (TbDiscountProvider) SpringUtil.getBeanById("tbDiscountProvider");
 	}
+	public static void addDiscount(int discountPoints, int discountRate) {
+		TbDiscount tbDiscount = new TbDiscount(discountPoints, discountRate);
+		getTbDiscountProvider().addDiscount(tbDiscount);
+	}
+	
+	public static void deleteDiscount(TbDiscount discount) {
+		getTbDiscountProvider().deleteDiscount(discount);
+	}
+	
+	public static void updateDiscount(TbDiscount discount) {
+		getTbDiscountProvider().updateDiscount(discount);
+	}
+	
+	public static TbDiscount getDiscountByDiscountPoints(Integer discountPoints) throws DiscountNotFoundException {
+		return getTbDiscountProvider().getDiscountByDiscountPoints(discountPoints);
+	}
 }
