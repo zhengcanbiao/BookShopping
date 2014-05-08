@@ -30,4 +30,17 @@
 	<bean id="ModifyOrderAction" class="com.bookshopping.action.managerOrder.ModifyOrderAction" scope="prototype" />
 	<bean id="PrepareOrderAction" class="com.bookshopping.action.managerOrder.PrepareOrderAction" scope="prototype" />
 	<bean id="AdminPrepareOrderDetailAction" class="com.bookshopping.action.managerOrder.PrepareOrderDetailAction" scope="prototype" />
+	<!-- managerDiscount -->
+	<bean id="AddDiscountAction" class="com.bookshopping.action.managerDiscount.AddDiscountAction" scope="prototype" />
+	<bean id="PrepareDiscountAction" class="com.bookshopping.action.managerDiscount.PrepareDiscountAction" scope="prototype" />
+	<bean id="ModifyDiscountAction" class="com.bookshopping.action.managerDiscount.ModifyDiscountAction" scope="prototype" />
+	<bean id="DeleteDiscountAction" class="com.bookshopping.action.managerDiscount.DeleteDiscountAction" scope="prototype" />
+	<!-- managerCustomer -->
+	<bean id="PrepareCustomerAction" class="com.bookshopping.action.managerCustomer.PrepareCustomerAction" scope="prototype" />
+	<bean id="SearchCustomerAction" class="com.bookshopping.action.managerCustomer.SearchCustomerAction" scope="prototype" />
+	<bean id="ValidateCustomerAction" class="com.bookshopping.action.managerCustomer.ValidateCustomerAction" scope="prototype" />
+	<!-- managerSales -->
+	<bean id="PrepareSalesAction" class="com.bookshopping.action.managerSales.PrepareSalesAction" scope="prototype" />
+	<bean id="PrepareSalesListAction" class="com.bookshopping.action.managerSales.PrepareSalesListAction" scope="prototype" />
+	<bean id="PrepareSalesChartAction" class="com.bookshopping.action.managerSales.PrepareSalesChartAction" scope="prototype" />
 </beans>

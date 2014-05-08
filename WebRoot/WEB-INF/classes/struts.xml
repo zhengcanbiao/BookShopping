@@ -287,11 +287,11 @@
 				<param name="root">result</param>
 			</result>
 		</action>
-		<!-- <action name="DiscountConfirm" class="DiscountConfirmAction">
+		 <action name="DiscountConfirm" class="DiscountConfirmAction">
 			<result type="json">
 				<param name="root">result</param>
 			</result>
-		</action> -->
+		</action>
 		<action name="AdminExist" class="AdminExistAction">
 			<result type="json">
 				<param name="root">result</param>
@@ -383,37 +383,6 @@
 			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
 		</action>
 	</package>
-	<!-- 
-	
-	
-	
-	
-	<package name="ManagerSalesAction" namespace="/manager" extends="struts-default">
-		<action name="PrepareSales" class="PrepareSalesAction">
-			<result name="success">/WEB-INF/jsp/manager/viewSales.jsp</result>
-			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
-		</action>
-		<action name="PrepareSalesList" class="PrepareSalesListAction">
-			<result name="success">/WEB-INF/jsp/manager/searchSales.jsp</result>
-			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
-		</action>
-		<action name="PrepareSalesChart" class="PrepareSalesChartAction">
-			<result name="success">/WEB-INF/jsp/manager/viewSalesChart.jsp</result>
-			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
-		</action>
-	</package>
-	
-	<package name="ManagerCustomerAction" namespace="/manager" extends="struts-default">
-		<action name="PrepareCustomer" class="PrepareCustomerAction">
-			<result name="success">/WEB-INF/jsp/manager/viewCustomer.jsp</result>
-		</action>
-		<action name="SearchCustomer" class="SearchCustomerAction">
-			<result name="success">/WEB-INF/jsp/manager/viewCustomer.jsp</result>
-		</action>
-		<action name="ValidateCustomer" class="ValidateCustomerAction">
-			<result name="success" type="chain">PrepareCustomer</result>
-		</action>
-	</package>
 	
 	<package name="ManagerDiscountAction" namespace="/manager" extends="struts-default">
 		<action name="AddDiscount" class="AddDiscountAction">
@@ -430,5 +399,32 @@
 		<action name="DeleteDiscount" class="DeleteDiscountAction">
 			<result name="success">/WEB-INF/jsp/manager/viewDiscount.jsp</result>
 		</action>
-	</package> -->
+	</package>
+	<package name="ManagerCustomerAction" namespace="/manager" extends="struts-default">
+		<action name="PrepareCustomer" class="PrepareCustomerAction">
+			<result name="success">/WEB-INF/jsp/manager/viewCustomer.jsp</result>
+		</action>
+		<action name="SearchCustomer" class="SearchCustomerAction">
+			<result name="success">/WEB-INF/jsp/manager/viewCustomer.jsp</result>
+		</action>
+		<action name="ValidateCustomer" class="ValidateCustomerAction">
+			<result name="success" type="chain">PrepareCustomer</result>
+		</action>
+	</package>
+	
+	<package name="ManagerSalesAction" namespace="/manager" extends="struts-default">
+		<action name="PrepareSales" class="PrepareSalesAction">
+			<result name="success">/WEB-INF/jsp/manager/viewSales.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+		<action name="PrepareSalesList" class="PrepareSalesListAction">
+			<result name="success">/WEB-INF/jsp/manager/searchSales.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+		<action name="PrepareSalesChart" class="PrepareSalesChartAction">
+			<result name="success">/WEB-INF/jsp/manager/viewSalesChart.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action>
+	</package>
+
 </struts>    

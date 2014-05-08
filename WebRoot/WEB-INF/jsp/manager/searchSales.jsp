@@ -10,6 +10,240 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>销售量统计</title>
+<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<style>
+.right_block{
+	position: relative;
+	width: 700px;
+	margin: auto;
+	padding-top: 50px;
+}
+#form_dingdang input{
+	height: 30px;
+}
+.shijian {
+	margin-left: 28px;
+}
+#form_dingdang select{
+    margin-left: 12px;
+    width: 207px;
+}
+body{
+	background-color:#eee;
+}
+
+</style>
+</head>
+<body>
+	<div class="admin_head">
+		<p>网上书城系统-管理员后台</p>
+	</div>
+	<div class="admin_container">
+		<div class="admin_left">
+			<div class="welcome">
+				<span>管理员 </span>
+				<a href="/BookShopping/manager/ManagerLogout.action">退出</a>
+			</div>
+			<hr/>
+			<ul>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=3">
+						<i class="icon-home"></i>
+						<span>回到首页</span>
+					</a>				
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=0">
+						<i class="icon-wrench"></i>
+						<span>修改密码</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareCategory.action">
+						<i class="icon-bookmark"></i>
+						<span>商品类别管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareBooks.action">
+						<i class="icon-book"></i>
+						<span>商品管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareOrder.action">
+						<i class="icon-shopping-cart"></i>
+						<span>订单管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=6">
+						<i class="icon-eye-open icon-white"></i>
+						<span class="selected">销售量统计</span>
+					</a>					
+				</li>				
+				<li>
+					<a href="/BookShopping/manager/PrepareCustomer.action">
+						<i class="icon-user"></i>
+						<span>会员管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=4">
+						<i class="icon-star"></i>
+						<span>折扣管理</span>
+					</a>					
+				</li>								
+			</ul>
+		</div>
+		<div class="admin_right">
+			<div class="bg_right">
+				<div class="admin_right_to_center">
+					<div class="right_block">
+						销售量查询
+						<button id="search_sale" type="button" class="btn btn-success" style="float:right" onclick="search_saleNum()">销售量趋势查询</button>
+<!-- 						<a href="/BookShopping/manager/Jump.action?jumpId=6" style="float:right">销售量趋势查询</a> -->
+						<hr/>
+					    <form id="form_dingdang" action="/BookShopping/manager/PrepareSalesList.action" method="post"  onsubmit="return verify()">
+					    	时间：
+					    	<c:choose>
+					    		<c:when test="${not empty requestScope['Date'] }">
+					    			<input class="shijian" name="Date" type="date" id="date" value="${requestScope['Date']}"/>
+					    		</c:when>
+					    		<c:otherwise>
+					    			<input class="shijian" name="Date" type="date" id="date" value="1970-01-01"/>
+					    		</c:otherwise>
+					    	</c:choose>
+					    	<br/>父类别:&nbsp;&nbsp;&nbsp; 
+					   		<select id="first_category_dropdown"  name="firstCategory" onchange="on_first_category_selected()">
+					   			<option value="-1">---请选择父类别---</option>
+					   			<c:forEach items="${applicationScope['topCategoryList'] }" var="category">
+					         		<option value="${category.categoryId }">${category.categoryName }</option>
+					         	</c:forEach>
+					   		</select>
+					   		<br/>   
+					    	子类别:&nbsp;&nbsp;&nbsp; 
+					    	<select id="subcategory_dropdown" name="categoryId">
+					    		<option value='-1' >---请选择子类别---</option>
+					    	</select>
+					    	<br/>
+					    	<input type="submit" class="btn btn-success" value="&nbsp;&nbsp;&nbsp;&nbsp;查询&nbsp;&nbsp;&nbsp;&nbsp;"/>
+					        <input type="reset" class="btn btn-success" value="&nbsp;&nbsp;&nbsp;&nbsp;置空&nbsp;&nbsp;&nbsp;&nbsp;" />
+					
+					    </form>
+					    <br/>查询结果 <hr/>
+					    <table width="800">
+					    	<tr>
+					    		<td>商品代码</td>
+					    		<td>商品名称</td>
+					    		<td>当日销售量</td>
+					    		<td>当日销售额</td>
+					    		<td>当月销售量</td>
+					    		<td>当月销售额</td>
+					    	</tr>
+					    	<c:if test="${empty requestScope['booksList'] }">
+					            	<h3>没有找到相应商品</h3>
+					            </c:if>
+						    <c:forEach items="${requestScope['booksList'] }" var="item" varStatus="status">
+						    	<c:set var="index" value="${status.index }" />
+						    	<tr>
+						    		<td>${item.booksId }</td>
+						    		<td><a href="/BookShopping/manager/PrepareBooksDetail.action?booksId=${item.booksId}">${item.bookName }</a></td>
+						    		<td>${requestScope['salesList2'].get(index)[0] }</td>
+						    		<td>&yen;<fmt:formatNumber value="${requestScope['salesList2'].get(index)[1]/100.0 }" pattern="#0.00"/></td>
+						    		<td>${requestScope['salesList'].get(index)[0] }</td>
+						    		<td>&yen;<fmt:formatNumber value="${requestScope['salesList'].get(index)[1]/100.0 }" pattern="#0.00"/></td>
+						    	</tr>
+						    </c:forEach>
+					    </table>
+					            <br/>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+    <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/alert.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/manager.js"></script>
+    <script type="text/javascript">
+        	function search_saleNum(){
+				window.location.href="/BookShopping/manager/Jump.action?jumpId=6";
+			}
+            function verify()
+			{
+            	if($('#date').val()=="")
+            		{
+            		Alert("搜索时间不能为空");
+                    return false;
+            		}
+				else if($('#subcategory_dropdown').val()==-1 && $('#first_category_dropdown').val()!=-1)
+			 	{
+					
+                    Alert("请选择子类别，或不选择父类别");
+                    return false;
+				}
+                return true;
+			}
+            function on_first_category_selected() {
+    	 		var firstCategoryId = $("#first_category_dropdown").val();
+    	 		$.ajax({
+    	 			url: "/BookShopping/manager/GetSubcategoryList.action",
+    	 			type: "GET",
+    	 			contextType: "application/json;charset=utf-8",
+    	 			data: {parentId: firstCategoryId},
+    	 			dataType: "json",
+    	 			success: function(result) {
+    	 				$('#subcategory_dropdown').empty();
+    	 				$('#subcategory_dropdown').append("<option value='-1'>---请选择子类别---</option>");
+    	 				var resultJson = eval(result);
+    	 				$.each(resultJson, function(index, item) {
+    	 					$('#subcategory_dropdown').append("<option value="+ item.categoryId +">" + item.categoryName + "</option>");
+    	 				});
+    	 			}
+    	 		});
+    	 	}
+            
+			function Confirm()
+			{
+				var r=confirm("是否确认注销？");
+				if (r==true)
+  			  	{
+  					return true;
+ 				 }
+				else
+  				{
+  					return false;
+  				}
+			}
+	</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>销售量统计</title>
 <style>
 body {
 	margin:0;
@@ -208,3 +442,4 @@ a:hover{
 	</script>
 </body>
 </html>
+ --%>

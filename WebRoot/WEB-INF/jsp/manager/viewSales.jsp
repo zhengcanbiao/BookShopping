@@ -10,6 +10,239 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>销售量趋势查询</title>
+<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<style>
+.right_block{
+	position: relative;
+	width: 700px;
+	margin: auto;
+	padding-top: 50px;
+}
+#form_dingdang input{
+	height: 30px;
+}
+#form_dingdang select{
+    margin-left: 12px;
+    width: 207px;
+}
+body{
+	background-color:#eee;
+}
+
+</style>
+</head>
+<body>
+	<div class="admin_head">
+		<p>网上书城系统-管理员后台</p>
+	</div>
+	<div class="admin_container">
+		<div class="admin_left">
+			<div class="welcome">
+				<span>管理员 </span>
+				<a href="/BookShopping/manager/ManagerLogout.action">退出</a>
+			</div>
+			<hr/>
+			<ul>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=3">
+						<i class="icon-home"></i>
+						<span>回到首页</span>
+					</a>				
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=0">
+						<i class="icon-wrench"></i>
+						<span>修改密码</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareCategory.action">
+						<i class="icon-bookmark"></i>
+						<span>商品类别管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareBooks.action">
+						<i class="icon-book"></i>
+						<span>商品管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareOrder.action">
+						<i class="icon-shopping-cart"></i>
+						<span>订单管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=6">
+						<i class="icon-eye-open icon-white"></i>
+						<span class="selected">销售量统计</span>
+					</a>					
+				</li>				
+				<li>
+					<a href="/BookShopping/manager/PrepareCustomer.action">
+						<i class="icon-user"></i>
+						<span>会员管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=4">
+						<i class="icon-star"></i>
+						<span>折扣管理</span>
+					</a>					
+				</li>								
+			</ul>
+		</div>
+		<div class="admin_right">
+			<div class="bg_right">
+				<div class="admin_right_to_center">
+					<div class="right_block">
+						销售量趋势查询
+					    <button id="search_sale" type="button" class="btn btn-success" style="float:right" onclick="search_sale()">销售量查询</button>
+<!-- 						<a href="/BookShopping/manager/Jump.action?jumpId=7" style="float:right">销售量查询</a> -->
+						<hr/>
+					    <form id="form_dingdang" action="/BookShopping/manager/PrepareSales.action" method="post"  onsubmit="return verify()">
+					    	起始时间：
+					    	<c:choose>
+					    		<c:when test="${not empty requestScope['beginDate'] }">
+					    			<input name="beginDate" type="date" id="begin-time" value="${requestScope['beginDate']}"/>
+					    		</c:when>
+					    		<c:otherwise>
+					    			<input name="beginDate" type="date" id="begin-time" value="1970-01-01"/>
+					    		</c:otherwise>
+					    	</c:choose>
+					    	<font size="2" color="#FF0000" id="a"> *起始结束日期只精确到月份</font>
+					    	<br/>结束时间：
+					    	<c:choose>
+					    		<c:when test="${not empty requestScope['endDate'] }">
+					    			<input name="endDate" type="date" id="stop-time" value="${requestScope['endDate2']}"/>
+					    		</c:when>
+					    		<c:otherwise>
+					    			<input name="endDate" type="date" id="stop-time" value="1970-01-01"/>
+					    		</c:otherwise>
+					    	</c:choose>
+					    	<br/>父类别:&nbsp;&nbsp;&nbsp; 
+					   		<select id="first_category_dropdown"  name="firstCategory" onchange="on_first_category_selected()">
+					   			<option value="-1">---请选择父类别---</option>
+					   			<c:forEach items="${applicationScope['topCategoryList'] }" var="category">
+					         		<option value="${category.categoryId }">${category.categoryName }</option>
+					         	</c:forEach>
+					   		</select>
+					   		<br/>   
+					    	子类别:&nbsp;&nbsp;&nbsp; 
+					    	<select id="subcategory_dropdown" name="categoryId">
+					    		<option value='-1' >---请选择子类别---</option>
+					    	</select>
+					    	<br/>
+					    	<input type="submit" class="btn btn-success" value="查询"/>
+					        <input type="reset" class="btn btn-success" value="置空" />
+					
+					    </form>
+					    <br/>查询结果 <hr/>
+					    <table width="600">
+					    	<tr>
+					    		<td>商品代码</td>
+					    		<td>商品名称</td>
+					    		<td>销售量</td>
+					    		<td>销售额</td>
+					    	</tr>
+					    	<c:if test="${empty requestScope['booksList'] }">
+					            	<h3>没有找到相应商品</h3>
+					            </c:if>
+						    <c:forEach items="${requestScope['booksList'] }" var="item" varStatus="status">
+						    	<c:set var="index" value="${status.index }" />
+						    	<tr>
+						    		<td>${item.booksId }</td>
+						    		<td><a href="/BookShopping/manager/PrepareSalesChart.action?booksId=${item.booksId }&beginDate=${requestScope['beginDate'] }&endDate=${requestScope['endDate'] }">${item.bookName }</a></td>
+						    		<td>${requestScope['salesList'].get(index)[0] }</td>
+						    		<td>&yen;<fmt:formatNumber value="${requestScope['salesList'].get(index)[1]/100.0 }" pattern="#0.00"/></td>
+						    	</tr>
+						    </c:forEach>
+					    </table>
+					            <br/>					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+    <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/alert.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/manager.js"></script>
+    <script type="text/javascript">   
+    		function search_sale(){
+				window.location.href="/BookShopping/manager/Jump.action?jumpId=7";
+			}
+			
+            function verify()
+			{
+            	if($('#begin-time').val()=="" || $('#stop-time').val()=="")
+            		{
+            		Alert("起始或终止时间不能为空");
+                    return false;
+            		}
+				 if($('#begin-time').val().replace("/","")>$('#stop-time').val().replace("/",""))
+				 		{
+							
+                            Alert("起始时间不能迟于终止时间");
+                            return false;
+                        }
+				else if(parseInt($('#stop-time').val().replace("/",""))- parseInt($('#begin-time').val().replace("/",""))>2)
+				 	{
+						
+                        Alert("搜索范围过大，年份相差不能超过2年");
+                        return false;
+					}
+				else if($('#subcategory_dropdown').val()==-1 && $('#first_category_dropdown').val()!=-1)
+			 	{
+					
+                    Alert("请选择子类别，或不选择父类别");
+                    return false;
+				}
+                return true;
+			}
+            function on_first_category_selected() {
+    	 		var firstCategoryId = $("#first_category_dropdown").val();
+    	 		$.ajax({
+    	 			url: "/BookShopping/manager/GetSubcategoryList.action",
+    	 			type: "GET",
+    	 			contextType: "application/json;charset=utf-8",
+    	 			data: {parentId: firstCategoryId},
+    	 			dataType: "json",
+    	 			success: function(result) {
+    	 				$('#subcategory_dropdown').empty();
+    	 				$('#subcategory_dropdown').append("<option value='-1'>---请选择子类别---</option>");
+    	 				var resultJson = eval(result);
+    	 				$.each(resultJson, function(index, item) {
+    	 					$('#subcategory_dropdown').append("<option value="+ item.categoryId +">" + item.categoryName + "</option>");
+    	 				});
+    	 			}
+    	 		});
+    	 	}
+
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<%-- 
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>销售量趋势查询</title>
 <style>
 body {
 	margin:0;
@@ -225,82 +458,4 @@ a:hover{
 			}
 	</script>
 </body>
-</html>
-
-
-<%-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'viewSales.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-  </head>
-  
-  <body>
-    <h3>销售量查询</h3>
-    <hr>
-    <form action="PrepareSales.action" method="post">
-    	<br>起始时间：<input name="beginDate" type="date" value="1970-01-01"/>
-    	<br>结束时间：<input name="endDate" type="date" value="1970-01-01"/>
-    	<br>父类别: 
-   		<select id="first_category_dropdown"  name="firstCategory" onChange="on_first_category_selected()">
-   			<option value="-1">---请选择父类别---</option>
-   			<c:forEach items="${applicationScope['topCategoryList'] }" var="category">
-         		<option value="${category.categoryId }">${category.categoryName }</option>
-         	</c:forEach>
-   		</select>   
-    	&nbsp;子类别: 
-    	<select id="subcategory_dropdown" name="categoryId">
-    		<option value='-1' >---请选择父类别---</option>
-    	</select>
-    	<br>
-    	<input type="submit" value="提交" />
-    	<input type="reset" value="重置" />
-    </form>
-    <br>查询结果 <hr>
-    <table width="600">
-    	<tr>
-    		<td>商品代码</td>
-    		<td>商品名称</td>
-    	</tr>
-	    <c:forEach items="${requestScope['booksList'] }" var="item">
-	    	<tr>
-	    		<td>${item.booksId }</td>
-	    		<td><a href="PrepareSalesChart.action?booksId=${item.booksId }&beginDate=${requestScope['beginDate'] }&endDate=${requestScope['endDate'] }">${item.clothesName }</a></td>
-	    	</tr>
-	    </c:forEach>
-    </table>
-    <script type="text/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript">
-	 	function on_first_category_selected() {
-	 		var firstCategoryId = $("#first_category_dropdown").val();
-	 		$.ajax({
-	 			url: "/BookShopping/GetSubcategoryList.action",
-	 			type: "GET",
-	 			contextType: "application/json;charset=utf-8",
-	 			data: {parentId: firstCategoryId},
-	 			dataType: "json",
-	 			success: function(result) {
-	 				$('#subcategory_dropdown').empty();
-	 				$('#subcategory_dropdown').append("<option value='-1'>---请选择父类别---</option>");
-	 				var resultJson = eval(result);
-	 				$.each(resultJson, function(index, item) {
-	 					$('#subcategory_dropdown').append("<option value="+ item.categoryId +">" + item.categoryName + "</option>");
-	 				});
-	 			}
-	 		});
-	 	}
-	</script>
-  </body>
-</html>
- --%>
+</html> --%>

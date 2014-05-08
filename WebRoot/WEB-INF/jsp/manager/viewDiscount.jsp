@@ -242,7 +242,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</a>					
 				</li>
 				<li>
-					<a href="/BookShopping/manager/PrepareClothes.action">
+					<a href="/BookShopping/manager/PrepareBooks.action">
 						<i class="icon-book"></i>
 						<span>商品管理</span>
 					</a>					
@@ -282,7 +282,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 		            <form name="form1" method="post" action="/BookShopping/manager/Jump.action?jumpId=5" enctype="multipart/form-data">
 		            <input type="submit" value="添加折扣" style="float:right; margin-top:-25px;"/>
 		            </form> -->
-		            <button id="add_zhekou" type="button" class="btn btn-default" onclick="add_zhekou()">添加折扣</button>
+		            <button id="add_zhekou" type="button" class="btn btn-success" onclick="add_zhekou()">添加折扣</button>
 		            <hr />
 		            <table width="700">
 		            <tr>
