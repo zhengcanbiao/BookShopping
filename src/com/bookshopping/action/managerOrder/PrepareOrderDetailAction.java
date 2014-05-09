@@ -48,6 +48,9 @@ public class PrepareOrderDetailAction extends ActionSupport implements ServletRe
 		List<TbBooks> books = new ArrayList<TbBooks>(orderDetailList.size());
 		for (int i = 0; i < orderDetailList.size(); i++ ) {
 			books.add(orderDetailList.get(i).getTbBooks());
+//			for(TbBooks a: books){
+//				a.getAuthor();
+//			}
 			Hibernate.initialize(books);
 		}
 		Hibernate.initialize(order.getTbCustomer());
