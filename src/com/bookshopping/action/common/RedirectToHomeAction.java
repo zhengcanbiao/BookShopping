@@ -23,12 +23,27 @@ public class RedirectToHomeAction extends ActionSupport implements ServletReques
 	private HttpServletRequest request;
 	private Map<String, Object> application;
 	
+	
 	@Override
 	public String execute() throws Exception {
 		List<TbCategory> topCategories = (List<TbCategory>) application.get("topCategoryList");
 		List<List<TbBooks>> booksCategoryList = new ArrayList<List<TbBooks>>(0);
+		List<TbBooks> zongbangList = new ArrayList<TbBooks>(0);
+		
+		
 		for (TbCategory category : topCategories) {
+			if(category.getCategoryName().equals("文艺")){
+				List<TbBooks> booksList = BooksService.getBooksListByCategoryId(category.getCategoryId());
+				List<TbBooks> wenyiBooksList = BooksService.sortByBooksSalesDesc(booksList);
+				request.setAttribute("wenyiBooksList", wenyiBooksList);
+			}
+			if(category.getCategoryName().equals("经管")){
+				List<TbBooks> booksList = BooksService.getBooksListByCategoryId(category.getCategoryId());
+				List<TbBooks> jinguanBooksList = BooksService.sortByBooksSalesDesc(booksList);
+				request.setAttribute("jinguanBooksList", jinguanBooksList);
+			}
 			List<TbBooks> booksList = BooksService.getBooksListByCategoryId(category.getCategoryId());
+			zongbangList.addAll(booksList);
 			int toIndex = (8 > booksList.size()) ? booksList.size() : 8;
 			booksList = booksList.subList(0, toIndex);
 			for (TbBooks books : booksList) {
@@ -36,7 +51,10 @@ public class RedirectToHomeAction extends ActionSupport implements ServletReques
 //				Hibernate.initialize(books.getTbBooksdetails());
 			}
 			booksCategoryList.add(booksList);
+			
 		}
+		List<TbBooks> zongbangBooksList1 = BooksService.sortByBooksSalesDesc(zongbangList);
+		request.setAttribute("zongbangBooksList1", zongbangBooksList1);
 		request.setAttribute("booksCategoryList", booksCategoryList);
 	    return SUCCESS;
 	}

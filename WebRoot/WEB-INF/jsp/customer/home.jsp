@@ -198,15 +198,15 @@
 	    			</div>
 					<div id="content_zongbang" style="display:inline">
 	 		            		<c:forEach begin="0" end="10" var="i" >
-			            			<c:if test="${i < fn:length(requestScope['booksCategoryList'][0]) }">
+			            			<c:if test="${i < fn:length(requestScope['zongbangBooksList1']) }">
 					            	<div class="item span3">
 					            		<c:if test="${i > 0 }">
-					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><p class="item-name"><strong>${i+1}.</strong>${requestScope['booksCategoryList'][0][i].bookName }</p></a>
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['zongbangBooksList1'][i].booksId }"><p class="item-name"><strong>${i+1}.</strong>${requestScope['zongbangBooksList1'][i].bookName }</p></a>
 										</c:if>
 					            		<c:if test="${i < 1 }">
-					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][0][i].picUrl }" width="60px" height="80px"/></a>	
-					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][0][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][0][i].bookName }</p></a>
-					            		<h5 class="item-price">&yen;<span>${requestScope['booksCategoryList'][0][i].price/100.0 }</span></h5>
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['zongbangBooksList1'][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['zongbangBooksList1'][i].picUrl }" width="60px" height="80px"/></a>	
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['zongbangBooksList1'][i].booksId }"><p class="item-name">${requestScope['zongbangBooksList1'][i].bookName }</p></a>
+					            		<h5 class="item-price">&yen;<span>${requestScope['zongbangBooksList1'][i].price/100.0 }</span></h5>
 					            		</c:if>
 					            	</div>
 					            	</c:if>
@@ -214,15 +214,15 @@
 					</div>
 					<div id="content_wenyi">
 	 		            		<c:forEach begin="0" end="10" var="i" >
-			            			<c:if test="${i < fn:length(requestScope['booksCategoryList'][1]) }">
+			            			<c:if test="${i < fn:length(requestScope['wenyiBooksList']) }">
 					            	<div class="item span3">
 					            		<c:if test="${i > 0 }">
-					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><p class="item-name"><strong>${i+1}.</strong>${requestScope['booksCategoryList'][1][i].bookName }</p></a>
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['wenyiBooksList'][i].booksId }"><p class="item-name"><strong>${i+1}.</strong>${requestScope['wenyiBooksList'][i].bookName }</p></a>
 										</c:if>
 					            		<c:if test="${i < 1 }">
-					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][1][i].picUrl }" width="60px" height="80px"/></a>	
-					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][1][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][1][i].bookName }</p></a>
-					            		<h5 class="item-price">&yen;<span>${requestScope['booksCategoryList'][1][i].price/100.0 }</span></h5>
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['wenyiBooksList'][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['wenyiBooksList'][i].picUrl }" width="60px" height="80px"/></a>	
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['wenyiBooksList'][i].booksId }"><p class="item-name">${requestScope['wenyiBooksList'][i].bookName }</p></a>
+					            		<h5 class="item-price">&yen;<span>${requestScope['wenyiBooksList'][i].price/100.0 }</span></h5>
 					            		</c:if>
 					            	</div>
 					            	</c:if>
@@ -230,15 +230,15 @@
 					</div>	
 					<div id="content_jingying">
 	 		            		<c:forEach begin="0" end="10" var="i" >
-			            			<c:if test="${i < fn:length(requestScope['booksCategoryList'][2]) }">
+			            			<c:if test="${i < fn:length(requestScope['jinguanBooksList']) }">
 					            	<div class="item span3">
 					            		<c:if test="${i > 0 }">
-					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][2][i].booksId }"><p class="item-name"><strong>${i+1}.</strong>${requestScope['booksCategoryList'][2][i].bookName }</p></a>
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['jinguanBooksList'][i].booksId }"><p class="item-name"><strong>${i+1}.</strong>${requestScope['jinguanBooksList'][i].bookName }</p></a>
 										</c:if>
 					            		<c:if test="${i < 1 }">
-					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][2][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['booksCategoryList'][2][i].picUrl }" width="60px" height="80px"/></a>	
-					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['booksCategoryList'][2][i].booksId }"><p class="item-name">${requestScope['booksCategoryList'][2][i].bookName }</p></a>
-					            		<h5 class="item-price">&yen;<span>${requestScope['booksCategoryList'][2][i].price/100.0 }</span></h5>
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['jinguanBooksList'][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['jinguanBooksList'][i].picUrl }" width="60px" height="80px"/></a>	
+					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['jinguanBooksList'][i].booksId }"><p class="item-name">${requestScope['jinguanBooksList'][i].bookName }</p></a>
+					            		<h5 class="item-price">&yen;<span>${requestScope['jinguanBooksList'][i].price/100.0 }</span></h5>
 					            		</c:if>
 					            	</div>
 					            	</c:if>
