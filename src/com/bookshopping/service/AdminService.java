@@ -6,6 +6,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.bookshopping.dao.provider.TbAdminProvider;
 import com.bookshopping.domain.TbAdmin;
+import com.bookshopping.exception.AdminNotFoundException;
 import com.bookshopping.utils.SHAEncypherUtil;
 import com.bookshopping.utils.SpringUtil;
 
@@ -47,7 +48,13 @@ public class AdminService {
 	}
 	
 	public static String getCurrentAdminName() {
-		return (String) session.get("currentAdminName");
+		initSession();
+		String adminName =  (String)session.get("currentAdminName");
+		if (adminName == null) {
+			throw new AdminNotFoundException();
+		} else {
+			return adminName;
+		}
 	}
 	
 	public static void clearSession() {

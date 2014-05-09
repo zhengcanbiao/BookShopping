@@ -7,5 +7,6 @@
 
 	<bean id="LoginInterceptor" class="com.bookshopping.interceptor.LoginInterceptor" scope="prototype" />
 	<bean id="AutoLoginInterceptor" class="com.bookshopping.interceptor.AutoLoginInterceptor" scope="prototype" />
+	<bean id="ManagerLoginInterceptor" class="com.bookshopping.interceptor.ManagerLoginInterceptor" scope="prototype" />
 
 </beans>
