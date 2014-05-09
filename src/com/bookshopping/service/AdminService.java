@@ -6,7 +6,9 @@ import org.apache.struts2.ServletActionContext;
 
 import com.bookshopping.dao.provider.TbAdminProvider;
 import com.bookshopping.domain.TbAdmin;
+import com.bookshopping.domain.TbCustomer;
 import com.bookshopping.exception.AdminNotFoundException;
+import com.bookshopping.exception.CustomerNotFoundException;
 import com.bookshopping.utils.SHAEncypherUtil;
 import com.bookshopping.utils.SpringUtil;
 
@@ -61,4 +63,25 @@ public class AdminService {
 		session.clear();
 	}
 	
+	public static boolean validateAdmin(String adminName, String password) {
+		if (adminName == null || adminName.trim().equals("")
+				|| password == null || password.trim().equals("")) {
+			return false;
+		}
+		try { 
+	        TbAdmin admin = getTbAdminProvider().getAdminByAdminName(adminName);
+	        if (encodePassword(password).equals(admin.getPassword())) {
+	        	return true;
+	        } else {
+	        	return false;
+	        }
+        } catch (CustomerNotFoundException e) {
+	        e.printStackTrace();
+	        return false;
+        }
+	}
+	
+	private static String encodePassword(String password) {
+		return SHAEncypherUtil.encryptSHA(password);
+	}
 }

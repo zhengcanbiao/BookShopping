@@ -105,7 +105,7 @@ body{
 								<option value="1" <c:if test="${requestScope['searchChoice']==1 }">selected="selected"</c:if> >按名称排序</option>
 								<option value="2" <c:if test="${requestScope['searchChoice']==2 }">selected="selected"</c:if> >按价格排序</option>
 							</select>
-							<input name="keyword" type="text" id="keyword" value="${requestScope['keyword'] }" style="float:right;width:300px;" placeholder="只按照衣服名，生产商，材质，衣服描述搜索"/>
+							<input name="keyword" type="text" id="keyword" value="${requestScope['keyword'] }" style="float:right;width:300px;" placeholder="只按照书名，出版社，作者，书描述搜索"/>
 						</form>
 						<br/>
 					    <hr/>

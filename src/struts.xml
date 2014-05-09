@@ -301,10 +301,16 @@
 				<param name="root">result</param>
 			</result>
 		</action>
-		<action name="ManagerLogin" class="ManagerLoginAction">
+		<!-- <action name="ManagerLogin" class="ManagerLoginAction">
 			<result name="success">/WEB-INF/jsp/manager/managerHome.jsp</result>
 			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
 			<result name="error">/managerLogin.jsp</result>
+		</action> -->
+		
+		<action name="ManagerLogin" class="ManagerLoginAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
 		</action>
 	 </package>
 	 

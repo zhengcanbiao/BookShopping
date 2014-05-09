@@ -138,7 +138,7 @@ a:hover{
     		<c:forEach items="${requestScope['books'] }" var="item" varStatus="status">
     			<c:set var="index" value="${status.index }" />
     			<tr>
-    				<td><a href="/BookShopping/manager/PrepareBooksDetail.action?booksId=${item.getBooksId()}">${item.getBookName()}</a></td>
+    				<td><a href="/BookShopping/manager/PrepareBooksDetail.action?booksId=${item.booksId}">${item.bookName}</a></td>
     				<td>${item.author} </td>
     				<%-- <c:choose>
 	   					<c:when test="${item.size==0 }"><td>S</td></c:when>

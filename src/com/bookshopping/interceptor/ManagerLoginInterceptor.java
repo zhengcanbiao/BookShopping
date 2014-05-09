@@ -20,6 +20,7 @@ public class ManagerLoginInterceptor extends AbstractInterceptor{
 	public String intercept(ActionInvocation invocation) throws Exception {
 		try {
 			String adminName = AdminService.getCurrentAdminName();
+			System.out.println("adminName:"+adminName);
 			return invocation.invoke();
 		} catch (AdminNotFoundException ex) {
 			HttpServletRequest request = (HttpServletRequest) invocation.getInvocationContext().get(ServletActionContext.HTTP_REQUEST);    

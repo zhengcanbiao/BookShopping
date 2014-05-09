@@ -166,8 +166,8 @@
 
 
 	
-		<form id="form_manager_login" name="form1" method="post" enctype="multipart/form-data" onsubmit="return verify()"
-		<c:if test="${empty requestScope['backwardUrl'] }">action="/BookShopping/manager/ManagerLogin.action"</c:if> 
+		<form id="form_manager_login" name="form1" method="post" onsubmit="return verify()"
+		<c:if test="${empty requestScope['backwardUrl'] }">action="/BookShopping/manager/Jump.action?jumpId=3"</c:if> 
       		<c:if test="${not empty requestScope['backwardUrl'] }">action="/BookShopping/${requestScope['backwardUrl'] }"</c:if>
             >
 			<legend>管理员登录</legend>
@@ -219,6 +219,37 @@
 				data: {adminName:$("#username").val()},
 				success: function(result) {
 					if (result=="success") {
+						
+						
+						$.ajax({
+							url: "/BookShopping/manager/ManagerLogin.action",
+							type: "GET",
+							async:false,
+							dataType:"json",
+							contentType:"application/json;charset=utf-8",
+							data: {adminName: $("#username").val(),password:$("#password").val()},
+							success: function(result) {
+									if (result == "success") {
+										/* $("#username_span").removeClass("label-important");
+										$("#username_span").addClass("label-success");
+										$("#username_span").text(""); */
+										flag = true;
+									} else if (result == "wrongPassword") {
+										/* $("#password_span").removeClass("label-success");
+										$("#password_span").addClass("label-important");
+										$("#password_span").text("密码错误"); */
+										alert("密码错误");
+										wrong = 1;
+										flag=false;
+									} 
+							}
+						});
+						
+						
+						
+						
+						
+						
 						flag = true;
 					} else {
 						flag = false;
