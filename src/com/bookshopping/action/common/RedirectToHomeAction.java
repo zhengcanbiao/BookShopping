@@ -26,6 +26,7 @@ public class RedirectToHomeAction extends ActionSupport implements ServletReques
 	
 	@Override
 	public String execute() throws Exception {
+		@SuppressWarnings("unchecked")
 		List<TbCategory> topCategories = (List<TbCategory>) application.get("topCategoryList");
 		List<List<TbBooks>> booksCategoryList = new ArrayList<List<TbBooks>>(0);
 		List<TbBooks> zongbangList = new ArrayList<TbBooks>(0);

@@ -61,4 +61,13 @@ public class TbCategoryProvider implements AbstractTbCategoryProvider {
 		return list;
 	}
 	
+	public List<TbCategory> getTbCategoryList()  {
+		@SuppressWarnings("unchecked")
+		List<TbCategory> list = HibernateUtil.executeQueryForMultiResults("from TbCategory", null);
+		if (list == null) {
+			throw new CategoryNotFoundException();
+		} else {
+			return list;
+		}
+	}
 }

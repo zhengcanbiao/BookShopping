@@ -17,6 +17,10 @@ public class CategoryService {
 		return getTbCategoryProvider().getCategoryListByParentId(0);
 	}
 	
+	public static List<TbCategory> getCategoryList() {
+		return getTbCategoryProvider().getTbCategoryList();
+	}
+	
 	public static List<TbCategory> getCategoryListByParentId(int parentId) {
 		return getTbCategoryProvider().getCategoryListByParentId(parentId);
 	}

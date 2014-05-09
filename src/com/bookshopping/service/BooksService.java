@@ -2,6 +2,7 @@ package com.bookshopping.service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import com.bookshopping.dao.provider.TbBooksProvider;
 import com.bookshopping.domain.TbBooks;
@@ -23,7 +24,7 @@ public class BooksService {
 	public static final int ORDER_BY_NAME = 5; 
 	public static final int ORDER_BY_PUBLICATION_DATE_ASC = 6; 
 	public static final int ORDER_BY_PUBLICATION_DATE_DESC = 7; 
-
+	private static Map<String, Object> application;
 	private BooksService() {
 	}
 	
@@ -53,6 +54,40 @@ public class BooksService {
 		
 	@SuppressWarnings("unchecked")
 	public static List<TbBooks> searchBooks(String keyword, int orderIndex) {
+		List<TbCategory> Categories = CategoryService.getCategoryList();
+	
+		for(TbCategory category: Categories){
+			if(keyword.equals(category.getCategoryName())){
+				List<TbBooks> list = BooksService.getBooksListByCategoryId(category.getCategoryId());
+				switch (orderIndex) {
+				case ORDER_BY_NAME:
+					sortByBooksName(list);
+					break;
+				case ORDER_BY_PRICE_ASC:
+					sortByBooksPriceAsc(list);
+					break;
+				case ORDER_BY_PRICE_DESC:
+					sortByBooksPriceDesc(list);
+					break;
+				case ORDER_BY_SALES_ASC:
+					sortByBooksSalesAsc(list);
+					break;
+				case ORDER_BY_SALES_DESC:
+					sortByBooksSalesDesc(list);
+					break;
+				case ORDER_BY_PUBLICATION_DATE_ASC:
+					sortByBooksSalesDesc(list);
+					break;
+				case ORDER_BY_PUBLICATION_DATE_DESC:
+					sortByBooksSalesDesc(list);
+					break;
+				default:
+					break;
+				}
+					return list;
+			}
+		}
+
 		List<TbBooks> list = SearchUtil.searchForKeyword(keyword.split("\\s+"), "TbBooks",
 				new String[]{"BookName", "Publisher", "Author", "BooksDescription","PublicationDate"});
 		switch (orderIndex) {
