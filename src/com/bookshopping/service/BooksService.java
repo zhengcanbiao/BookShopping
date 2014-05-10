@@ -1,6 +1,8 @@
 package com.bookshopping.service;
 
+import java.text.Collator;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -119,6 +121,12 @@ public class BooksService {
 	}
 	
 	public static List<TbBooks> sortByBooksName(List<TbBooks> list) {
+		// Comparator comparator = Collator.getInstance(java.util.Locale.CHINA);
+//		  String[] arrStrings = { "乔峰", "郭靖", "杨过", "张无忌","韦小宝" };
+//		  // 使根据指定比较器产生的顺序对指定对象数组进行排序。
+//		  Arrays.sort(arrStrings, comparator);
+
+		
 		Collections.sort(list, new BooksNameComparator());
 		return list;
 	} 

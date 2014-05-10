@@ -179,6 +179,15 @@ body{
 				</div>
 			</div>
 		</div>
+		<div class="pagination">
+                <ul>
+                	<c:if test="${pageNow!=1 }"><li ><a class="test" href="${applicationScope['basePath'] }/customer/SearchBooks.action?keyword=${requestScope['keyword'] }&pageNow=${pageNow-1 }&orderIndex=${requestScope['orderIndex']}">prev</a></li></c:if>
+                	<c:forEach begin="1" end="${requestScope['pageCount'] }" var="index">
+                		<li <c:if test="${pageNow==index }">class="active"</c:if>><a href="${applicationScope['basePath'] }/customer/SearchBooks.action?keyword=${requestScope['keyword'] }&pageNow=${index }&orderIndex=${requestScope['orderIndex']}">${index }</a></li>
+                	</c:forEach>
+                    <c:if test="${pageNow!=pageCount }"><li><a href="${applicationScope['basePath'] }/customer/SearchBooks.action?keyword=${requestScope['keyword'] }&pageNow=${pageNow+1 }&orderIndex=${requestScope['orderIndex']}">Next</a></li></c:if>
+                </ul>
+            </div>
 	</div>
 	
 	
