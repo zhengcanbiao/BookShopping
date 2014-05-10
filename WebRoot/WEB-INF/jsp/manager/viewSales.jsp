@@ -11,6 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>销售量趋势查询</title>
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <style>
 .right_block{
@@ -109,7 +110,7 @@ body{
 					    			<input name="beginDate" type="date" id="begin-time" value="${requestScope['beginDate']}"/>
 					    		</c:when>
 					    		<c:otherwise>
-					    			<input name="beginDate" type="date" id="begin-time" value="1970-01-01"/>
+					    			<input name="beginDate" type="date" id="begin-time" value="1970-01-01" />
 					    		</c:otherwise>
 					    	</c:choose>
 					    	<font size="2" color="#FF0000" id="a"> *起始结束日期只精确到月份</font>
@@ -170,12 +171,26 @@ body{
 	
     <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
     <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="/BookShopping/js/bootstrap-datetimepicker.zh-TW.js" charset="UTF-8"></script>
     <script type="application/javascript" src="/BookShopping/js/alert.js"></script>
     <script type="application/javascript" src="/BookShopping/js/manager.js"></script>
     <script type="text/javascript">   
     		function search_sale(){
 				window.location.href="/BookShopping/manager/Jump.action?jumpId=7";
-			}
+			};
+			$('#begin-time').datetimepicker({
+		    	format: 'yyyy-mm-dd',
+		    	autoclose: true,
+		    	minView:2,
+		    	language:'zh-TW'
+		    });
+		   	$('#stop-time').datetimepicker({
+		    	format: 'yyyy-mm-dd',
+		    	autoclose: true,
+		    	minView:2,
+		    	language:'zh-TW'
+		    });
 			
             function verify()
 			{

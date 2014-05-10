@@ -206,6 +206,7 @@
 					            		<c:if test="${i < 1 }">
 					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['zongbangBooksList1'][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['zongbangBooksList1'][i].picUrl }" width="60px" height="80px"/></a>	
 					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['zongbangBooksList1'][i].booksId }"><p class="item-name">${requestScope['zongbangBooksList1'][i].bookName }</p></a>
+					            		<br>
 					            		<h5 class="item-price">&yen;<span>${requestScope['zongbangBooksList1'][i].price/100.0 }</span></h5>
 					            		</c:if>
 					            	</div>
@@ -222,6 +223,7 @@
 					            		<c:if test="${i < 1 }">
 					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['wenyiBooksList'][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['wenyiBooksList'][i].picUrl }" width="60px" height="80px"/></a>	
 					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['wenyiBooksList'][i].booksId }"><p class="item-name">${requestScope['wenyiBooksList'][i].bookName }</p></a>
+					            		<br>
 					            		<h5 class="item-price">&yen;<span>${requestScope['wenyiBooksList'][i].price/100.0 }</span></h5>
 					            		</c:if>
 					            	</div>
@@ -238,6 +240,7 @@
 					            		<c:if test="${i < 1 }">
 					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['jinguanBooksList'][i].booksId }"><strong>${i+1}.</strong><img src="${requestScope['jinguanBooksList'][i].picUrl }" width="60px" height="80px"/></a>	
 					            		<a href="/BookShopping/customer/PrepareBooksDetail.action?booksId=${requestScope['jinguanBooksList'][i].booksId }"><p class="item-name">${requestScope['jinguanBooksList'][i].bookName }</p></a>
+					            		<br>
 					            		<h5 class="item-price">&yen;<span>${requestScope['jinguanBooksList'][i].price/100.0 }</span></h5>
 					            		</c:if>
 					            	</div>

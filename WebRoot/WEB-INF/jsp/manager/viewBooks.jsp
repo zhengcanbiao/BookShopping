@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .right_block{
 	position: relative;
 	width: 800px;
+	height: 100%;
 	margin: auto;
 	padding-top: 50px;
 
@@ -32,6 +33,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 body{
 	background-color:#eee;
 }
+.pagination {
+	margin-left: 28%;
+}
+
 
 </style>
 </head>
@@ -131,35 +136,46 @@ body{
 					            <c:if test="${empty requestScope['BooksList'] }">
 					            	<h3>没有找到相应商品</h3>
 					            </c:if>
-					            <c:forEach items="${requestScope['BooksList'] }" var="item" varStatus="status">
-						    <c:set var="index" value="${status.index }" />
-						    <tr>
-						    <td>${item.booksId}</td>
-						    <td>${item.bookName}</td>
-						    <td><img src="${item.picUrl}" width="80px;" height="100px;"/></td>
-						  	<c:choose>
-						  		<c:when test="${item.valid==true }">
-						  			<td></td>
-						  		</c:when>
-						  		<c:otherwise>
-						  			<td><span id="status">此商品已下架</span></td>
-						  		</c:otherwise>
-						  	</c:choose>	
-						  	<td>&yen;<fmt:formatNumber value='${item.price/100.0}' pattern='#0.00'/></td>
-						  	<td><a href="/BookShopping/manager/PrepareBooksDetail.action?booksId=${item.booksId}">修改</a></td>
-						  	<c:choose>
-						  		<c:when test="${item.valid==true }">
-						  			<td><a href="#" id="click1" onclick="show_confirm('/BookShopping/manager/ValidateBooks.action?booksId=${item.booksId}&valid=0','1')">下架</a></td>
-						  		</c:when>
-						  		<c:otherwise>
-						  			<td><a href="#" id="click2" onclick="show_confirm('/BookShopping/manager/ValidateBooks.action?booksId=${item.booksId}&valid=1','2')">上架</a></td>
-						  		</c:otherwise>
-						  	</c:choose>	
-						  	</tr>
-					  	</c:forEach>
-					 
+					        <c:forEach items="${requestScope['BooksList'] }" var="item" varStatus="status">
+							    <c:set var="index" value="${status.index }" />
+							    <tr>
+							    <td>${item.booksId}</td>
+							    <td>${item.bookName}</td>
+							    <td><img src="${item.picUrl}" width="80px;" height="100px;"/></td>
+							  	<c:choose>
+							  		<c:when test="${item.valid==true }">
+							  			<td></td>
+							  		</c:when>
+							  		<c:otherwise>
+							  			<td><span id="status">此商品已下架</span></td>
+							  		</c:otherwise>
+							  	</c:choose>	
+							  	<td>&yen;<fmt:formatNumber value='${item.price/100.0}' pattern='#0.00'/></td>
+							  	<td><a href="/BookShopping/manager/PrepareBooksDetail.action?booksId=${item.booksId}">修改</a></td>
+							  	<c:choose>
+							  		<c:when test="${item.valid==true }">
+							  			<td><a href="#" id="click1" onclick="show_confirm('/BookShopping/manager/ValidateBooks.action?booksId=${item.booksId}&valid=0','1')">下架</a></td>
+							  		</c:when>
+							  		<c:otherwise>
+							  			<td><a href="#" id="click2" onclick="show_confirm('/BookShopping/manager/ValidateBooks.action?booksId=${item.booksId}&valid=1','2')">上架</a></td>
+							  	</c:otherwise>
+							  	</c:choose>	
+							  	</tr>
+					  		</c:forEach>				  							 
 					     </table>
+					    <div class="pagination">
+						    <ul>
+						    <li><a href="#">Prev</a></li>
+						    <li><a href="#">1</a></li>
+						    <li><a href="#">2</a></li>
+						    <li><a href="#">3</a></li>
+						    <li><a href="#">4</a></li>
+						    <li><a href="#">5</a></li>
+						    <li><a href="#">Next</a></li>
+						    </ul>
+					    </div>
 					</div>
+			
 				</div>
 			</div>
 		</div>

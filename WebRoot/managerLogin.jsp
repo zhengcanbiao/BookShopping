@@ -130,14 +130,21 @@
 <link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
 <style>
+.bg{
+	background: url("/BookShopping/img/bg.jpg");
+	background-size:100% 100%;
+	height: 100%;
+	width: 100%;
+}
 #form_manager_login{
 	position: relative;
 	width: 340px;
 	margin: auto;
 	top: 150px;
-	border: 1px solid #DDDDDD;
+/* 	border: 1px solid #DDDDDD; */
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
     padding: 10px 20px 20px 20px;
+    background-color: #DEB887;
 }
 #username, #password, #yzm, #checkCode {
 	height: 30px;
@@ -165,7 +172,7 @@
 <body onLoad="createCode();">
 
 
-	
+	<div class="bg">
 		<form id="form_manager_login" name="form1" method="post" onsubmit="return verify()"
 		<c:if test="${empty requestScope['backwardUrl'] }">action="/BookShopping/manager/Jump.action?jumpId=3"</c:if> 
       		<c:if test="${not empty requestScope['backwardUrl'] }">action="/BookShopping/${requestScope['backwardUrl'] }"</c:if>
@@ -184,7 +191,7 @@
 		<p id="info">
 			${requestScope['errorPwd'] }
 		<p>
-
+	</div>
 	
 	
     <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>

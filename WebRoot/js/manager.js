@@ -16,9 +16,16 @@ $(document).ready(function() {
         $(".bt_booking_room i").css("color", icon_gray);
         $(".bt_select i").css("color", icon_white);
     }*/
+	
+/*	$('#begin-time').datetimepicker({
+    	format: 'yyyy-mm-dd'
+    });
+   	$('#stop-time').datetimepicker({
+    	format: 'yyyy-mm-dd'
+    });*/
     
     $("#dingdang_paixu option").bind('click', function() {
-        $(".selected-status").text($(this).text())
-    })
+        $(".selected-status").text($(this).text());
+    });
 
 })

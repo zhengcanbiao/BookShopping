@@ -11,6 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>销售量统计</title>
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <style>
 .right_block{
@@ -167,12 +168,21 @@ body{
 	
     <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
     <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap-datetimepicker.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap-datetimepicker.zh-TW.js"></script>
     <script type="application/javascript" src="/BookShopping/js/alert.js"></script>
     <script type="application/javascript" src="/BookShopping/js/manager.js"></script>
     <script type="text/javascript">
         	function search_saleNum(){
 				window.location.href="/BookShopping/manager/Jump.action?jumpId=6";
 			}
+			$('#date').datetimepicker({
+		    	format: 'yyyy-mm-dd',
+		    	autoclose: true,
+		    	minView:2,
+		    	language:'zh-TW'
+		    });
+			
             function verify()
 			{
             	if($('#date').val()=="")
