@@ -10,6 +10,137 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>销量查询结果</title>
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
+<style>
+.right_block{
+	position: relative;
+	width: 700px;
+	margin: auto;
+	padding-top: 50px;
+}
+#back{
+	width: 80px;
+}
+
+body{
+	background-color:#eee;
+}
+
+</style>
+</head>
+<body>
+	<div class="admin_head">
+		<p>网上书城系统-管理员后台</p>
+	</div>
+	<div class="admin_container">
+		<div class="admin_left">
+			<div class="welcome">
+				<span>管理员 </span>
+				<a href="/BookShopping/manager/ManagerLogout.action">退出</a>
+			</div>
+			<hr/>
+			<ul>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=3">
+						<i class="icon-home"></i>
+						<span>回到首页</span>
+					</a>				
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=0">
+						<i class="icon-wrench"></i>
+						<span>修改密码</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareCategory.action">
+						<i class="icon-bookmark"></i>
+						<span>商品类别管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareBooks.action">
+						<i class="icon-book"></i>
+						<span>商品管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareOrder.action">
+						<i class="icon-shopping-cart"></i>
+						<span>订单管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=6">
+						<i class="icon-eye-open icon-white"></i>
+						<span class="selected">销售量统计</span>
+					</a>					
+				</li>				
+				<li>
+					<a href="/BookShopping/manager/PrepareCustomer.action">
+						<i class="icon-user"></i>
+						<span>会员管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=4">
+						<i class="icon-star"></i>
+						<span>折扣管理</span>
+					</a>					
+				</li>								
+			</ul>
+		</div>
+		<div class="admin_right">
+			<div class="bg_right">
+				<div class="admin_right_to_center">
+					<div class="right_block">
+		           		销量统计图
+		           		<button id="back" type="button" class="btn btn-success" style="float:right" onclick="back()">返回 </button>
+		           		<hr />
+		            	<img src="${requestScope['picUrl'] }" width="800" height="600"/>
+		            	<hr />			
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+    <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/alert.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/manager.js"></script>
+    <script type="text/javascript">	
+        function back(){
+			window.location.href="/BookShopping/manager/Jump.action?jumpId=6";
+		}
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>销量查询结果</title>
 <style>
 body {
 	margin:0;
@@ -121,31 +252,7 @@ a:hover{
 			</script>
 </body>
 </html>
-
-
-
-
-<%-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'viewSalesChart.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-  </head>
-  
-  <body>
-    <h3>销量统计图</h3>
-    <img src="${requestScope['picUrl'] }" width="800" height="600">
-  </body>
-</html>
  --%>
+
+
+

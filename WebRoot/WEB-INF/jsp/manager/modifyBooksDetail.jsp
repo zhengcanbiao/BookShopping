@@ -10,8 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>修改商品</title>
-<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <style>
 .right_block{
 	position: relative;

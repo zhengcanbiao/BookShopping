@@ -5,13 +5,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>订单管理</title>
-<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <style>
 .right_block{
 	position: relative;
@@ -136,7 +137,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    		<tr>
 			    			<td>${item.orderId }</td>
 			    			<td>${item.tbCustomer.customerName }</td>
-			    			<td>${item.orderTime }</td>
+			    			<td><fmt:formatDate value="${item.getOrderTime()}" type="both"/></td>
+			    			<%-- <td>${item.orderTime }</td> --%>
 			    			<c:choose>
 			   					<c:when test="${item.orderStatus==-1 }">
 			   						<td>交易失败</td>

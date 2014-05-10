@@ -31,7 +31,31 @@
 		</action>
 		
 	</package>
-
+	
+	<package name="ManagerAuthority" namespace="/manager" extends="struts-default, json-default">
+		<interceptors>
+			<interceptor name="ManagerloginInterceptor" class="ManagerLoginInterceptor" />
+			<interceptor-stack name="ManagerBookshoppingLogin">
+				<interceptor-ref name="ManagerloginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor-stack name="ManagerDefault">
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="ManagerBookshoppingLogin" />
+				
+		<global-results>
+			<result name="login">/managerLogin.jsp</result>
+		</global-results>
+		
+		
+		<!-- <action name="RedirectToHome" class="RedirectToHomeAction">
+			<result name="success">/WEB-INF/jsp/manager/managerHome.jsp</result>
+		</action> -->
+		
+	</package>
 <package name="CustomerAction" namespace="/customer" extends="Authority">
 		<action name="Login" class="LoginAction">
 			<result name="success" type="json">
@@ -261,6 +285,7 @@
 				<param name="root">result</param>
 			</result>
 		</action>
+		
 	</package>
 	
 	<!-- 
@@ -270,8 +295,26 @@
 	
 	
 	 -->
+	 <package name="adminExistAction" namespace="/manager" extends="struts-default,json-default">
+	 <action name="AdminExist" class="AdminExistAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- <action name="ManagerLogin" class="ManagerLoginAction">
+			<result name="success">/WEB-INF/jsp/manager/managerHome.jsp</result>
+			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
+			<result name="error">/managerLogin.jsp</result>
+		</action> -->
+		
+		<action name="ManagerLogin" class="ManagerLoginAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	 </package>
 	 
-	<package name="JsonAction" namespace="/manager" extends="json-default">
+	<package name="JsonAction" namespace="/manager" extends="ManagerAuthority">
 		 <action name="GetSubcategoryList" class="GetSubcategoryListAction">
 			<result type="json">
 				<param name="root">result</param>
@@ -292,14 +335,10 @@
 				<param name="root">result</param>
 			</result>
 		</action>
-		<action name="AdminExist" class="AdminExistAction">
-			<result type="json">
-				<param name="root">result</param>
-			</result>
-		</action>
+		
 	</package>
 
-	<package name="ManagerAction" namespace="/manager" extends="struts-default">
+	<package name="ManagerAction" namespace="/manager" extends="ManagerAuthority">
 		<action name="Jump" class="JumpAction">
 			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
 			<result name="0">/WEB-INF/jsp/manager/managerChangePwd.jsp</result>
@@ -311,11 +350,7 @@
 			<result name="6">/WEB-INF/jsp/manager/viewSales.jsp</result>
 			<result name="7">/WEB-INF/jsp/manager/searchSales.jsp</result>
 		</action>
-		<action name="ManagerLogin" class="ManagerLoginAction">
-			<result name="success">/WEB-INF/jsp/manager/managerHome.jsp</result>
-			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>
-			<result name="error">/managerLogin.jsp</result>
-		</action>
+		
 		<action name="ManagerChangePsw" class="ManagerChangePwdAction">
 			<result name="success">/WEB-INF/jsp/manager/managerHome.jsp</result>
 			<result name="error">/managerLogin.jsp</result>
@@ -325,7 +360,7 @@
 			<result name="error">/WEB-INF/jsp/manager/managerHome.jsp</result>
 		</action>
 	</package>
-	<package name="ManagerCategoryAction" namespace="/manager" extends="struts-default">
+	<package name="ManagerCategoryAction" namespace="/manager" extends="ManagerAuthority">
 		<action name="PrepareCategory" class="PrepareCategoryAction">
 			<result name="success">/WEB-INF/jsp/manager/viewCategory.jsp</result>
 		</action>
@@ -344,7 +379,7 @@
 		</action>
 	</package>
 	
-	<package name="ManagerBooksAction" namespace="/manager" extends="struts-default">
+	<package name="ManagerBooksAction" namespace="/manager" extends="ManagerAuthority">
 		<action name="SearchBooks" class="AdminSearchBooksAction">
 			<result name="success">/WEB-INF/jsp/manager/viewBooks.jsp</result>
 		</action>
@@ -367,7 +402,7 @@
 			<result name="input">/WEB-INF/jsp/manager/addBooksDetail.jsp</result>
 		</action>
 	</package>
-	<package name="ManagerOrderAction" namespace="/manager" extends="struts-default">
+	<package name="ManagerOrderAction" namespace="/manager" extends="ManagerAuthority">
 		<action name="PrepareOrder" class="PrepareOrderAction">
 			<result name="success">/WEB-INF/jsp/manager/viewOrder.jsp</result>
 		</action>
@@ -384,7 +419,7 @@
 		</action>
 	</package>
 	
-	<package name="ManagerDiscountAction" namespace="/manager" extends="struts-default">
+	<package name="ManagerDiscountAction" namespace="/manager" extends="ManagerAuthority">
 		<action name="AddDiscount" class="AddDiscountAction">
 			<result name="success">/WEB-INF/jsp/manager/viewDiscount.jsp</result>
 			<result name="input">/WEB-INF/jsp/manager/addDiscount.jsp</result>
@@ -400,7 +435,7 @@
 			<result name="success">/WEB-INF/jsp/manager/viewDiscount.jsp</result>
 		</action>
 	</package>
-	<package name="ManagerCustomerAction" namespace="/manager" extends="struts-default">
+	<package name="ManagerCustomerAction" namespace="/manager" extends="ManagerAuthority">
 		<action name="PrepareCustomer" class="PrepareCustomerAction">
 			<result name="success">/WEB-INF/jsp/manager/viewCustomer.jsp</result>
 		</action>
@@ -412,7 +447,7 @@
 		</action>
 	</package>
 	
-	<package name="ManagerSalesAction" namespace="/manager" extends="struts-default">
+	<package name="ManagerSalesAction" namespace="/manager" extends="ManagerAuthority">
 		<action name="PrepareSales" class="PrepareSalesAction">
 			<result name="success">/WEB-INF/jsp/manager/viewSales.jsp</result>
 			<result name="input">/WEB-INF/jsp/manager/managerHome.jsp</result>

@@ -216,8 +216,8 @@ a:hover{
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>折扣管理</title>
-<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <style>
 #form_pwd {
 	position: relative;

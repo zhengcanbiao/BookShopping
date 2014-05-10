@@ -10,6 +10,245 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>修改折扣</title>
+<link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
+<style>
+#right_block {
+	position: relative;
+	width: 450px;
+	margin: auto;
+	padding-top: 150px;
+}
+#form_dingdang input{
+	height: 30px;
+}
+#add_zhekou {
+	float: right;
+	margin-right: 10px;
+}
+</style>
+</head>
+<body>
+	<div class="admin_head">
+		<p>网上书城系统-管理员后台</p>
+	</div>
+	<div class="admin_container">
+		<div class="admin_left">
+			<div class="welcome">
+				<span>管理员 </span>
+				<a href="/BookShopping/manager/ManagerLogout.action">退出</a>
+			</div>
+			<hr/>
+			<ul>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=3">
+						<i class="icon-home"></i>
+						<span>回到首页</span>
+					</a>				
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=0">
+						<i class="icon-wrench"></i>
+						<span>修改密码</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareCategory.action">
+						<i class="icon-bookmark"></i>
+						<span>商品类别管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareBooks.action">
+						<i class="icon-book"></i>
+						<span>商品管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/PrepareOrder.action">
+						<i class="icon-shopping-cart"></i>
+						<span>订单管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=6">
+						<i class="icon-eye-open"></i>
+						<span>销售量统计</span>
+					</a>					
+				</li>				
+				<li>
+					<a href="/BookShopping/manager/PrepareCustomer.action">
+						<i class="icon-user"></i>
+						<span>会员管理</span>
+					</a>					
+				</li>
+				<li>
+					<a href="/BookShopping/manager/Jump.action?jumpId=4">
+						<i class="icon-star icon-white"></i>
+						<span class="selected">折扣管理</span>
+					</a>					
+				</li>								
+			</ul>
+		</div>
+		<div class="admin_right">
+			<div class="bg_right">
+				<div class="admin_right_to_center">				
+		            <div id="right_block">
+				           	 修改折扣
+				            <hr />
+				            <form id="form_dingdang" name="form2" method="post" action="/BookShopping/manager/ModifyDiscount.action" enctype="multipart/form-data">
+					        	<input type="hidden" name="oldDiscountPoints" value="${requestScope['discountPoints'] }" />
+					          	  所需积分：&nbsp;&nbsp;<input name="discountPoints" type="text" id="DiscountPoints" size="15px" value="${requestScope['discountPoints']}"/><font size="2" color="#FF0000" id="a" > *必填项</font>
+					            <br />
+					            <br />
+					          	  对应折扣：&nbsp;&nbsp;<input name="discountRate" type="text" id="DiscountRate" size="15px" value="${requestScope['discountRate']}"/><font size="2" color="#FF0000" id="a" > *必填项</font>
+					            <br />
+					            <br />
+					            <input type="button" class="btn btn-success" value="     修改     " style="float:left; margin-top:4px;" onclick="verify('${requestScope.discountPoints }')"/>&nbsp;&nbsp;
+					        </form>
+					        <form id="form_dingdang" name="form3" method="post" action="/BookShopping/manager/Jump.action?jumpId=4" enctype="multipart/form-data">
+								<input type="submit" class="btn btn-success" value="     返回     " style="float:left; margin-left:130px;margin-top:-35px;"/>&nbsp;&nbsp;&nbsp;&nbsp;
+				            </form> 
+		            </div>	
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+    <script src="/BookShopping/js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/alert.js"></script>
+    <script type="application/javascript" src="/BookShopping/js/manager.js"></script>
+    <script type="text/javascript">
+		function Confirm()
+		{
+			var r=confirm("是否确认注销？");
+			if (r==true)
+				  	{
+						return true;
+				 }
+			else
+					{
+						return false;
+					}
+		}
+		
+		function verify(discountPoints)
+		{
+			if(isNaN($('#DiscountPoints').val()))
+			{
+			   Alert("积分输入格式错误");
+			   return false;
+			}
+			else if(isNaN($('#DiscountRate').val()))
+			{
+			   Alert("折扣输入格式错误");
+			   return false;
+			}
+			else if($('#DiscountPoints').val()>100000)
+			{
+				Alert("输入的积分最大值为100000");
+				return false;
+			}
+			else if(parseInt($('#DiscountPoints').val())!=($('#DiscountPoints').val()))
+			{
+				Alert("输入的积分不是整数");
+				return false;
+			}
+			else if(parseInt($('#DiscountRate').val())!=($('#DiscountRate').val()))
+			{
+				Alert("输入的折扣不是整数");
+				return false;
+			}
+			else if($('#DiscountPoints').val()<=0)
+			{
+			   Alert("积分不能为负数或0");
+			   $('#DiscountPoints').focus();
+			   return false;
+			}
+			else if ($('#DiscountPoints').val()==""){
+				Alert("积分不能为空");
+				$('#DiscountPoints').focus();
+				return false;
+			}
+			else if ($('#DiscountRate').val()==""){
+				Alert("折扣不能为空");
+				$('#DiscountRate').focus();
+				return false;
+			}
+			else if($('#DiscountRate').val()<=0||$('#DiscountRate').val()>100)
+			{
+			   Alert("折扣范围从1到100");
+			   return false;
+			}
+			else{
+				var flag = true;
+				if ($("#DiscountPoints").val() != discountPoints) {
+					$.ajax({
+					url: "/BookShopping/manager/DiscountConfirm.action",
+					type: "GET",
+					async: false,
+					contextType: "application/json;charset=utf-8",
+					dataType: "json",
+					data: {discountPoints:$("#DiscountPoints").val()},
+					success: function(result) {
+						if (result=="success") {
+							flag = true;
+						} else {
+							flag = false;
+							Alert("积分已存在");
+						}
+					}
+					});
+				}
+				if (flag==true) {
+					Alert("修改成功");
+					setTimeout( function(){$("[name=form2]").submit();} ,2000);
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>修改折扣</title>
 <style>
 body {
 	margin:0;
@@ -212,36 +451,4 @@ a:hover{
 </body>
 </html>
 
-
-
-<%-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'modifyDiscount.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-  </head>
-  
-  <body>
-    <h3>修改折扣</h3>
-    <form action="ModifyDiscount.action" method="post">
-    	<input type="hidden" name="oldDiscountPoints" value="${requestScope['discountPoints'] }" />
-    	<br>所需积分：<input name=discountPoints type="text" value="${requestScope['discountPoints']}"/>
-    	<br>对应折扣：<input name=discountRate type="text" value="${requestScope['discountRate']}"/>
-        <br>
-        <input type="submit" value="提交" />
-    	<input type="reset" value="重置" />
-    </form>
-  </body>
-</html>
  --%>

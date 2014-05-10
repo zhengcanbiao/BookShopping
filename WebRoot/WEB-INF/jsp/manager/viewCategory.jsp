@@ -11,14 +11,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>商品类别管理</title>
-<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <style>
 .right_block{
 	position: relative;
 	width: 720px;
 	margin: auto;
 	padding-top: 50px;
+	padding-bottom: 30px;
 }
 body{
 	background-color: #eee;

@@ -10,20 +10,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>商品管理</title>
-<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
+<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <style>
 .right_block{
 	position: relative;
 	width: 800px;
 	margin: auto;
 	padding-top: 50px;
+
 }
 #form_dingdang input{
 	height: 30px;
 }
 #form_dingdang select{
 	width: 150px;
+}
+#bottom{
+	margin-bottom: 50px;
 }
 body{
 	background-color:#eee;
@@ -112,7 +116,7 @@ body{
 							<form name="form1" method="post" action="/BookShopping/manager/Jump.action?jumpId=1" enctype="multipart/form-data">
 					            <input type="submit" class="btn btn-success" value="添加商品" style="float:right; margin-right:0px;"/>
 					        </form>    
-					        <table align="left" width="700px">
+					        <table id="bottom" align="left" width="700px">
 					            <tr>
 					            <td>商品ID</td>
 					            <td style="width:250px;">商品名称</td>

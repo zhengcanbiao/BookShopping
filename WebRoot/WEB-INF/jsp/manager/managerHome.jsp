@@ -9,98 +9,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>管理系统首页</title>
-<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
-</head>
-<%-- <style>
-body {
-	margin:0;
-	font-size:14px;
-	line-height:30px;
-	width:100%;
-}/*默认字体大小14px; 行距20px;*/
-
-.header {
-	font-size:18px;
-	font-family:"Courier New", Courier, monospace;
-	background:left;
-	background-color:#CCC;
+<link href="/BookShopping/css/manager.css" rel="stylesheet" media="screen" />
+<style>
+.right_block{
+	background: url("/BookShopping/img/bg.jpg");
+	background-size:100% 100%;
+	height: 100%;
+	width: 100%;
 }
-
-.container {
-	width:960px;
-	margin:0 auto;
-}/*最大宽度是960px*/
-
-.breadcrumb {
-	width:100%;
-	background-color:#FFF;
+.wenben {
+    height: 80%;
+    padding-left: 16%;
+    padding-top: 14%;
+    position: relative;
+    width: 47%;
 }
-
-.left_block {
-	width:20%;
-	float:left;
-}
-
-.right_block {
-	width:77%;
-	margin-left:3%;
-	float:left;
-}
-a{
-	text-decoration:none;
-}
-a:hover{
-	text-decoration:underline;
-}
-.Button
-{
-	background-color:#CCC;
+.wenben p {
+	font-size: 17px;
+	font-family: 'Segoe UI',"hiragino sans gb","Microsoft YaHei",sans-serif; 
 }
 </style>
-</head>
 
-<body>
-<s:actionerror/>
-	<div class="header">
-    	<div class="container">
-        <img src="/BookShopping/img/logo_cut_30px.png" />
-        	尊敬的管理员，Eshopping网上衣城  诚心感谢你的默默付出
-		<form name="form1" method="post" action="ManagerLogout.action" enctype="multipart/form-data" onsubmit="return Confirm()">
-        <input type="submit"  class="Button" value="注销" style="float:right; margin-top:-25px;"/>
-        </form>
-        </div><!-- 内容放在这里面 -->
-    </div><!-- 头部 -->
-    
-    <div class="body">
-    	<div class="container">
-        	<div class="breadcrumb">
-            管理系统首页
-            <hr />
-            </div><!-- 面包屑 就是当前页面所在的导航位置 -->
-            <div class="left_block">
-            <ul>
-             <li><a href="/BookShopping/manager/Jump.action?jumpId=3">回到首页</a></li>
-            <li><a href="/BookShopping/manager/Jump.action?jumpId=0">修改密码</a></li>
-            <li><a href="/BookShopping/manager/PrepareCategory.action">商品类别管理</a></li>
-            <li><a href="/BookShopping/manager/PrepareBooks.action">商品管理</a></li>
-            <li><a href="/BookShopping/manager/PrepareOrder.action">订单管理</a></li>
-            <li><a href="/BookShopping/manager/Jump.action?jumpId=6">销售量统计</a></li>
-            <li><a href="/BookShopping/manager/PrepareCustomer.action">会员管理</a></li>
-            <li><a href="/BookShopping/manager/Jump.action?jumpId=4">折扣管理</a></li>
-            </ul>
-            </div><!-- 左边部分 -->
-            
-            <div class="right_block">
-            
-            </div><!-- 右边部分 -->  
-        </div><!-- 内容放在这里面 -->
-    </div><!-- 中间部分 -->
-    
-    <div class="footer">
-    	<div class="container">
-        </div><!-- 内容放在这里面 -->
-    </div><!-- 底部 --> --%>
+</head>
 
 <body>
 	<div class="admin_head">
@@ -167,9 +98,16 @@ a:hover{
 		<div class="admin_right">
 			<div class="bg_right">
 				<div class="admin_right_to_center">
+					<div class="right_block">
+						<div class="wenben">
+							<p>亲，欢迎来到网上书城，这里你可以对商品进行添加，删除，修改，查看，还可以查看销售记录，折扣等等</p>
+						</div>
+						
+					</div>
+<!-- 					<img src="/BookShoping/img/bg.jpg" width="100%" height="600px" alt="" /> -->
 					
 
-					  <p>欢迎来到网上书城，这里你可以对商品进行添加，删除，修改，查看，还可以查看销售记录，折扣等等</p>
+					  
 		
 
 				</div>
