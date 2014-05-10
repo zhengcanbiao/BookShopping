@@ -133,6 +133,7 @@ function get_subcategory_list(i) {
 			$(category_id).empty();
 			var resultJson = eval(result);
 			$.each(resultJson, function(index, item) {
+				
 				$(category_id).append("<li><a href='/BookShopping/customer/PrepareBooksInfoList.action?categoryId=" + item.categoryId + "&pageNow=1'><i class=icon-angle-right> </i>"+item.categoryName+"</a></li>");
 			});
 		}

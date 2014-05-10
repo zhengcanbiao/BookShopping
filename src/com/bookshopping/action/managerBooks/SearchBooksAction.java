@@ -21,7 +21,24 @@ public class SearchBooksAction extends ActionSupport implements ServletRequestAw
 	private int searchChoice;
 	private String keyword;
 	private HttpServletRequest request;
+	private int pageNow = 1;
+	private int pageSize = 16;
 	
+	public int getPageNow() {
+		return pageNow;
+	}
+
+	public void setPageNow(int pageNow) {
+		this.pageNow = pageNow;
+	}
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
 	public int getSearchChoice() {
 		return searchChoice;
 	}
@@ -57,6 +74,12 @@ public class SearchBooksAction extends ActionSupport implements ServletRequestAw
 			} else if (searchChoice == 2) {
 				Collections.sort(booksList, new BooksPriceComparator(true));
 			}
+			int pageCount = (booksList.size()-1) / pageSize + 1;
+			int fromIndex = (pageNow-1) * pageSize;
+			int toIndex = ((pageNow * pageSize) > booksList.size()) ? booksList.size() : (pageNow * pageSize);
+			booksList = booksList.subList(fromIndex, toIndex);
+			request.setAttribute("pageNow", pageNow);
+			request.setAttribute("pageCount", pageCount);
 			request.setAttribute("BooksList", booksList);
 		} catch (TargetNotFoundException e) {
 		}

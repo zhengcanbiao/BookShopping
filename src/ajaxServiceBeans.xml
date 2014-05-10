@@ -8,9 +8,9 @@
 	<bean id="GetSubcategoryListAction" class="com.bookshopping.action.category.GetSubcategoryListAction" scope="prototype" />
 	<bean id="AdminPwdConfirmAction" class="com.bookshopping.action.manager.AdminPwdConfirmAction" scope="prototype" />
 	<bean id="AdminExistAction" class="com.bookshopping.action.manager.AdminExistAction" scope="prototype" />
-	
-	<!-- <bean id="CategoryExistAction" class="com.bookshopping.action.managerCategory.CategoryExistAction" scope="prototype" />
-	
+	<bean id="CategoryExistAction" class="com.bookshopping.action.managerCategory.CategoryExistAction" scope="prototype" />
 	<bean id="DiscountConfirmAction" class="com.bookshopping.action.managerDiscount.DiscountConfirmAction" scope="prototype" />
+	
+	<!-- 
 	 -->
 </beans>

@@ -45,7 +45,7 @@ public class PrepareBooksAction extends ActionSupport implements ServletRequestA
 		int pageCount = (booksList.size()-1) / pageSize + 1;
 		int fromIndex = (pageNow-1) * pageSize;
 		int toIndex = ((pageNow * pageSize) > booksList.size()) ? booksList.size() : (pageNow * pageSize);
-		booksList = booksList.subList(fromIndex, toIndex);
+		//booksList = booksList.subList(fromIndex, toIndex);
 		request.setAttribute("pageNow", pageNow);
 		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("BooksList", booksList);

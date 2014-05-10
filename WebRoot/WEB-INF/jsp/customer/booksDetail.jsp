@@ -1,6 +1,7 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
@@ -90,7 +91,7 @@
                     <c:forEach items="${requestScope['currentBooks'].tbComments  }" var="comment">
 	                    <div class="comment">
 	                    	<p class="comment_content">${comment.commentContent }</p>
-	                        <p class="comment_time"><i class="icon-time"> </i> <fmt:formatDate value="${comment.commentTime }" type="both"/></p>
+	                        <p class="comment_time"><i class="icon-time"> </i><fmt:formatDate value="${comment.commentTime }" type="both"/> </p>
 	                        <p class="comment_user">${comment.tbCustomer.customerName }</p>
 	                    </div>
                     </c:forEach>

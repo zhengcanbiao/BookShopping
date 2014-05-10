@@ -113,7 +113,7 @@ body{
 					    			<input class="shijian" name="Date" type="date" id="date" value="${requestScope['Date']}"/>
 					    		</c:when>
 					    		<c:otherwise>
-					    			<input class="shijian" name="Date" type="date" id="date" value="1970-01-01"/>
+					    			<input class="shijian" name="Date" type="date" id="date" value="2014-05-01"/>
 					    		</c:otherwise>
 					    	</c:choose>
 					    	<br/>父类别:&nbsp;&nbsp;&nbsp; 

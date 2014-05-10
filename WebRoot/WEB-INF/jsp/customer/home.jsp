@@ -39,7 +39,7 @@
 	                            <li><a href="/BookShopping/customer/PrepareFavorite.action"><i class="icon-angle-right"> </i>收藏夹</a></li>
                                 <li><a href="/BookShopping/customer/PrepareAddress.action"><i class="icon-angle-right"> </i>地址簿</a></li>
                                 <li><a href="/BookShopping/customer/PreparePersonalInfo.action"><i class="icon-angle-right"> </i>修改信息</a></li>
-                                <li><a href="/BookShoppingasePath'] }/customer/RedirectToModifyPassword.action"><i class="icon-angle-right"> </i>修改密码</a></li>
+                                <li><a href="/BookShopping/customer/RedirectToModifyPassword.action"><i class="icon-angle-right"> </i>修改密码</a></li>
                                 <li><a href="/BookShopping/customer/PrepareCredits.action"><i class="icon-angle-right"> </i>我的积分</a></li>
                                 <li><a href="/BookShopping/customer/Logout.action"><i class="icon-angle-right"> </i>退出登录</a></li>
 	                    </ul>

@@ -114,7 +114,7 @@ body{
 								<option value="1" <c:if test="${requestScope['searchChoice']==1 }">selected="selected"</c:if> >按名称排序</option>
 								<option value="2" <c:if test="${requestScope['searchChoice']==2 }">selected="selected"</c:if> >按价格排序</option>
 							</select>
-							<input name="keyword" type="text" id="keyword" value="${requestScope['keyword'] }" style="float:right;width:300px;" placeholder="只按照书名，出版社，作者，书描述搜索"/>
+							<input name="keyword" type="text" id="keyword" value="${requestScope['keyword'] }" style="float:right;width:300px;" placeholder="搜索"/>
 						</form>
 						<br/>
 					    <hr/>
@@ -163,23 +163,28 @@ body{
 							  	</tr>
 					  		</c:forEach>				  							 
 					     </table>
-					    <div class="pagination">
+					   <%--  <div class="pagination">
 						    <ul>
-						    <li><a href="#">Prev</a></li>
+						<!--     <li><a href="#">Prev</a></li>
 						    <li><a href="#">1</a></li>
 						    <li><a href="#">2</a></li>
 						    <li><a href="#">3</a></li>
 						    <li><a href="#">4</a></li>
 						    <li><a href="#">5</a></li>
-						    <li><a href="#">Next</a></li>
+						    <li><a href="#">Next</a></li>  -->
+						     <c:if test="${pageNow!=1 }"><li ><a class="test" href="${applicationScope['basePath'] }/manager/PrepareBooks.action?pageNow=${pageNow-1 }">prev</a></li></c:if>
+                	<c:forEach begin="1" end="${requestScope['pageCount'] }" var="index">
+                		<li <c:if test="${pageNow==index }">class="active"</c:if>><a href="${applicationScope['basePath'] }/manager/PrepareBooks.action?pageNow=${index }">${index }</a></li>
+                	</c:forEach>
+                    <c:if test="${pageNow!=pageCount }"><li><a href="${applicationScope['basePath'] }/manager/PrepareBooks.action?pageNow=${pageNow+1 }">Next</a></li></c:if> 
 						    </ul>
-					    </div>
+					    </div> --%>
 					</div>
 			
 				</div>
 			</div>
 		</div>
-		<div class="pagination">
+		<%-- <div class="pagination">
                 <ul>
                 	<c:if test="${pageNow!=1 }"><li ><a class="test" href="${applicationScope['basePath'] }/customer/SearchBooks.action?keyword=${requestScope['keyword'] }&pageNow=${pageNow-1 }&orderIndex=${requestScope['orderIndex']}">prev</a></li></c:if>
                 	<c:forEach begin="1" end="${requestScope['pageCount'] }" var="index">
@@ -187,7 +192,7 @@ body{
                 	</c:forEach>
                     <c:if test="${pageNow!=pageCount }"><li><a href="${applicationScope['basePath'] }/customer/SearchBooks.action?keyword=${requestScope['keyword'] }&pageNow=${pageNow+1 }&orderIndex=${requestScope['orderIndex']}">Next</a></li></c:if>
                 </ul>
-            </div>
+            </div> --%>
 	</div>
 	
 	

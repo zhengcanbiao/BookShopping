@@ -27,7 +27,7 @@
             <div id="search_filter">
             	<h4>结果过滤</h4>
                 <select id="order" onChange="on_sort_method_change('${requestScope['keyword'] }')">
-                	<option value="0">默认排序</option>
+                	<!-- <option value="0">默认排序</option> -->
                     <option value="1">按销量由低到高</option>
                     <option value="2">按销量由高到低</option>
                     <option value="3">价格由低到高</option>

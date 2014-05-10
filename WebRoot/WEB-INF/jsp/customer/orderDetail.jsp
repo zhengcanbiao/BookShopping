@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,13 +45,13 @@
                      	<c:when test="${requestScope['currentOrder'].orderStatus==3 }">交易成功</c:when>
                      </c:choose>
             	</span></h4>
-                <p class="order_time">下单时间: <span>${requestScope['currentOrder'].orderTime }</span></p>
+                <p class="order_time">下单时间: <fmt:formatDate value="${requestScope['currentOrder'].orderTime }" type="both"/></p>
                 <p class="order_number">订单号: <span>${requestScope['currentOrder'].orderId }</span></p>
                
                 
 	               	<c:choose>
 	               		<c:when test="${requestScope['currentOrder'].orderStatus==-1 }">
-	               			<a href="/BookShopping/customer/PrepareOrderInfoList.action" class="btn" onClick="return delete_order('${requestScope['currentOrder'].orderId}')">删除订单</a>
+	               			<a href="#" class="btn" onClick="return delete_order('${requestScope['currentOrder'].orderId}')">删除订单</a>
 	               		</c:when>
 	               		<c:when test="${requestScope['currentOrder'].orderStatus==1 }">
 	               			<a class="btn" href="${applicationScope['basePath'] }/customer/CancelOrder.action?orderId=${requestScope['currentOrder'].orderId }" onClick="return cancel_order()">取消订单</a>
@@ -91,7 +93,7 @@
                                     	<c:when test="${orderDetail.tbClothesdetail.size==1 }">M</c:when>
                                     	<c:when test="${orderDetail.tbClothesdetail.size==2 }">L</c:when>
                                     </c:choose>	     --%>
-                                                            
+                                         ${orderDetail.tbBooks.author}                   
 	                            </p>
 	                            </div>
 	                        </td>
@@ -135,21 +137,26 @@
     		return window.confirm("确定取消订单？")
     	}
     	function delete_order(order_id) {
+    		alert(order_id);
     		if (window.confirm("确认删除订单？")) {
     			$.ajax({
     				url: "/BookShopping/customer/DeleteOrder.action",
     				type: "GET",
-    				aysnc: false,
     				contentType: "application/json;charset=utf-8",
     				dataType: "json",
     				data: {orderId: order_id},
     				success: function(result) {
     					show_tips("删除成功", "ok");
+    					alert("删除成功")
     					var order_body_id = "#order_body" + order_id;
     					$(order_body_id).fadeOut("slow", function() {
     						$(order_body_id).remove();
     					});
-    					setTimeout(function(){window.location.reload();}, 3000);
+    					setTimeout(function(){
+    						window.location.href="/BookShopping/customer/PrepareOrderInfoList.action";
+    						
+    						
+    					}, 500);
     				}
     			});
     		}

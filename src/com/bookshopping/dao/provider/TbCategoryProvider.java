@@ -34,7 +34,7 @@ public class TbCategoryProvider implements AbstractTbCategoryProvider {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<TbCategory> getCategoryListByParentId(int parentId) throws CategoryNotFoundException {
-		List<TbCategory> list = (List<TbCategory>) HibernateUtil.executeQueryForMultiResults("from TbCategory where parentId=?", new Object[]{parentId});
+		List<TbCategory> list = (List<TbCategory>) HibernateUtil.executeQueryForMultiResults("from TbCategory where parentId=? and valid=1", new Object[]{parentId});
 		if (list == null || list.isEmpty()) {
 			throw new CategoryNotFoundException();
 		} else {

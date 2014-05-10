@@ -110,7 +110,7 @@ body{
 					    			<input name="beginDate" type="date" id="begin-time" value="${requestScope['beginDate']}"/>
 					    		</c:when>
 					    		<c:otherwise>
-					    			<input name="beginDate" type="date" id="begin-time" value="1970-01-01" />
+					    			<input name="beginDate" type="date" id="begin-time" value="2014-04-01" />
 					    		</c:otherwise>
 					    	</c:choose>
 					    	<font size="2" color="#FF0000" id="a"> *起始结束日期只精确到月份</font>
@@ -120,7 +120,7 @@ body{
 					    			<input name="endDate" type="date" id="stop-time" value="${requestScope['endDate2']}"/>
 					    		</c:when>
 					    		<c:otherwise>
-					    			<input name="endDate" type="date" id="stop-time" value="1970-01-01"/>
+					    			<input name="endDate" type="date" id="stop-time" value="2014-06-01"/>
 					    		</c:otherwise>
 					    	</c:choose>
 					    	<br/>父类别:&nbsp;&nbsp;&nbsp; 

@@ -78,10 +78,10 @@ public class BooksService {
 					sortByBooksSalesDesc(list);
 					break;
 				case ORDER_BY_PUBLICATION_DATE_ASC:
-					sortByBooksSalesDesc(list);
+					sortByBooksPublicationDateAsc(list);
 					break;
 				case ORDER_BY_PUBLICATION_DATE_DESC:
-					sortByBooksSalesDesc(list);
+					sortByBooksPublicationDateDesc(list);
 					break;
 				default:
 					break;
@@ -109,10 +109,10 @@ public class BooksService {
 			sortByBooksSalesDesc(list);
 			break;
 		case ORDER_BY_PUBLICATION_DATE_ASC:
-			sortByBooksSalesDesc(list);
+			sortByBooksPublicationDateAsc(list);
 			break;
 		case ORDER_BY_PUBLICATION_DATE_DESC:
-			sortByBooksSalesDesc(list);
+			sortByBooksPublicationDateDesc(list);
 			break;
 		default:
 			break;

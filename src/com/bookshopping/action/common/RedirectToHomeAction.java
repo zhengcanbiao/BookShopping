@@ -45,7 +45,7 @@ public class RedirectToHomeAction extends ActionSupport implements ServletReques
 			}
 			List<TbBooks> booksList = BooksService.getBooksListByCategoryId(category.getCategoryId());
 			zongbangList.addAll(booksList);
-			int toIndex = (8 > booksList.size()) ? booksList.size() : 8;
+			int toIndex = (4 > booksList.size()) ? booksList.size() : 4;
 			booksList = booksList.subList(0, toIndex);
 			for (TbBooks books : booksList) {
 				Hibernate.initialize(books.getTbCategory());

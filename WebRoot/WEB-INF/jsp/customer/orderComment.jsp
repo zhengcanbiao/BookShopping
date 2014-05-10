@@ -47,7 +47,7 @@
 		                        <c:when test="${orderDetail.tbBooks.size==1 }">M</c:when>
 		                        <c:when test="${orderDetail.tbBooks.size==2 }">L</c:when>
 	                        </c:choose> --%>
-	                        ${orderDetail.tbBooks.author} }
+	                        ${orderDetail.tbBooks.author} 
 	                        </span>
 	                        <span>&yen;${orderDetail.tbBooks.price/100.0 }</span>
 	                    </div>

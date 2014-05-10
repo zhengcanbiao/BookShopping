@@ -185,6 +185,7 @@
     		return window.confirm("确定取消订单？")
     	}
     	function delete_order(order_id) {
+    		alert(order_id);
     		if (window.confirm("确认删除订单？")) {
     			$.ajax({
     				url: "/BookShopping/customer/DeleteOrder.action",

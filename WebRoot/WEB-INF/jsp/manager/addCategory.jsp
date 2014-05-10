@@ -101,7 +101,7 @@ body{
 			           	添加类别
 			           	<button id="back" type="button" class="btn btn-success" style="float:right" onclick="back()">返回 </button>
 			            <hr />
-						<form id="form_dingdang" name="form2" method="post" action="/BookShopping/manager/AddCategory.action" enctype="multipart/form-data">
+						<form id="form_dingdang" name="form2" method="post" action="/BookShopping/manager/AddCategory.action" enctype="multipart/form-data" >
 				     		<p/>类别名:&nbsp;&nbsp;
 							<input name="categoryName" type="text" id="categoryname"/><font size="2" color="#FF0000" id="a"> *必填项</font>
 							<br/>
@@ -113,7 +113,7 @@ body{
 				         	</c:forEach>
 								  </select>
 				                  <br />
-				            <input type="button" class="btn btn-success" value="添加类别" onclick="verify()"/>
+				            <input type="button" class="btn btn-success" value="添加类别" onclick="verify()" />
 				            <input type="reset" class="btn btn-success" value="重置"/>
 				        </form>
 <!-- 				        <form name="form3" method="post" action="/BookShopping/manager/PrepareCategory.action" enctype="multipart/form-data">
@@ -134,47 +134,47 @@ body{
         function back(){
 			window.location.href="/BookShopping/manager/PrepareCategory.action";
 		}
-		function verify()
-		{
-			if($('#categoryname').val().length<=0 || $('#categoryname').val().length>15)
-			{
-				Alert("输入名称不符合规范，名字长度为1~15位");
-				$('#categoryname').focus();
-				return false;
-			}
-			else if($('#categoryname').val().replace(/(^\s*)|(\s*$)/g, "")=="") {
-				Alert("输入名称不能全为空格");
-				$('#categoryname').focus();
-				return false;
-			}
-			else{
-				var flag = false;
-				$.ajax({
-				url: "/BookShopping/manager/CategoryExist.action",
-				type: "GET",
-				async: false,
-				contextType: "application/json;charset=utf-8",
-				dataType: "json",
-				data: {categoryName:$("#categoryname").val(), parentId:$("#first_category_dropdown").val()},
-				success: function(result) {
-					if (result=="success") {
-						flag = true;
-					} else {
-						flag = false;
-						Alert("该类别名在此父类别中已经存在");
-					}
-				}
-				});
-				if (flag == true) { 
-					Alert("添加成功");
-					setTimeout( function(){$("[name=form2]").submit();} ,2000);
-					return true;
-				}
-				else {
-					return false;
-				}
-			}
-		}
+        function verify()
+    	{
+    		if($('#categoryname').val().length<=0 || $('#categoryname').val().length>15)
+    		{
+    			Alert("输入名称不符合规范，名字长度为1~15位");
+    			$('#categoryname').focus();
+    			return false;
+    		}
+    		else if($('#categoryname').val().replace(/(^\s*)|(\s*$)/g, "")=="") {
+    			Alert("输入名称不能全为空格");
+    			$('#categoryname').focus();
+    			return false;
+    		}
+    		else{
+    			var flag = false;
+    			$.ajax({
+    			url: "/BookShopping/manager/CategoryExist.action",
+    			type: "GET",
+    			async: false,
+    			contextType: "application/json;charset=utf-8",
+    			dataType: "json",
+    			data: {categoryName:$("#categoryname").val(), parentId:$("#first_category_dropdown").val()},
+    			success: function(result) {
+    				if (result=="success") {
+    					flag = true;
+    				} else {
+    					flag = false;
+    					Alert("该类别名在此父类别中已经存在");
+    				}
+    			}
+    			});
+    			if (flag == true) { 
+    				Alert("添加成功");
+    				setTimeout( function(){$("[name=form2]").submit();} ,2000);
+    				return true;
+    			}
+    			else {
+    				return false;
+    			}
+    		}
+    	}
 	</script>
 </body>
 </html>
