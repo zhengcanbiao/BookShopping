@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.hibernate.Hibernate;
 
 import com.bookshopping.domain.TbAddress;
 import com.bookshopping.domain.TbBooks;
@@ -18,6 +19,10 @@ import com.bookshopping.service.DiscountService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class GenerateOrderInfoAction extends ActionSupport implements ServletRequestAware {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private HttpServletRequest request;
 	
 	@Override
@@ -33,6 +38,7 @@ public class GenerateOrderInfoAction extends ActionSupport implements ServletReq
 	    	TbBooks booksDetail = cart.getTbBooks();
 	    	totalPrice += booksDetail.getPrice() / 100.0 * cart.getBooksNumber();
 	    	booksDetailList.add(booksDetail);
+	    	Hibernate.initialize(booksDetail);
 	    }
 	    request.setAttribute("customerLevel", customerLevel);
 	    request.setAttribute("cartItemList", cartItemList);

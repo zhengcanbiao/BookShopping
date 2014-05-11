@@ -1,5 +1,6 @@
 package com.bookshopping.action.managerOrder;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,7 @@ public class PrepareOrderAction extends ActionSupport implements ServletRequestA
 		for(TbOrder order : orderList) {
 			Hibernate.initialize(order.getTbCustomer());
 		}
+		Collections.reverse(orderList);
 		request.setAttribute("orderList", orderList);
 		return SUCCESS;
 	}

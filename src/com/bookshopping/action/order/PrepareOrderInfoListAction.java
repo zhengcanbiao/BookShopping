@@ -1,5 +1,6 @@
 package com.bookshopping.action.order;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,7 @@ public class PrepareOrderInfoListAction extends ActionSupport implements Servlet
 				orderList.remove(i);
 			}
 		}
+		Collections.reverse(orderList);
 		int pageCount = (orderList.size()-1) / pageSize + 1;
 		int fromIndex = (pageNow - 1) * pageSize;
 		int toIndex = (pageNow * pageSize > orderList.size()) ? orderList.size() : (pageNow * pageSize);
@@ -45,6 +47,7 @@ public class PrepareOrderInfoListAction extends ActionSupport implements Servlet
 				System.out.println("orderdetail:"+orderDetail.toString());
 			}
 		}
+		
 		request.setAttribute("orderList", orderList);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pageNow", pageNow);

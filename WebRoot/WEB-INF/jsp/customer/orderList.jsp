@@ -2,6 +2,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -67,7 +68,7 @@
                                         	<c:when test="${requestScope['orderList'][orderIndex-1].orderStatus==3 }">交易成功</c:when>
                                         </c:choose>
                                         </span></li>
-                                        <li class="order_time">下单时间: <span>${requestScope['orderList'][orderIndex-1].orderTime }</span></li>
+                                        <li class="order_time">下单时间: <fmt:formatDate value="${requestScope['orderList'][orderIndex-1].orderTime }" type="both"/></li>
                                         <li class="order_number">订单号: <span>${requestScope['orderList'][orderIndex-1].orderId }</span></li>
                                     </ul>
                                 </td>

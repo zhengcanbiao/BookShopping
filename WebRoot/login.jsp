@@ -42,7 +42,7 @@
             </div>
             
             <div class="span4">
-            	<form id="login_form" onSubmit="return login_submit()" 
+            	<form id="login_form" method="post" onSubmit="return login_submit()" 
             		<c:if test="${empty requestScope['backwardUrl'] }">action="/BookShopping/customer/RedirectToHome.action"</c:if> 
             		<c:if test="${not empty requestScope['backwardUrl'] }">action="/BookShopping/${requestScope['backwardUrl'] }"</c:if>
             		>

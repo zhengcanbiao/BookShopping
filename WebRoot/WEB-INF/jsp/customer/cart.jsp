@@ -87,7 +87,7 @@
 
             <p class="cart_total_price">总价: <span>&yen;${requestScope['totalPrice'] }</span></p>
             
-            <a href="${applicationScope['basePath'] }/customer/GenerateOrderInfo.action"><button class="btn btn-large btn-primary pay_btn" type="button" <c:if test="${empty requestScope['cartItemList'] }">disabled="disabled"</c:if> >结算</button></a>
+            <a href="${applicationScope['basePath'] }/customer/GenerateOrderInfo.action?+new Date()"><button class="btn btn-large btn-primary pay_btn" type="button" <c:if test="${empty requestScope['cartItemList'] }">disabled="disabled"</c:if> >结算</button></a>
             
             <div class="discount_block">
             	<p class="cart_discount_price">实付款: <span>&yen;${requestScope['totalPrice']*applicationScope['discountList'][requestScope['customerLevel']].discountRate/100.00 }</span></p>

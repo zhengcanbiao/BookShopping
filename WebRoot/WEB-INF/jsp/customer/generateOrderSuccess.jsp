@@ -44,6 +44,10 @@
 	<script type="application/javascript" src="/BookShopping/js/jquery-1.9.1.min.js"></script>
     <script type="application/javascript" src="/BookShopping/js/bootstrap.js"></script>
     <script type="application/javascript" src="/BookShopping/js/global.js"></script>
-
+    <script type="application/javascript">
+	window.onbeforeunload=function(){
+	location.href="BookShopping/customer/GenerateOrder.action";
+	}
+	</script>
 </body>
 </html>

@@ -122,6 +122,10 @@
             </div> 
             
         </div><!-- container -->
+        <div id="alert_tips">
+        	<i class="icon-2x icon-ok"></i><span>添加到购物车成功</span>
+            <button type="button" class="close" onClick="$('#alert_tips').fadeOut('fast')">×</button>
+        </div>
         
     </div>
     
@@ -137,7 +141,7 @@
     		return window.confirm("确定取消订单？")
     	}
     	function delete_order(order_id) {
-    		alert(order_id);
+    		//alert(order_id);
     		if (window.confirm("确认删除订单？")) {
     			$.ajax({
     				url: "/BookShopping/customer/DeleteOrder.action",
@@ -147,7 +151,7 @@
     				data: {orderId: order_id},
     				success: function(result) {
     					show_tips("删除成功", "ok");
-    					alert("删除成功")
+    					//alert("删除成功")
     					var order_body_id = "#order_body" + order_id;
     					$(order_body_id).fadeOut("slow", function() {
     						$(order_body_id).remove();

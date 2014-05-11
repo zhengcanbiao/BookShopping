@@ -1,10 +1,28 @@
 <%@ page language="java" import="java.util.*, com.bookshopping.service.AddressService" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  
+<%   
+  if(request.getProtocol().compareTo("HTTP/1.0")==0)   
+        response.setHeader("Pragma","no-cache");   
+  else   if(request.getProtocol().compareTo("HTTP/1.1")==0)   
+        response.setHeader("Cache-Control","no-cache");   
+  response.setDateHeader("Expires",0);   
+  %>
+
+<%
+ response.setHeader("Pragma","No-cache");
+ response.setHeader("Cache-Control","No-cache");
+ response.setDateHeader("Expires", -1);
+ response.setHeader("Cache-Control", "No-store");
+ 
+%>
 <link href="/BookShopping/css/bootstrap.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/flat-button.css" rel="stylesheet" media="screen" />
 <link href="/BookShopping/css/font-awesome.min.css" rel="stylesheet" media="screen" />
@@ -14,8 +32,7 @@
 <title>结算中心</title>
 </head>
 
-<body>
-
+<body >
 	<%@ include file="header.jsp" %>
     
     <div class="body">
@@ -180,7 +197,26 @@
     <script type="application/javascript" src="/BookShopping/js/check.js"></script>
     
     <script type="application/javascript">
+    //window.location.href(/BookShopping/customer/GetProvinceList.action); 
+    
+
+
+
+
+    window.onload=function(){
+    	
+    	
+    	
+    	  if (location.href.indexOf("?xyz=")<0)
+    	 {
+    	 location.href=location.href+"?xyz="+Math.random();}
+     }
+    
+ 
 		$(document).ready(function(e) {
+		 
+			
+			 
 			prepare_province_list();
 			if ($("#province_dropdown").val() != -1) {
 				on_province_selected();
@@ -244,8 +280,10 @@
 		}
 		
 		function confirm_order() {
+			
 			if ($("[name='address']").val()) {
-				$("#order_btn").parent().attr("href", "/BookShopping/customer/AddOrder.action?receiverInfo=" + $("[name='address']").val());
+				var list= $('input:radio[name="address"]:checked').val();
+				$("#order_btn").parent().attr("href", "/BookShopping/customer/AddOrder.action?receiverInfo=" + list);
 			} else {
 				show_tips("请选择地址信息", "warning");
 			}
